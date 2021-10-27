@@ -10,7 +10,7 @@ function initViewInputs(){
 }
 
 function initViewInput(i,elem){
-  $elem = $(elem);
+  let $elem = $(elem);
   let viewId = $elem.closest(".view").id;
   let elemId = $elem.id;
 

@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+html,body{
+  min-height: 100vh;
+}
+
+#main-container {
+  overflow-y: scroll;
+  height: 80vh;
+}
+
+
+.view {
+  margin-left:auto;
+  margin-right:auto;
+  position:relative;
+  min-height:80vh;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fade-in 1s;
+}
+
+h1 {
+  padding-bottom:2rem;
+}
+
+.fade-in{
+  animation: fade-in 1s;
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

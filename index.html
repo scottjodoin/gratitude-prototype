@@ -50,9 +50,18 @@
     </div>
 
     <div class="d-none view" id="mood-checkin3">
-      <h1>CHECK IN VIEW 3</h1>
-      <label for=test-input>Enter something and I will try to remember it.</label>
-      <input id=test-input type=text class="form-control mb-3"></input>
+      <h1>GRATITUDE - VIEW 3</h1>
+      <div class="prompt-text text-center">
+        <p class="mb-1">Sounds like some things didn't go your way today.</p>
+        <p class="mb-1">Writing about events can help process emotions.</p>
+        <p class="mb-1">You can write down what happened, how you felt about it, or whatever you'd like.</p>
+        <p class="text-center my-3">Feel free to rant.</p>
+      </div>
+
+      <div class="prompt-input w-100">
+        <textarea class="form-control mb-2" id="prompt-form" rows="5" placeholder="Begin writing here..."></textarea>
+      </div>
+
       <div>
         <a class="btn btn-outline-primary" href="?view=mood-checkin2">Back</a>
         <a class="btn btn-primary" href="?view=mood-checkin4">Next View</a>

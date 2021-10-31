@@ -6,7 +6,7 @@ _storage = window.localStorage;
 })();
 
 function initViewInputs(){
-  $(".view>input").each(initViewInput);
+  $(".view>textarea").each(initViewInput);
 }
 
 function initViewInput(i,elem){

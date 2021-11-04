@@ -22,14 +22,14 @@
 <body>
   <nav class="navbar navbar-expand-md bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="?view=landing">LOGO</a>
+      <a class="navbar-brand" href="./index.html">LOGO</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link btn btn-primary text-white" href="?view=mood-checkin1">Check in</a>
+            <a class="nav-link btn btn-primary text-white" id=nav-checkin href="?view=mood-checkin1">Check in</a>
           </li>
         </ul>
         <ul class="navbar-nav float-end">
@@ -78,7 +78,7 @@
     <div class="d-none view" id="mood-checkin4">
       <h1>Conner Kulbaski hello !!!!</h1>
       <div>
-	<p> hey hey hey! its me </p>
+	  <p> hey hey hey! its me </p>
         <a class="btn btn-outline-primary me-2" href="?view=mood-checkin3">Back</a>
         <a class="btn btn-primary" href="?view=mood-checkin5">Next View</a></div>
     </div>
@@ -106,15 +106,100 @@
         <a class="btn btn-primary" href="?view=mood-checkin1">Next View</a></div>
     </div>
 
+    <!-- goal setting -->
+    <div class="d-none view" id="welcome">
+      <hide-checkin></hide-checkin>
+      <h1>Welcome to Myndful.ly</h1>
+      <p>Start tracking your wellness today! Myndfully will help you keep on top of your wellness by checking in on your mood, activities, and thoughts.</p>
+      <!-- TODO: add a .mp4 that plays demonstrating the checkout app? -->
+      <div>
+        <a class="btn btn-primary" href="?view=goals-activities">Set some goals</a></div>
+    </div>
+
+    <div class="d-none view" id="goals-activities">
+      <hide-checkin></hide-checkin>
+      <h1>First off, which <strong>activities</strong> would you like to track?</h1>
+      <p>Myndful.ly can remind you to include any or all of these items.</p>
+      
+      <div class="d-flex flex-wrap justify-content-center">
+        <!-- TODO: add font-awesome icons to the labels with class="me-1" -->
+        <input type="checkbox" class="btn-check" id=act-exercise autocomplete="off">
+        <label class="btn btn-outline-primary" for=act-exercise>Exercise</label>
+
+        <input type="checkbox" class="btn-check" id=act-hygiene autocomplete="off">
+        <label class="btn btn-outline-primary" for=act-hygiene>Hygiene</label>
+
+        <input type="checkbox" class="btn-check" id=act-cleanliness autocomplete="off">
+        <label class="btn btn-outline-primary" for=act-cleanliness>Cleanliness</label>
+
+        <input type="checkbox" class="btn-check" id=act-social autocomplete="off">
+        <label class="btn btn-outline-primary" for=act-social>Social</label>
+
+        <input type="checkbox" class="btn-check" id=act-healthy-food autocomplete="off">
+        <label class="btn btn-outline-primary" for=act-healthy-food>Healthy food</label>
+
+        <input type="checkbox" class="btn-check" id=act-outdoors autocomplete="off">
+        <label class="btn btn-outline-primary" for=act-outdoors>Outdoors</label>
+      </div>
+
+      <div>
+        <a class="btn btn-primary" href="?view=goals-checkin-freq">Ok</a></div>
+    </div>
+    
+    <div class="d-none view" id="goals-checkin-freq">
+      <hide-checkin></hide-checkin>
+      <h1>How often would you like to check in?</h1>
+      <p>Myndful.ly can send reminders to check in if you miss a few.</p>
+      
+      <div class="d-flex flex-wrap justify-content-center" role="group">
+        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-1" autocomplete="off">
+        <label class="btn btn-secondary" for="checkin-freq-1">Twice a day</label>
+
+        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-2" autocomplete="off" checked>
+        <label class="btn btn-secondary" for="checkin-freq-2">Once a day</label>
+
+        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-3" autocomplete="off">
+        <label class="btn btn-secondary" for="checkin-freq-3">Three times a week</label>
+
+        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-4" autocomplete="off">
+        <label class="btn btn-secondary" for="checkin-freq-4">Once a week</label>
+      </div>
+
+      <div>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-activities">Back</a>
+        <a class="btn btn-primary" href="?view=goals-thankyou">Ok</a></div>
+    </div>
+
+    <div class="d-none view" id="goals-thankyou">
+      <hide-checkin></hide-checkin>
+      <!-- TODO: add success icon here -->
+      <h1>Ok, great! You can always change your settings later.</h1>
+      <!-- TODO: show the settings that were selected from before inside #goal-summary.
+        Note that getting the values of the radio buttons will need to be different -->
+      <div id="goal-summary"></div>
+      <div>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-checkin-freq">Back</a>
+        <a class="btn btn-primary" href="?view=goals-try-firsttime">Ok</a></div>
+    </div>
+
+    <div class="d-none view position-relative" id="goals-try-firsttime">
+      <!-- TODO: add a css class that references the img/checkin-arrow.svg using absolute position in rem units -->
+      <div class="checkin-arrow"></div>
+      <h1>Let's try checking in for the first time.</h1>
+    </div>
+
+    <!-- error screens -->
     <div class="d-none view" id="unimplemented">
       <container class="text-center">
         <div class="alert alert-warning">This page is not part of the prototype and is intentionally not implemented.</div>
       </container>
     </div>
   </div>
+
 <!-- <script src="classes.js"></script> -->
-<script src="navigation.js"></script>
 <script src="storage.js"></script>
+<script src="navigation.js"></script>
+<script src="goal-setting.js"></script>
 <!-- <script src="index.js?q=4"></script>-->
 </body>
 </html>

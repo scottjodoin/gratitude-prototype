@@ -1,11 +1,11 @@
 let _searchParams = new URLSearchParams(location.search);
-
+let _currentViewId = null;
 (function initNavigation(){
   showView();
 })();
 
 function isFirstTime(){
-  return true; // TODO remove this line
+  return true; // TODO: remove this line
   return _storage.getItem("visited") === null;
 }
 
@@ -29,6 +29,8 @@ function softRedirect(target){
   // show unimplemented if the view query leads nowhere
   if ($view.length == 0)
     $view = $("#unimplemented");
+
+  _currentViewId = $view[0].id;
 
   // adjust the checkin button visibility
   $("#nav-checkin").toggleClass("invisible", $view.find("hide-checkin").length > 0);

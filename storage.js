@@ -90,8 +90,6 @@ function viewInputChanged(e){
   } else {
     value = $elem.val();
   }
-  
-  console.log(viewId,elemId,value)
 
   storeValue(viewId,elemId,value);
 }

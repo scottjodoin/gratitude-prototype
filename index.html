@@ -121,25 +121,26 @@
       <h1>First off, which <strong>activities</strong> would you like to track?</h1>
       <p>Myndful.ly can remind you to include any or all of these items.</p>
       
-      <div class="d-flex flex-wrap justify-content-center">
-        <!-- TODO: add font-awesome icons to the labels with class="me-1" -->
+      <div class="d-flex flex-wrap justify-content-center mb-4">
+        <!-- TODO: space out the buttons a little bit -->
+        <!-- TODO: add font-awesome icons to the labels with some space to the right of the labels -->
         <input type="checkbox" class="btn-check" id=act-exercise autocomplete="off">
-        <label class="btn btn-outline-primary" for=act-exercise>Exercise</label>
+        <label class="btn btn-outline-primary me-2" for=act-exercise>Exercise</label>
 
         <input type="checkbox" class="btn-check" id=act-hygiene autocomplete="off">
-        <label class="btn btn-outline-primary" for=act-hygiene>Hygiene</label>
+        <label class="btn btn-outline-primary me-2" for=act-hygiene>Hygiene</label>
 
         <input type="checkbox" class="btn-check" id=act-cleanliness autocomplete="off">
-        <label class="btn btn-outline-primary" for=act-cleanliness>Cleanliness</label>
+        <label class="btn btn-outline-primary me-2" for=act-cleanliness>Cleanliness</label>
 
         <input type="checkbox" class="btn-check" id=act-social autocomplete="off">
-        <label class="btn btn-outline-primary" for=act-social>Social</label>
+        <label class="btn btn-outline-primary me-2" for=act-social>Social</label>
 
         <input type="checkbox" class="btn-check" id=act-healthy-food autocomplete="off">
-        <label class="btn btn-outline-primary" for=act-healthy-food>Healthy food</label>
+        <label class="btn btn-outline-primary me-2" for=act-healthy-food>Healthy food</label>
 
         <input type="checkbox" class="btn-check" id=act-outdoors autocomplete="off">
-        <label class="btn btn-outline-primary" for=act-outdoors>Outdoors</label>
+        <label class="btn btn-outline-primary me-2" for=act-outdoors>Outdoors</label>
       </div>
 
       <div>
@@ -148,21 +149,22 @@
     
     <div class="d-none view" id="goals-checkin-freq">
       <hide-checkin></hide-checkin>
+    
       <h1>How often would you like to check in?</h1>
       <p>Myndful.ly can send reminders to check in if you miss a few.</p>
       
-      <div class="d-flex flex-wrap justify-content-center" role="group">
+      <div class="d-flex flex-wrap justify-content-center mb-4" role="group">
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-1" autocomplete="off">
-        <label class="btn btn-secondary" for="checkin-freq-1">Twice a day</label>
+        <label class="btn btn-outline-primary me-2" for="checkin-freq-1">Twice a day</label>
 
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-2" autocomplete="off" checked>
-        <label class="btn btn-secondary" for="checkin-freq-2">Once a day</label>
+        <label class="btn btn-outline-primary me-2" for="checkin-freq-2">Once a day</label>
 
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-3" autocomplete="off">
-        <label class="btn btn-secondary" for="checkin-freq-3">Three times a week</label>
+        <label class="btn btn-outline-primary me-2" for="checkin-freq-3">Three times a week</label>
 
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-4" autocomplete="off">
-        <label class="btn btn-secondary" for="checkin-freq-4">Once a week</label>
+        <label class="btn btn-outline-primary me-2" for="checkin-freq-4">Once a week</label>
       </div>
 
       <div>

@@ -42,6 +42,20 @@ function getValue(viewId,elemId){
   return _storage.getItem(`${viewId}[${elemId}]`);
 }
 
+function getRadioText(name){
+  let text = "";
+  $(`input[name=${name}`).each((i,e)=>{
+
+    let viewId = $elem.closest(".view")[0].id;
+    let checked = getValue(viewId,e.id) == "true";
+
+    if (checked)
+      text = $(`label[for=${e.id}]`)[0].innerText;
+  });
+  return text; // when none selected
+}
+
+
 function storeValue(viewId,elemId,value){
   if (value == null){
     console.warn(`attempted to set null value at ${viewId}[${elemId}]`);
@@ -53,7 +67,6 @@ function storeValue(viewId,elemId,value){
 function flushRadioButtons($elem, value){
     // update all the other radio buttons
     let viewId = $elem.closest(".view")[0].id;
-    let elemId = $elem[0].id;
     let radioName = $elem.prop("name");
     $(`input[name=${radioName}]`).each((i,e)=>{
       storeValue(viewId,e.id,value);

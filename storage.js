@@ -20,7 +20,7 @@ function loadViewInputs(){
     if (i.pageId != _pageId) continue;
 
     let elem = document.getElementById(i.elemId);
-    if (i.type==="radio") updateRadioGroup(i.elemId,i.value); // elemId of radio is the name
+    if (i.type==="radio") updateRadioGroup(i.elemId, i.text); // elemId of radio is the name
     if (i.type==="checkbox") elem.checked = i.value;
     if (i.type==="textarea") elem.value = i.value;
     if (i.type==="text") elem.value = i.value;
@@ -30,7 +30,6 @@ function loadViewInputs(){
 function updateRadioGroup(radioName, value){
   $(`input[type=radio][name=${radioName}]`).each(
       (i,e)=>{
-        console.log($(`label[for=${e.id}]`).text(), value);
         e.checked = $(`label[for=${e.id}]`).text()===value});
 }
 
@@ -42,51 +41,62 @@ function initViewInputs(){
 }
 
 function changeTextAreaInput(e){
-  let elemId = e.target.id;
-  let viewId = $(e.target).closest(".view")[0].id;
-  let value = e.target.value;
-  let type = "textarea";
+  let data = {
+    elemId: e.target.id,
+    viewId: $(e.target).closest(".view")[0].id,
+    value: e.target.value,
+    type: "textarea"
+  }
 
-  storeInput(elemId,viewId,type,value);
+  storeInput(data);
 }
 
 function changeTextInput(e){
-  console.log(e.target.value);
-  let elemId = e.target.id;
-  let viewId = $(e.target).closest(".view")[0].id;
-  let value = e.target.value;
-  let type = "text";
+  let data = {
+    elemId: e.target.id,
+    viewId: $(e.target).closest(".view")[0].id,
+    value: e.target.value,
+    type: "text"
+  };
 
-  storeInput(elemId,viewId,type,value);
+  storeInput(data);
 }
 
 function changeRadioInput(e){
   if (!e.target.checked) return;
 
-  let elemId = e.target.getAttribute("name");
-  let viewId = $(e.target).closest(".view")[0].id;
-  let value = $(`label[for=${e.target.id}]`).text();
-  let type="radio";
+  let data = {
+    elemId:  e.target.getAttribute("name"),
+    radioId: e.target.id,
+    viewId:  $(e.target).closest(".view")[0].id,
+    text:  $(`label[for=${e.target.id}]`).text(),
+    type: "radio"
+  };
 
-  storeInput(elemId,viewId,type,value);
+  storeInput(data);
 
 }
 
 function changeCheckboxInput(e){
-  let elemId = e.target.id;
-  let viewId = $(e.target).closest(".view")[0].id;
-  let value = e.target.checked;
-  let type = "checkbox";
 
-  storeInput(elemId,viewId,type,value);
+  let data = {
+    elemId: e.target.id,
+    viewId: $(e.target).closest(".view")[0].id,
+    text:  $(`label[for=${e.target.id}]`).text(),
+    value: e.target.checked,
+    type: "checkbox"
+  };
+
+  storeInput(data);
 
 }
 
-function storeInput(elemId,viewId,type,value){
+function storeInput(data){
   let pageId = _pageId;
-  let input = {pageId, elemId, viewId, type, value};
+  let input = {pageId, ...data};
 
-  let oldIndex = _state.inputs.findIndex(i=>i.pageId==pageId && i.viewId==viewId && i.elemId==elemId);
+  let oldIndex = _state.inputs.findIndex(
+    i=>i.pageId==input.pageId && i.viewId==input.viewId && i.elemId==input.elemId);
 
   if (oldIndex >= 0) _state.inputs[oldIndex] = input;
   else _state.inputs.push(input);

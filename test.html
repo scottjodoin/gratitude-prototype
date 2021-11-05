@@ -59,13 +59,13 @@
     <div class="d-none view" id="test1">
       <h1>test1</h1>
       
-      <input type="text" id=test-text1>
+      <input type="text" id=test-text1 class="form-control mb-2">
 
-      <br />
-
-      <input type="radio" name="test-radio" id="test-radio1"><label for="test-radio1">Radio One</label>
-      <input type="radio" name="test-radio" id="test-radio2"><label for="test-radio2">Radio Two</label>
-      <input type="radio" name="test-radio" id="test-radio3"><label for="test-radio3">Radio Three</label>
+      <div class="d-flex flex-wrap justify-contents-center mb-4">
+        <input type="radio" name="test-radio" id="test-radio1" class="btn-check"><label class="btn btn-outline-primary me-2" for="test-radio1"><i class="fa fa-person me-2"></i>Radio One</label>
+        <input type="radio" name="test-radio" id="test-radio2" class="btn-check"><label class="btn btn-outline-primary me-2" for="test-radio2"><i class="fa fa-bus me-2"></i>Radio Two</label>
+        <input type="radio" name="test-radio" id="test-radio3" class="btn-check"><label class="btn btn-outline-primary me-2" for="test-radio3"><i class="fa fa-car me-2"></i>Radio Three</label>
+      </div>
       
       <div>
         <a class="btn btn-outline-primary me-2" href="?view=test3">Back</a>
@@ -74,10 +74,12 @@
 
     <div class="d-none view" id="test2">
       <h1>test2</h1>
-
-      <input type="checkbox" id="test-check1"><label for="test-check1">Check One</label>
-      <input type="checkbox" id="test-check2"><label for="test-check2">Check wo</label>
-      <input type="checkbox" id="test-check3"><label for="test-check3">Check Three</label>
+      <p>Select all that apply:</p>
+      <div class="d-flex flex-wrap justify-contents-center mb-4">
+        <input type="checkbox" id="test-check1" class="btn-check"><label class="btn btn-outline-primary me-2" for="test-check1"><i class="fa fa-times me-2"></i>Check One</label>
+        <input type="checkbox" id="test-check2" class="btn-check"><label class="btn btn-outline-primary me-2" for="test-check2"><i class="fa fa-clock me-2"></i>Check Two</label>
+        <input type="checkbox" id="test-check3" class="btn-check"><label class="btn btn-outline-primary me-2" for="test-check3"><i class="fa fa-check me-2"></i>Check Three</label>
+      </div>
 
       <div>
         <a class="btn btn-outline-primary me-2" href="?view=test1">Back</a>
@@ -86,7 +88,7 @@
 
     <div class="d-none view" id="test3">
       <h1>test3</h1>
-      <textarea id=test-textarea cols="30" rows="10"></textarea>
+      <textarea id=test-textarea cols="50" rows="5" class="form-control mb-4"></textarea>
       <div>
         <a class="btn btn-outline-primary me-2" href="?view=test2">Back</a>
         <a class="btn btn-primary" href="?view=test1">Next View</a></div>

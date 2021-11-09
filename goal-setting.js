@@ -1,5 +1,4 @@
 if (_currentViewId==="goals-thankyou"){
-  // TODO: add the summary using getRadioText(name of element) and getValue()
   // let radioValue
 
   let activitiesIntro="";
@@ -38,4 +37,10 @@ if (_currentViewId==="goals-thankyou"){
   reminderIntro="Desired check in frequency:";
   let h = activitiesIntro+"<ul>"+activities+"</ul>"+reminderIntro+"<ul>"+reminder+"</ul>";
   $("#goal-summary").html(h);
+}
+
+if (_currentViewId === "goals-try-firsttime"){
+  $("#nav-checkin")
+    .parent()
+    .append("<div class=arrow-point-up-anchor><div></div></div>");
 }

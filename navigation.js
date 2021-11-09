@@ -5,7 +5,6 @@ let _currentViewId = null;
 })();
 
 function isFirstTime(){
-  return true; // TODO: remove this line
   return _storage.getItem("visited") === null;
 }
 

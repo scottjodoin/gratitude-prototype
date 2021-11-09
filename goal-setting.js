@@ -30,7 +30,7 @@ if (_currentViewId==="goals-thankyou"){
     }
     else
     {
-      activitiesIntro="Acitivities";
+      activitiesIntro="Activities";
     }
     activitiesIntro+=" chosen to track:";
   }

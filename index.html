@@ -22,14 +22,14 @@
 <body>
   <nav class="navbar navbar-expand-md bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="?view=landing">LOGO</a>
+      <a class="navbar-brand" href="./index.html">LOGO</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link btn btn-primary text-white" href="?view=mood-checkin1">Check in</a>
+            <a class="nav-link btn btn-primary text-white" id=nav-checkin href="?view=mood-checkin1">Check in</a>
           </li>
         </ul>
         <ul class="navbar-nav float-end">
@@ -42,6 +42,17 @@
   </nav>
   
   <div id=container class="container pt-4 d-flex justify-content-center">
+
+    <!-- welcome -->
+    <div class="d-none view" id="welcome">
+      <hide-checkin></hide-checkin>
+      <h1>Welcome to Myndful.ly</h1>
+      <p>Start tracking your wellness today! Myndfully will help you keep on top of your wellness by checking in on your mood, activities, and thoughts.</p>
+      <!-- TODO: add a .mp4 that plays demonstrating the checkout app? -->
+      <div>
+        <a class="btn btn-primary" href="goal-setting.html?view=goals-activities">Set some goals</a></div>
+    </div>
+
     <!-- landing -->
     <div class="d-none view" id="landing">
       <h1>Welcome</h1>
@@ -78,7 +89,7 @@
     <div class="d-none view" id="mood-checkin4">
       <h1>Conner Kulbaski hello !!!!</h1>
       <div>
-	<p> hey hey hey! its me </p>
+	  <p> hey hey hey! its me </p>
         <a class="btn btn-outline-primary me-2" href="?view=mood-checkin3">Back</a>
         <a class="btn btn-primary" href="?view=mood-checkin5">Next View</a></div>
     </div>
@@ -106,15 +117,12 @@
         <a class="btn btn-primary" href="?view=mood-checkin1">Next View</a></div>
     </div>
 
-    <div class="d-none view" id="unimplemented">
-      <container class="text-center">
-        <div class="alert alert-warning">This page is not part of the prototype and is intentionally not implemented.</div>
-      </container>
-    </div>
+    
   </div>
+
 <!-- <script src="classes.js"></script> -->
-<script src="navigation.js"></script>
 <script src="storage.js"></script>
+<script src="navigation.js"></script>
 <!-- <script src="index.js?q=4"></script>-->
 </body>
 </html>

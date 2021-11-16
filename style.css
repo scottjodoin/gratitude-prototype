@@ -29,6 +29,11 @@ h1 {
   to   { opacity: 1; }
 }
 
+.chart{
+   background-color: #faf1cfff; 
+   border-color: #3f6844ff;
+}
+
 .arrow-point-up-anchor{
   position:relative;
   opacity: 0;

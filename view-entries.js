@@ -34,7 +34,7 @@ const chart = new Chart(ctx, {
     responsive: true,
 
     scales: {
-      y: {
+      x: {
         ticks: {
           // For a category axis, the val is the index so the lookup via getLabelForValue is needed
           callback: function(val, index) {
@@ -80,6 +80,20 @@ function canvasClicked(event) {
     var label = chart.data.labels[clickedElementindex];
     var value = chart.data.datasets[clickedDatasetIndex].data[clickedElementindex];
 
+    // update module
+    let dateInfo = data.weeks[week].dataPoints[clickedElementindex];
+    console.log(dateInfo);
+
+    let d = new Date(dateInfo.date);
+    let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+    let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
+    let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+
+    $("#entry-modal-title").text(`${mo} ${da}, ${ye}`);
+    $("#entry-date").val(dateInfo.date);
+    $("#entry-mood").val(dateInfo.mood);
+    $("#entry-notes").val(dateInfo.entry);
+
     pointClicked(label,value);
   }
 };
@@ -115,6 +129,5 @@ function updateChart() {
   chart.data.datasets[0].data = 
     weekData.dataPoints.map(e=>{return {x:e.x, y:e.y}});
   $("#week-title").text(weekData.weekTitle);
-  
   chart.update();
 }

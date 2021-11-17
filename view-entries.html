@@ -48,51 +48,49 @@
     </div>
   </nav>
 
-  <h3 class=my-4>
-    <div class="d-flex justify-content-between" style="min-width:20rem; max-width:600px">
-      <button id=btn-prev-week class="btn btn-primary me-3" id=btn-add-entry title="previous week"><i class="fa fa-caret-left"></i></button>
-      <span id="week-title">Aug 24, 2021 - Aug 31, 2021</span>
-      <button id=btn-next-week class="btn btn-primary ms-3" id=btn-add-entry title="next week"><i class=" fa fa-caret-right"></i></button></h3>
+  <div class="container">
+    <h3 class=my-4>
+      <div class="d-flex justify-content-between" style="min-width:20rem; max-width:600px">
+        <button id=btn-prev-week class="btn btn-primary me-3" id=btn-add-entry title="previous week"><i class="fa fa-caret-left"></i></button>
+        <span id="week-title">Aug 24, 2021 - Aug 31, 2021</span>
+        <button id=btn-next-week class="btn btn-primary ms-3" id=btn-add-entry title="next week"><i class=" fa fa-caret-right"></i></button></h3>
+      </div>
+    
+    
+    <div class="chart-container" style="position: relative; height:20rem; width:100%">
+      <canvas class="chart" id="chart"></canvas>
     </div>
-
-  
-  
-  <div class="chart-container" style="position: relative; height:20rem; width:100vw">
-    <canvas class="chart" id="chart"></canvas>
-  </div>
-  <div id="entry-modal" class="modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">View Entry</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="entry-date">Date</label>
-            <input type="date" class="form-control" id="entry-date" value="2020-08-24">
+    <div id="entry-modal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="entry-modal-title">View Entry</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-
-          <div class="form-group">
-
-            <label for="entry-mood">Mood</label>
-            <select class="form-select" id="entry-mood">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="entry-date">Date</label>
+              <input type="date" class="form-control" id="entry-date" value="2020-08-24">
+            </div>
+            <div class="form-group">
+              <label for="entry-mood">Mood</label>
+              <select class="form-select" id="entry-mood">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="entry-notes">Entry</label>
+              <textarea class="form-control" id="entry-notes" rows="4"></textarea>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="entry-notes">Entry</label>
-            <textarea class="form-control" id="entry-notes" rows="3"></textarea>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
           </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
     </div>

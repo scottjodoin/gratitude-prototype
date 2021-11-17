@@ -12,7 +12,7 @@
   }
 
   // create html for each color
-  html += "<div class='emotion-checklist-container d-flex'>";
+  html += "<div class='emotion-checklist-container d-flex flex-wrap'>";
   for (color in emotionsByColor){
     html += "<span class=me-4>";
     for (emotion of emotionsByColor[color]){

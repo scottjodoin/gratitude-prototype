@@ -59,8 +59,8 @@ const chart = new Chart(ctx, {
         
         bar.borderColor
         = bar.backgroundColor
-        = (data[i].y == 0) ? 'rgba(0,0,75,0.4)'
-        : (data[i].y > 0) ? 'rgba(0,255,0,0.4)' : 'rgba(255,0,0,0.4)';
+        = (data[i].y == 0) ? '#808080'
+        : (data[i].y > 0) ? '#5daa68ff' : '#cc5500';
 
       }
     }

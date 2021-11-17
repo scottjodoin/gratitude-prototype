@@ -52,3 +52,30 @@ h1 {
   background-image: url("img/uparrow.svg");
   background-size: cover;
 }
+
+.btn-square{
+  width: 6rem;
+  height: 6rem;
+  padding:0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color:black;
+}
+.btn-square img{
+  filter: invert(0);
+  transition: 0.15s;
+}
+input:checked + .btn-square {
+  background-color: #00a8ff !important;
+  color:white;
+}
+.btn-square:hover > img, input:checked + .btn-square > img {
+  filter: invert(1);
+}

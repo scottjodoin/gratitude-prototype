@@ -1,25 +1,26 @@
 (function initEmotionChecklist() {
   let html = "";
-  let emotionsByColor = {};
+  let emotionsByCat = {};
 
   // group emotions by color
   for (emotion of _emotion_data){
-    let color = emotion.color;
-    if (emotionsByColor[color] == undefined) {
-      emotionsByColor[color] = [];
+    let cat = emotion.category;
+    if (emotionsByCat[cat] == undefined) {
+      emotionsByCat[cat] = [];
     }
-    emotionsByColor[color].push(emotion);
+    emotionsByCat[cat].push(emotion);
   }
 
   // create html for each color
   html += "<div class='emotion-checklist-container d-flex flex-wrap'>";
-  for (color in emotionsByColor){
+  for (cat in emotionsByCat){
     html += "<span class=me-4>";
-    for (emotion of emotionsByColor[color]){
+    html += "<h4 class='emotion-checklist-header text-center mb-1'>" + emotionsByCat[cat][0].category + "</h4>";
+    for (emotion of emotionsByCat[cat]){
       let checkId = `emotion-check-${emotion.name.split(" ").join("-")}`;
       html += `<div class="emotion-checklist-item">
         <input type="checkbox" id=${checkId} name=${checkId} class="btn-check">
-        <label  style="background-color:${emotion.color};"for="${checkId}" class="btn btn-primary-outline btn-square">
+        <label  style="background-color:${emotion.color};"for="${checkId}" class="my-4 btn btn-primary-outline btn-square">
           <img src="./img/${emotion.icon}.svg" width=40 height=40>
           <span class="text-center">${emotion.name}</span>
         </label>

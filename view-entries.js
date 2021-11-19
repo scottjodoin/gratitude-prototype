@@ -1,13 +1,17 @@
-/*
-const FontAwesome = new FontFace("font-awesome",
-    "url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css)");
+
 var entryModal = new bootstrap.Modal(
   document.getElementById('entry-modal')
 ); // Returns a Bootstrap modal instance
 
-document.fonts.add(FontAwesome); // add it to the document's FontFaceSet
-*/
 const ctx = document.getElementById('chart');
+
+function pointColor(context){
+    var index = context.dataIndex;
+    var value = context.dataset.data[index].y;
+    return value == 0 ? '#808080' : // draw 0 in grey 
+        value > 0 ? '#5daa68ff' : // positive in green 
+            '#cc5500'; // negative in red
+}
 
 let week = 0;
 const chart = new Chart(ctx, {
@@ -19,25 +23,13 @@ const chart = new Chart(ctx, {
       fill: true,
       data: data.weeks[week].dataPoints,
       tension: 0.1,
-      backgroundColor: "rgba(192,75,192,0.4)",
-      borderWidth: 5,
-      borderColor: "rgba(75,192,192,1)",
+      
+      borderWidth: 3,
+      borderColor: "#808080",
       pointRadius: 10,
       pointHoverRadius: 15,
-      pointBackgroundColor: function(context) {
-        var index = context.dataIndex;
-        var value = context.dataset.data[index].y;
-        return value == 0 ? '#808080' :  // draw negative values in red
-            value > 0 ? '#5daa68ff' :    // else, alternate values in blue and green
-                '#cc5500';
-      },
-      pointBorderColor: function(context) {
-        var index = context.dataIndex;
-        var value = context.dataset.data[index].y;
-        return value == 0 ? '#808080' :  // draw negative values in red
-            value > 0 ? '#5daa68ff' :    // else, alternate values in blue and green
-                '#cc5500';
-      },
+      pointBackgroundColor: pointColor,
+      pointBorderColor: pointColor
     }]
   },
 
@@ -54,9 +46,6 @@ const chart = new Chart(ctx, {
           suggestedMin: -6,
           suggestedMax: 6,
           ticks:{
-              font:{
-                  family: "Font Awesome 6 Free",
-              }
           }
       }
     },
@@ -69,12 +58,12 @@ const chart = new Chart(ctx, {
 // clicking on the canvas
 $(ctx).on("click", canvasClicked);
 function canvasClicked(event) {
-  var activePoints = chart.getElementAtEvent(event);
+  var activePoints = chart.getElementsAtEventForMode(event, 'nearest', {intersect: true}, false);
 
   // make sure click was on an actual point
   if (activePoints.length > 0) {
-    var clickedDatasetIndex = activePoints[0]._datasetIndex;
-    var clickedElementindex = activePoints[0]._index;
+    var clickedDatasetIndex = activePoints[0].datasetIndex;
+    var clickedElementindex = activePoints[0].index;
     var label = chart.data.labels[clickedElementindex];
     var value = chart.data.datasets[clickedDatasetIndex].data[clickedElementindex];
 

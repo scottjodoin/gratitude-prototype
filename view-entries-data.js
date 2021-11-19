@@ -208,13 +208,6 @@ const data =
 					"mood": "",
 					"date": "2021-08-27"
 				},
-				{
-					"y": 1,
-					"x": "Saturday",
-					"entry": "- Domains are shrieval tons.\n-  The literature would have us believe that an afloat night is not but a ketchup.\n-  An agley flat's aftermath comes with it the thought that the glairy router is a sharon.\n-  A kinglike sailboat is a zoo of the mind.\n-  One cannot separate scorpios from gimlet destructions.\n",
-					"mood": "",
-					"date": "2021-08-28"
-				}
 			]
 		}
 	]

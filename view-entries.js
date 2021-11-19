@@ -10,7 +10,7 @@ const annoCtx = annoCanvas.getContext('2d');
 function pointColor(context){
     var index = context.dataIndex;
    
-    return data.weeks[week].dataPoints[index].mood.color;
+    return data.weeks[week].dataPoints[index].mood[0].color;
     // var value = context.dataset.data[index].y;
     // return value == 0 ? '#808080' : // draw 0 in grey 
     //     value > 0 ? '#5daa68ff' : // positive in green 
@@ -93,8 +93,8 @@ function drawOnPoints(chart, args, options){
   for (i = 0; i < chartData.length; i++){
     let p = chartData[i];
     let stretchFactor = 2;
-    let iconName = data.weeks[week].dataPoints[i].mood.icon;
-    console.log(iconName);
+    let iconName = data.weeks[week].dataPoints[i].mood[0].icon;
+
     let img = emotionIcons[iconName];
     if (!img) continue;
     annoCtx.drawImage(img, p.x - POINT_RADIUS*stretchFactor/2, p.y - POINT_RADIUS*stretchFactor/2, POINT_RADIUS * stretchFactor, POINT_RADIUS * stretchFactor);
@@ -124,10 +124,18 @@ function canvasClicked(event) {
 
     $("#entry-modal-title").text(`${mo} ${da}, ${ye}`);
     $("#entry-date").text(dateInfo.date);
-    $("#entry-mood").attr("src", `img/${dateInfo.mood.icon}.svg`);
-    $("#entry-mood-wrapper").css("background-color", dateInfo.mood.color);
+    $("#entry-mood-container").empty();
 
-    $("#entry-mood-text").text(dateInfo.mood.name);
+    for (i in dateInfo.mood){
+      let mood = dateInfo.mood[i];
+      console.log(mood);
+      let moodHtml = `<div class="btn-square me-2" style="zoom:0.75;background-color:${mood.color};">
+        <img class="entry-mood" src="img/${mood.icon}.svg" alt="">
+        <span class=entry-mood-text>${mood.name}</span>
+      </div>`;
+
+      $("#entry-mood-container").append(moodHtml);
+    }
     $("#entry-notes").val(dateInfo.entry);
 
     pointClicked(label,value);

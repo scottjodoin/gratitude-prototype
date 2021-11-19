@@ -21,7 +21,7 @@
 <body>
   <nav class="navbar navbar-expand-md bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="./index.html">LOGO</a>
+      <a class="navbar-brand" href="./goal-setting.html?view=goals-activities">LOGO</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,15 +40,29 @@
     </div>
   </nav>
   
+  
   <div id=container class="container pt-4 d-flex justify-content-center">
     <!-- goal setting -->
-
+    
     <div class="d-none view" id="goals-activities">
       <hide-checkin></hide-checkin>
+      
       <h1>First off, which <strong>activities</strong> would you like to track?</h1>
       <p>Myndful.ly can remind you to include any or all of these items.</p>
-      
+      <!-- Popup for adding an activity -->
+      <div class="acti-add">
+        <div class="acti-content">
+          <h3 class="Acti-add-title" style="color: black;">What is the activity name?</h3>
+          <div id=ErrorMsg style="color: red;"></div>
+          <form id=AddActiForm action="">
+            <input id=AddActiInput type="text" class="addinput" placeholder="Activity Name">
+            <button id=Acti-Done type="submit" class="btn btn-primary addbutton">Add Activity</button>
+            <button id=Acti-Cancel type="button" class="btn btn-secondary addbutton">Cancel</button>            
+          </form>
+        </div>
+      </div>
       <div class="d-flex flex-wrap justify-content-center mb-4">
+        
         <!-- TODO: space out the buttons a little bit -->
         <!-- TODO: add font-awesome icons to the labels with some space to the right of the labels -->
         <input type="checkbox" class="btn-check" id=act-exercise autocomplete="off">
@@ -72,10 +86,26 @@
         <label class="btn btn-outline-primary me-2" for=act-outdoors>Outdoors <i class="fas fa-seedling"></i></label>
         
       </div>
+      <p>Your custom activities.</p>
+      <div class="d-flex flex-wrap justify-content-center mb-4">
+        <div id=addAfterThis></div>
 
+        <div id="act-swswsw-div" >
+          <input type="checkbox" class="btn-check" id="act-swswsw" autocomplete="off">
+          <label for="act-swswsw" class="CustomActiLeft btn btn-outline-primary me-2">swswsw<i class="fas fa-seedling"></i></label>
+          <!-- <button style="float: left; margin: 0 !important;" class="btn btn-outline-secondary me-2">swsw</button> -->
+          <button onclick="deleteActivity('act-swswsw-div')" class="CustomActiRight btn btn-outline-secondary me-2">X</button>
+          
+        </div>
+
+        <input type="button" class="btn-check navbar-toggler act-add-another" autocomplete="off">
+        <label id=acti-add-button class="btn btn-outline-primary me-2" for=act-add-another> <i class="fas fa-plus"></i></label>
+
+      </div>
       <div>
-        <a class="btn btn-primary" href="?view=goals-checkin-freq">Ok</a></div>
+        <a onclick="initStorage()" class="btn btn-primary" href="?view=goals-checkin-freq">Ok</a></div>
     </div>
+    
     
     <div class="d-none view" id="goals-checkin-freq">
       <hide-checkin></hide-checkin>
@@ -87,7 +117,7 @@
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-1" autocomplete="off">
         <label class="btn btn-outline-primary me-2" for="checkin-freq-1">Twice a day</label>
 
-        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-2" autocomplete="off" checked>
+        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-2" autocomplete="off" >
         <label class="btn btn-outline-primary me-2" for="checkin-freq-2">Once a day</label>
 
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-3" autocomplete="off">
@@ -99,6 +129,31 @@
 
       <div>
         <a class="btn btn-outline-primary me-2" href="?view=goals-activities">Back</a>
+        <a class="btn btn-primary" href="?view=goals-write-freq">Ok</a></div>
+    </div>
+
+    <div class="d-none view" id="goals-write-freq">
+      <hide-checkin></hide-checkin>
+    
+      <h1>How often would you like to write about your emotions?</h1>
+      <!-- <p>Myndful.ly can send reminders to check in if you miss a few.</p> -->
+      
+      <div class="d-flex flex-wrap justify-content-center mb-4" role="group">
+        <input type="radio" class="btn-check" name="write-freq" id="write-freq-1" autocomplete="off">
+        <label class="btn btn-outline-primary me-2" for="write-freq-1">Twice a day</label>
+
+        <input type="radio" class="btn-check" name="write-freq" id="write-freq-2" autocomplete="off">
+        <label class="btn btn-outline-primary me-2" for="write-freq-2">Once a day</label>
+
+        <input type="radio" class="btn-check" name="write-freq" id="write-freq-3" autocomplete="off">
+        <label class="btn btn-outline-primary me-2" for="write-freq-3">Three times a week</label>
+
+        <input type="radio" class="btn-check" name="write-freq" id="write-freq-4" autocomplete="off">
+        <label class="btn btn-outline-primary me-2" for="write-freq-4">Once a week</label>
+      </div>
+
+      <div>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-checkin-freq">Back</a>
         <a class="btn btn-primary" href="?view=goals-thankyou">Ok</a></div>
     </div>
 
@@ -111,7 +166,7 @@
         Note that getting the values of the radio buttons will need to be different -->
       <div id="goal-summary"></div>
       <div>
-        <a class="btn btn-outline-primary me-2" href="?view=goals-checkin-freq">Back</a>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-write-freq">Back</a>
         <a class="btn btn-primary" href="?view=goals-try-firsttime">Ok</a></div>
     </div>
 
@@ -129,8 +184,11 @@
       </container>
     </div>
   </div>
+  <!-- <script src="customActi.js"></script> -->
   <script src="storage.js"></script>
   <script src="navigation.js"></script>
+  <script src="customActi.js"></script>
   <script src="goal-setting.js"></script>
+  
 </body>
 </html>

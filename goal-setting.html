@@ -43,24 +43,26 @@
   
   <div id=container class="container pt-4 d-flex justify-content-center">
     <!-- goal setting -->
-    
+
+    <!-- Popup for adding an activity -->
+    <div class="acti-add">
+      <div class="acti-content">
+        <h3 class="Acti-add-title" style="color: black;">What is the activity name?</h3>
+        <div id=ErrorMsg style="color: red;"></div>
+        <form id=AddActiForm action="">
+          <input id=AddActiInput type="text" class="addinput" placeholder="Activity Name">
+          <button id=Acti-Done type="submit" class="btn btn-primary addbutton">Add Activity</button>
+          <button id=Acti-Cancel type="button" class="btn btn-secondary addbutton">Cancel</button>            
+        </form>
+      </div>
+    </div>
+
     <div class="d-none view" id="goals-activities">
       <hide-checkin></hide-checkin>
       
       <h1>First off, which <strong>activities</strong> would you like to track?</h1>
       <p>Myndful.ly can remind you to include any or all of these items.</p>
-      <!-- Popup for adding an activity -->
-      <div class="acti-add">
-        <div class="acti-content">
-          <h3 class="Acti-add-title" style="color: black;">What is the activity name?</h3>
-          <div id=ErrorMsg style="color: red;"></div>
-          <form id=AddActiForm action="">
-            <input id=AddActiInput type="text" class="addinput" placeholder="Activity Name">
-            <button id=Acti-Done type="submit" class="btn btn-primary addbutton">Add Activity</button>
-            <button id=Acti-Cancel type="button" class="btn btn-secondary addbutton">Cancel</button>            
-          </form>
-        </div>
-      </div>
+
       <div class="d-flex flex-wrap justify-content-center mb-4">
         
         <!-- TODO: space out the buttons a little bit -->
@@ -103,7 +105,7 @@
 
       </div>
       <div>
-        <a onclick="initStorage()" class="btn btn-primary" href="?view=goals-checkin-freq">Ok</a></div>
+        <a class="btn btn-primary" href="?view=goals-checkin-freq">Ok</a></div>
     </div>
     
     

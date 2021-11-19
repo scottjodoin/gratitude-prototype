@@ -147,7 +147,9 @@ function (e){
       json = actStorage.getItem("actiNameStorage");
     }
 
-    let dataparse = {name: inputText, value: false};
+    let j = inputText.replaceAll(" ","-");
+    let id = "act-"+j;
+    let dataparse = {name: inputText,id: id,  value: false};
     let k = JSON.parse(json).customInputs;
     console.log(typeof(k));
 
@@ -155,13 +157,14 @@ function (e){
     let js = JSON.stringify({customInputs:k});
     actStorage.setItem("actiNameStorage",js);
     // console.log(inputText);
-    let j = inputText.replaceAll(" ","-");
+
     // console.log(j);
     document.querySelector('.acti-add').style.display='none';
-    let l = "<div id=act-"+j+"-div><input type=\"checkbox\" class=\"btn-check\" id=act-"+j+" autocomplete=\"off\" checked>"+
-    "<label class=\"CustomActiLeft btn btn-outline-primary me-2\" for=act-"+j+">"+inputText+"<i class=\"fas fa-seedling\"></i></label>"+
-    "<button onclick=\"deleteActivity('act-"+j+"-div')\" class=\"CustomActiRight btn btn-outline-secondary me-2\">X</button> </div>";
+    let l = "<div id="+id+"-div><input type=\"checkbox\" class=\"btn-check\" id="+id+" autocomplete=\"off\">"+
+    "<label class=\"CustomActiLeft btn btn-outline-primary me-2\" for="+id+">"+inputText+"<i class=\"ms-2 fas fa-seedling\"></i></label>"+
+    "<button onclick=\"deleteActivity('"+id+"-div')\" class=\"CustomActiRight btn btn-outline-secondary me-2\">X</button> </div>";
     $("#addAfterThis").after(l);
+    $(`#${id}`).change(customActivityClicked);
   }
   e.preventDefault();
 });
@@ -169,8 +172,13 @@ function (e){
 
 function deleteActivity(e)
 {
-  let h = e+"-div";
-  console.log(e);
-  $(e).remove();
+  let div = $(`#${e}`);
+  let id = div.find("input")[0].id;
+  let json = actStorage.getItem("actiNameStorage");
+  let customInputs = JSON.parse(json).customInputs.filter(x => x.id!=id);
+  let js = JSON.stringify({customInputs:customInputs});
+  actStorage.setItem("actiNameStorage",js);
+
+  div.remove();
   // alert("swsw");
 }

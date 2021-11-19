@@ -1,14 +1,12 @@
+/*
+const FontAwesome = new FontFace("font-awesome",
+    "url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css)");
 var entryModal = new bootstrap.Modal(
   document.getElementById('entry-modal')
 ); // Returns a Bootstrap modal instance
 
-const material_font = new FontFace(
-    "material-icons",
-    // pass the url to the file in CSS url() notation
-    "url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2)"
-  );
-document.fonts.add(material_font); // add it to the document's FontFaceSet
-
+document.fonts.add(FontAwesome); // add it to the document's FontFaceSet
+*/
 const ctx = document.getElementById('chart');
 
 let week = 0;
@@ -26,47 +24,47 @@ const chart = new Chart(ctx, {
       borderColor: "rgba(75,192,192,1)",
       pointRadius: 10,
       pointHoverRadius: 15,
+      pointBackgroundColor: function(context) {
+        var index = context.dataIndex;
+        var value = context.dataset.data[index].y;
+        return value == 0 ? '#808080' :  // draw negative values in red
+            value > 0 ? '#5daa68ff' :    // else, alternate values in blue and green
+                '#cc5500';
+      },
+      pointBorderColor: function(context) {
+        var index = context.dataIndex;
+        var value = context.dataset.data[index].y;
+        return value == 0 ? '#808080' :  // draw negative values in red
+            value > 0 ? '#5daa68ff' :    // else, alternate values in blue and green
+                '#cc5500';
+      },
     }]
   },
 
   options: {
     maintainAspectRatio: false,
     responsive: true,
-
+      transitions: {
+          hide: {
+              duration: 0
+          }
+      },
     scales: {
-      x: {
-        ticks: {
-          // For a category axis, the val is the index so the lookup via getLabelForValue is needed
-          callback: function(val, index) {
-            // Hide the label of every 2nd dataset
-            return index % 2 === 0 ? this.getLabelForValue(val) : '';
-          },
-          font:{
-            family:  "Font Awesome 6 Free",
-            size: '20',
-          },
-          color: 'red',
-        }
+      y:{
+          suggestedMin: -6,
+          suggestedMax: 6,
+          ticks:{
+              font:{
+                  family: "Font Awesome 6 Free",
+              }
+          }
       }
-    }
+    },
   },
-
   plugins: [{
-    beforeDraw: function (c) {
-      var data = c.data.datasets[0].data;
-      for (let i in data) {
-        let bar = c.data.datasets[0]._meta[0].data[i]._model;
-        
-        bar.borderColor
-        = bar.backgroundColor
-        = (data[i].y == 0) ? '#808080'
-        : (data[i].y > 0) ? '#5daa68ff' : '#cc5500';
-
-      }
-    }
   }]
+  
 });
-
 
 // clicking on the canvas
 $(ctx).on("click", canvasClicked);

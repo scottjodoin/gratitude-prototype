@@ -8,6 +8,10 @@ if (_currentViewId==="goals-thankyou"){
   let writereminderIntro="";
   let writereminder="";
   let actiNum = 0;    //counts the number of elements that are true within the input
+  
+  let actStorage = window.localStorage;
+  let json = actStorage.getItem("actiNameStorage");
+  let k = JSON.parse(json).customInputs;
 
   for(let x of _state.inputs)
   {
@@ -27,6 +31,17 @@ if (_currentViewId==="goals-thankyou"){
       writereminder=writereminder+"<li>"+t+"</li>";
     }
   }
+
+  for(let x of k)
+  {
+    if(x.value === true)
+    {
+      actiNum++;
+      activities=activities+"<li>"+x.name+"</li>";
+    }
+  }
+
+
   if(actiNum>0)
   {
     if(actiNum==1)
@@ -54,24 +69,17 @@ if (_currentViewId === "goals-try-firsttime"){
     .append("<div class=arrow-point-up-anchor><div></div></div>");
 }
 
-console.log(_state.inputs);
-console.log(_state.inputs.length);
+// console.log(_state.inputs);
+// console.log(_state.inputs.length);
 
 $("#acti-add-button").click(ActiAddpop);
 $("#Acti-Cancel").click(ActiCancel);
-$("#Acti-Done").click(ActiDone);
+// $("#Acti-Done").click(ActiDone);
 
 function ActiCancel()
 {
   // alert("Cancel clicked");
   document.querySelector('.acti-add').style.display='none';
-}
-
-function ActiDone()
-{
-  // alert("done clicked");
-
-  // document.querySelector('.acti-add').style.display='none';
 }
 
 function ActiAddpop()
@@ -107,7 +115,7 @@ function (e){
   }
   if(pass)
   {
-    inputText = inputText.toLowerCase().trim();
+    inputText = inputText.trim();
     for(let n of a)
     {
       let i = n["id"].split('-');
@@ -120,20 +128,15 @@ function (e){
         }
       }
       x=x.trim();
-      console.log(x)
+      // console.log(x)
       
-      if(inputText===x)
+      if(inputText.toLowerCase()===x.toLowerCase())
       {
         msg.push("Activity name is already in use");
         pass=false;
       }
     }
   }
-  
-  console.log(inputText);
-  console.log("~~~~~~~~~~~~~~");
-  console.log(a);
-  console.log("~~~~~~~~~~~~~~");
 
   errorOutput.innerText = msg.join();
 
@@ -151,18 +154,15 @@ function (e){
     let id = "act-"+j;
     let dataparse = {name: inputText,id: id,  value: false};
     let k = JSON.parse(json).customInputs;
-    console.log(typeof(k));
 
     k.push(dataparse);
     let js = JSON.stringify({customInputs:k});
     actStorage.setItem("actiNameStorage",js);
-    // console.log(inputText);
 
-    // console.log(j);
     document.querySelector('.acti-add').style.display='none';
     let l = "<div id="+id+"-div><input type=\"checkbox\" class=\"btn-check\" id="+id+" autocomplete=\"off\">"+
     "<label class=\"CustomActiLeft btn btn-outline-primary me-2\" for="+id+">"+inputText+"<i class=\"ms-2 fas fa-seedling\"></i></label>"+
-    "<button onclick=\"deleteActivity('"+id+"-div')\" class=\"CustomActiRight btn btn-outline-secondary me-2\">X</button> </div>";
+    "<button onclick=\"deleteActivity('"+id+"-div')\" class=\"actiRemoveButton CustomActiRight btn btn-outline-secondary me-2\"><i class=\"fas fa-times\"></i></button> </div>";
     $("#addAfterThis").after(l);
     $(`#${id}`).change(customActivityClicked);
   }

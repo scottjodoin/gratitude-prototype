@@ -55,13 +55,17 @@
       <p>What activities do you feel you have accomplished today?</p>
 
       <div class="d-flex flex-wrap justify-contents-center mb-4">
-        <input type="checkbox" name="activity-check1" id="activity-check1" class="btn-check"><label class="btn btn-outline-primary me-2" for="activity-check1"><i class="fa fa-person me-2"></i>Exercise</label>
-        <input type="checkbox" name="activity-check2" id="activity-check2" class="btn-check"><label class="btn btn-outline-primary me-2" for="activity-check2"><i class="fa fa-car me-2"></i>Socialise</label>
-        <input type="checkbox" name="activity-check3" id="activity-check3" class="btn-check"><label class="btn btn-outline-primary me-2" for="activity-check3"><i class="fa fa-bus me-2"></i>Test</label>
+        <input type="checkbox" name="activity-check1" id="activity-check1" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check1"><i class="fa fa-person me-2"></i>Exercise</label>
+        <input type="checkbox" name="activity-check2" id="activity-check2" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check2"><i class="fa fa-car me-2"></i>Socialise</label>
+        <input type="checkbox" name="activity-check3" id="activity-check3" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check3"><i class="fa fa-bus me-2"></i>Test</label>
       </div>
-      
+
       <div>
-        <a class="btn btn-primary" href="?view=emotions">Next</a></div>
+        <a class="btn btn-primary" href="?view=emotions">Next</a>
+      </div>
     </div>
 
     <div class="d-none view" id="emotions">
@@ -69,91 +73,105 @@
 
       <p>What emotions can you recall feeling today? Select any and all that apply:</p>
       <div class="d-flex flex-wrap justify-contents-center mb-4">
-        <input type="checkbox" id="test-check1" class="btn-check"><label class="btn btn-outline-primary me-2" for="test-check1"><i class="fa fa-times me-2"></i>Check One</label>
-        <input type="checkbox" id="test-check2" class="btn-check"><label class="btn btn-outline-primary me-2" for="test-check2"><i class="fa fa-clock me-2"></i>Check Two</label>
-        <input type="checkbox" id="test-check3" class="btn-check"><label class="btn btn-outline-primary me-2" for="test-check3"><i class="fa fa-check me-2"></i>Check Three</label>
+        <input type="checkbox" id="test-check1" class="btn-check"><label class="btn btn-outline-primary me-2"
+          for="test-check1"><i class="fa fa-times me-2"></i>Check One</label>
+        <input type="checkbox" id="test-check2" class="btn-check"><label class="btn btn-outline-primary me-2"
+          for="test-check2"><i class="fa fa-clock me-2"></i>Check Two</label>
+        <input type="checkbox" id="test-check3" class="btn-check"><label class="btn btn-outline-primary me-2"
+          for="test-check3"><i class="fa fa-check me-2"></i>Check Three</label>
       </div>
 
-      <div>
-        <a class="btn btn-outline-primary me-2" href="?view=landing">Back</a>
-        <a class="btn btn-primary" href="?view=writing">Next</a></div>
+      <div class="row">
+        <div class="col">
+          <a class="btn btn-outline-primary me-2" href="?view=landing">Back</a>
+        </div>
+        <div class="col">
+          <a class="btn btn-primary" href="?view=writing">Next</a>
+        </div>
+      </div>
     </div>
-
     <div class="d-none view" id="writing">
       <h2 style="text-align: center;">What are 3 things that you're grateful for today?</h2>
       <div style="width: 100%;">
-        <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Suggestions</button>
+        <button type="button" class="btn btn-info float-end" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Suggestions</button>
       </div>
       <div style="width: 100%;" class="py-2">
         <textarea class="form-control" id="entryTextarea" rows="10"></textarea>
       </div>
-      
-      <div>
-        <a class="btn btn-outline-primary me-2" href="?view=emotions">Back</a>
-        <a class="btn btn-primary" href="?view=end">Next</a></div>
-        </div>
 
-        <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Suggestions</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="row">
+        <div class="col">
+          <a class="btn btn-outline-primary me-2" href="?view=emotions">Back</a>
+        </div>
+        <div class="col">
+          <a class="btn btn-primary" href="?view=end">Next</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Suggestions</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body container">
+            <div class="row align-items-start">
+              <div class="col">
+                Pet(s)
               </div>
-              <div class="modal-body container">
-                <div class="row align-items-start">
-                  <div class="col">
-                    Pet(s)
-                  </div>
-                  <div class="col">
-                    Family
-                  </div>
-                  <div class="col">
-                    Good friends
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col">
-                    Nature
-                  </div>
-                  <div class="col">
-                    A cup of coffee
-                  </div>
-                  <div class="col">
-                    Food
-                  </div>
-                </div>
-                <div class="row align-items-end">
-                  <div class="col">
-                    A cup of tea
-                  </div>
-                  <div class="col">
-                    Good news
-                  </div>
-                  <div class="col">
-                    Holidays
-                  </div>
-                </div>
+              <div class="col">
+                Family
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <div class="col">
+                Good friends
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col">
+                Nature
+              </div>
+              <div class="col">
+                A cup of coffee
+              </div>
+              <div class="col">
+                Food
+              </div>
+            </div>
+            <div class="row align-items-end">
+              <div class="col">
+                A cup of tea
+              </div>
+              <div class="col">
+                Good news
+              </div>
+              <div class="col">
+                Holidays
               </div>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-      <!-- <div>
+  <!-- <div>
         <a class="btn btn-outline-primary me-2" href="?view=activites">Back</a>
         <a class="btn btn-primary" href="?view=end">Next</a></div> -->
-    </div>
+  </div>
 
-    <!-- error -->
-    <div class="d-none view" id="unimplemented">
-      <container class="text-center">
-        <div class="alert alert-warning">This page is not part of the prototype and is intentionally not implemented.</div>
-      </container>
-    </div>
+  <!-- error -->
+  <div class="d-none view" id="unimplemented">
+    <container class="text-center">
+      <div class="alert alert-warning">This page is not part of the prototype and is intentionally not implemented.
+      </div>
+    </container>
+  </div>
   </div>
   <script src="storage.js"></script>
   <script src="navigation.js"></script>

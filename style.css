@@ -99,3 +99,13 @@ h1 {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+#container{
+  position:relative;
+}
+.view > .progress {
+  position: absolute;
+  top: 1rem;
+  width: 100%;
+  z-index: -1;
+}

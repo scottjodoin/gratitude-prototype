@@ -117,7 +117,7 @@ if (_currentViewId === "goals-try-firsttime"){
     .append("<div class=arrow-point-up-anchor><div></div></div>");
 }
 
-
+$(".require-input").click(RequireOneInputBeforeContinueClicked);
 $("#acti-add-button").click(ActiAddpop);
 $("#Acti-Cancel").click(ActiCancel);
 
@@ -210,7 +210,33 @@ function (e){
   e.preventDefault();
 });
 
+function RequireOneInputBeforeContinueClicked (e){
+  console.log("ASDF");
 
+  // make sure at least one activity is checked and prevent the user from going to the next page
+  $inputs = $(e.target).closest('.view').find("input");
+  let pass=false;
+  $inputs.each((i,e)=>{
+    if(e.checked || (e.getAttribute("type")=="text" && e.value!=""))
+    {
+      console.log(e.checked);
+      coneol.log(e.value);
+      pass=true;
+      return;
+    }
+  });
+
+  if (pass || true){
+    ShowViewErrorMessage("Please select at least one activity");
+    e.preventDefault();
+    e.stopPropagation();
+  }
+}
+function ShowViewErrorMessage(message){
+  $("#view-error-message")
+    .text(message)
+    .removeClass("d-none");
+}
 function deleteActivity(e)
 {
   let div = $(`#${e}`);

@@ -56,7 +56,7 @@ function actiList()
       jsonstore = actStorage.getItem("actiDayChosen");
     }
     let list = JSON.parse(jsonstore).customDays;
-    let activitiesIntro="<table class=\"actitable\"><tr class=\"act-table\" id=acti-list-top><th class=\"acticolm\">Activity</th><th class=\"acticolm\">Which day(s) do you want to complete this activity on?</th></tr>";
+    let activitiesIntro="<table class=\"actitable\">";
     for(let x of _state.inputs)
     {
         let v = x["viewId"];

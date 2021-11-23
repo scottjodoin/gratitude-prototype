@@ -65,10 +65,7 @@
       <h1>First off, which <strong>activities</strong> would you like to track?</h1>
       <p>Myndful.ly can remind you to include any or all of these items.</p>
 
-      <div class="d-flex flex-wrap justify-content-center mb-4">
-        
-        <!-- TODO: space out the buttons a little bit -->
-        <!-- TODO: add font-awesome icons to the labels with some space to the right of the labels -->
+      <div class="d-flex flex-wrap mb-4">
         <input type="checkbox" class="btn-check" id=act-exercise autocomplete="off">
         <label class="btn btn-outline-primary me-2" for=act-exercise>Exercise <i class="fas fa-running"></i></label>
         
@@ -90,7 +87,7 @@
         <label class="btn btn-outline-primary me-2" for=act-outdoors>Outdoors <i class="fas fa-seedling"></i></label>
         
       </div>
-      <p>Your custom activities.</p>
+      <p>Add a custom activity:</p>
       <div class="d-flex flex-wrap justify-content-center mb-4">
         <div id=addAfterThis></div>
 
@@ -98,8 +95,8 @@
         <label id=acti-add-button class="btn btn-outline-primary me-2" for=act-add-another> <i class="fas fa-plus"></i></label>
 
       </div>
-      <div>
-        <a class="btn btn-primary" href="?view=goals-activities-day">Next</a></div>
+      <div class="d-flex w-100 justify-content-end">
+        <a class="btn btn-primary" href="?view=goals-activities-day">Next<i class="fa fa-arrow-right"></i></a></div>
     </div>
     
     <div class="d-none view" id=goals-activities-day>
@@ -111,9 +108,9 @@
         <div id=acti-list-top></div>
       </div>
       
-      <div>
-        <a class="btn btn-outline-primary me-2" href="?view=goals-activities">Back</a>
-        <a class="btn btn-primary" href="?view=goals-checkin-freq">Next</a></div>
+      <div class="d-flex w-100 justify-content-between">
+        <a class="btn btn-outline-primary me-2" href="?view=goals-activities"><i class="fa fa-arrow-left"></i> Back</a>
+        <a class="btn btn-primary" href="?view=goals-checkin-freq">Next <i class="fa fa-arrow-right"></i></a></div>
     </div>
 
     
@@ -139,9 +136,9 @@
 
       </div>
 
-      <div>
-        <a class="btn btn-outline-primary me-2" href="?view=goals-activities-day">Back</a>
-        <a class="btn btn-primary require-input" href="?view=goals-write-freq">Next</a></div>
+      <div class="d-flex w-100 justify-content-between">
+        <a class="btn btn-outline-primary me-2" href="?view=goals-activities-day"><i class="fa fa-arrow-left"></i>Back</a>
+        <a class="btn btn-primary require-input" href="?view=goals-write-freq">Next<i class="fa fa-arrow-right"></i></a></div>
     </div>
 
     <div class="d-none view" id="goals-write-freq">
@@ -165,9 +162,9 @@
         <label class="btn btn-outline-primary me-2" for="write-freq-3">Three times a week</label>
       </div>
 
-      <div>
-        <a class="btn btn-outline-primary me-2" href="?view=goals-checkin-freq">Back</a>
-        <a class="btn btn-primary" href="?view=goals-thankyou">Next</a></div>
+      <div class="d-flex justify-content-between w-100">
+        <a class="btn btn-outline-primary me-2" href="?view=goals-checkin-freq"><i class="fa fa-arrow-left"></i>Back</a>
+        <a class="btn btn-primary" href="?view=goals-thankyou">Next<i class="fa fa-arrow-right"></i></a></div>
     </div>
 
     <div class="d-none view" id="goals-thankyou">
@@ -179,16 +176,14 @@
       <h1>Ok, great! You can always change your settings later.</h1>
 
       <div id="goal-summary"></div>
-      <div>
-        <a class="btn btn-outline-primary me-2" href="?view=goals-write-freq">Back</a>
-        <a class="btn btn-primary" href="?view=goals-try-firsttime">Next</a></div>
+      <div class="d-flex w-100 justify-content-between">
+        <a class="btn btn-outline-primary me-2" href="?view=goals-write-freq"><i class="fa fa-arrow-left"></i>Back</a>
+        <a class="btn btn-primary" href="?view=goals-try-firsttime">Next<i class="fa fa-arrow-right"></i></a></div>
     </div>
 
     <div class="d-none view position-relative" id="goals-try-firsttime">
-      <!-- TODO: add a css class that references the img/checkin-arrow.svg using absolute position in rem units -->
       <div class="checkin-arrow"></div>
       <h1>Let's try checking in for the first time.</h1>
-      <!-- TODO: make sure that the checkin link is correct -->
     </div>
 
     <!-- error screens -->

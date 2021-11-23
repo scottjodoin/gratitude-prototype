@@ -11,8 +11,8 @@ html,body{
   max-width: 40rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
   animation: fade-in 1s;
 }
 
@@ -128,8 +128,7 @@ h1 {
   position:relative;
 }
 .view > .progress-tracker {
-  position: absolute;
-  top: -3rem;
-  width: 90%;
+  margin-top:-0.5rem;
+  width: 100%;
   z-index: -1;
 } 

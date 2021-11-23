@@ -96,7 +96,7 @@
 
       </div>
       <div class="d-flex w-100 justify-content-end">
-        <a class="btn btn-primary" href="?view=goals-activities-day">Next<i class="fa fa-arrow-right"></i></a></div>
+        <a class="btn btn-primary" href="?view=goals-activities-day">Next</a></div>
     </div>
     
     <div class="d-none view" id=goals-activities-day>
@@ -109,8 +109,8 @@
       </div>
       
       <div class="d-flex w-100 justify-content-between">
-        <a class="btn btn-outline-primary me-2" href="?view=goals-activities"><i class="fa fa-arrow-left"></i> Back</a>
-        <a class="btn btn-primary" href="?view=goals-checkin-freq">Next <i class="fa fa-arrow-right"></i></a></div>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-activities"> Back</a>
+        <a class="btn btn-primary" href="?view=goals-checkin-freq">Next </a></div>
     </div>
 
     
@@ -125,7 +125,7 @@
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-1" autocomplete="off">
         <label class="btn btn-outline-primary me-2" for="checkin-freq-1">Twice a day</label>
 
-        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-2" autocomplete="off" >
+        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-2" checked autocomplete="off" >
         <label class="btn btn-outline-primary me-2" for="checkin-freq-2">Once a day</label>
 
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-4" autocomplete="off">
@@ -137,8 +137,8 @@
       </div>
 
       <div class="d-flex w-100 justify-content-between">
-        <a class="btn btn-outline-primary me-2" href="?view=goals-activities-day"><i class="fa fa-arrow-left"></i>Back</a>
-        <a class="btn btn-primary require-input" href="?view=goals-write-freq">Next<i class="fa fa-arrow-right"></i></a></div>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-activities-day">Back</a>
+        <a class="btn btn-primary require-input" href="?view=goals-write-freq">Next</a></div>
     </div>
 
     <div class="d-none view" id="goals-write-freq">
@@ -152,7 +152,7 @@
         <input type="radio" class="btn-check" name="write-freq" id="write-freq-1" autocomplete="off">
         <label class="btn btn-outline-primary me-2" for="write-freq-1">Twice a day</label>
 
-        <input type="radio" class="btn-check" name="write-freq" id="write-freq-2" autocomplete="off">
+        <input type="radio" class="btn-check" name="write-freq" id="write-freq-2" checked autocomplete="off">
         <label class="btn btn-outline-primary me-2" for="write-freq-2">Once a day</label>
 
         <input type="radio" class="btn-check" name="write-freq" id="write-freq-4" autocomplete="off">
@@ -163,27 +163,27 @@
       </div>
 
       <div class="d-flex justify-content-between w-100">
-        <a class="btn btn-outline-primary me-2" href="?view=goals-checkin-freq"><i class="fa fa-arrow-left"></i>Back</a>
-        <a class="btn btn-primary" href="?view=goals-thankyou">Next<i class="fa fa-arrow-right"></i></a></div>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-checkin-freq">Back</a>
+        <a class="btn btn-primary require-input" href="?view=goals-thankyou">Next</a></div>
     </div>
 
     <div class="d-none view" id="goals-thankyou">
       <div class="progress-tracker" progress="5/5"></div>
       <hide-checkin></hide-checkin>
 
-      <i class="fas fa-check-circle" style="font-size: 1000%; color: lightgreen;"></i>
+      <i class="fas fa-check-circle mb-4" style="align-self:center; font-size: 1000%; color: lightgreen;"></i>
 
       <h1>Ok, great! You can always change your settings later.</h1>
 
       <div id="goal-summary"></div>
       <div class="d-flex w-100 justify-content-between">
-        <a class="btn btn-outline-primary me-2" href="?view=goals-write-freq"><i class="fa fa-arrow-left"></i>Back</a>
-        <a class="btn btn-primary" href="?view=goals-try-firsttime">Next<i class="fa fa-arrow-right"></i></a></div>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-write-freq">Back</a>
+        <a class="btn btn-primary" href="?view=goals-try-firsttime">Next</a></div>
     </div>
 
     <div class="d-none view position-relative" id="goals-try-firsttime">
       <div class="checkin-arrow"></div>
-      <h1>Let's try checking in for the first time.</h1>
+      <h1><br/><br/>Let's try checking in for the first time.</h1>
     </div>
 
     <!-- error screens -->

@@ -227,7 +227,7 @@ function RequireOneInputBeforeContinueClicked (e){
   });
 
   if (pass || true){
-    ShowViewErrorMessage("Please select at least one activity");
+    ShowViewErrorMessage("Please select one before continuing");
     e.preventDefault();
     e.stopPropagation();
   }

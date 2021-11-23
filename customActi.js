@@ -166,7 +166,8 @@ function actiList()
     
     if(activities === "")
     {
-        activities="<p><strong>No activities selected!</strong></p>";
+        activities="<p><strong>No activities selected. Click next to continue.</strong></p>";
+        
     }
     else
     {

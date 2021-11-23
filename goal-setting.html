@@ -92,21 +92,28 @@
       <div class="d-flex flex-wrap justify-content-center mb-4">
         <div id=addAfterThis></div>
 
-        <!-- <div id="act-swswsw-div" >
-          <input type="checkbox" class="btn-check" id="act-swswsw" autocomplete="off">
-          <label for="act-swswsw" class="CustomActiLeft btn btn-outline-primary me-2">swswsw<i class="fas fa-seedling"></i></label> -->
-          <!-- <button style="float: left; margin: 0 !important;" class="btn btn-outline-secondary me-2">swsw</button> -->
-          <!-- <button onclick="deleteActivity('act-swswsw-div')" class="CustomActiRight btn btn-outline-secondary me-2">X</button>
-        </div> -->
-
         <input type="button" class="btn-check navbar-toggler act-add-another" autocomplete="off">
         <label id=acti-add-button class="btn btn-outline-primary me-2" for=act-add-another> <i class="fas fa-plus"></i></label>
 
       </div>
       <div>
-        <a class="btn btn-primary" href="?view=goals-checkin-freq">Ok</a></div>
+        <a class="btn btn-primary" href="?view=goals-activities-day">Ok</a></div>
     </div>
     
+    <div class="d-none view" id=goals-activities-day>
+      <hide-checkin></hide-checkin>
+      
+      <h1>Which days of the week do you want to complete each activity on?</h1>
+      <div class="d-flex flex-wrap justify-content-center mb-4">
+        <div id=acti-list-top></div>
+
+      </div>
+      
+      <div>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-activities">Back</a>
+        <a class="btn btn-primary" href="?view=goals-checkin-freq">Ok</a></div>
+    </div>
+
     
     <div class="d-none view" id="goals-checkin-freq">
       <hide-checkin></hide-checkin>
@@ -129,7 +136,7 @@
       </div>
 
       <div>
-        <a class="btn btn-outline-primary me-2" href="?view=goals-activities">Back</a>
+        <a class="btn btn-outline-primary me-2" href="?view=goals-activities-day">Back</a>
         <a class="btn btn-primary" href="?view=goals-write-freq">Ok</a></div>
     </div>
 
@@ -137,7 +144,7 @@
       <hide-checkin></hide-checkin>
     
       <h1>How often would you like to write about your emotions?</h1>
-      <!-- <p>Myndful.ly can send reminders to check in if you miss a few.</p> -->
+      <p>Myndful.ly can send reminders to check in if you miss a few.</p>
       
       <div class="d-flex flex-wrap justify-content-center mb-4" role="group">
         <input type="radio" class="btn-check" name="write-freq" id="write-freq-1" autocomplete="off">

@@ -103,3 +103,23 @@ h1 {
 .actiRemoveButton:hover{
   background-color: red;
 }
+
+.actirows
+{
+  padding-right: 20px;
+  text-align: left center;
+  
+}
+
+.acticolm
+{
+  padding-bottom: 20px;
+  font-size: large;
+}
+
+.actitable
+{
+  border-collapse: separate;
+  border-spacing: 20px 5px;
+  display: block;
+}

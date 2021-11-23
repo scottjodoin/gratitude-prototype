@@ -11,8 +11,7 @@ if (_currentViewId==="goals-thankyou"){
   
   let actStorage = window.localStorage;
   let json = actStorage.getItem("actiNameStorage");
-  let k = JSON.parse(json).customInputs;
-
+  let activitiesTable="";
   for(let x of _state.inputs)
   {
     let v = x["viewId"];
@@ -21,6 +20,28 @@ if (_currentViewId==="goals-thankyou"){
     {
       actiNum++;
       activities=activities+"<li>"+t+"</li>";
+
+      let daytext="";
+      let js=actStorage.getItem("actiDayChosen");
+      js=JSON.parse(js).customDays;
+      for(let parts of js)
+      {
+        if(parts.name === t && parts.value === true)
+        {
+          daytext=daytext+parts.day+", ";
+        }
+      }
+      if(daytext === "")
+      {
+        daytext="Not Specified";
+      }
+      else
+      {
+        daytext=daytext.trim();
+        daytext=daytext.substr(0,daytext.length-1);
+      }
+      
+      activitiesTable=activitiesTable+"<tr><td>"+t+"</td><td>"+daytext+"</td></tr>";
     }
     else if(v== "goals-checkin-freq" && t.length > 0) //check in reminder
     {
@@ -32,16 +53,42 @@ if (_currentViewId==="goals-thankyou"){
     }
   }
 
-  for(let x of k)
+  if(json!=null)
   {
-    if(x.value === true)
+    let k = JSON.parse(json).customInputs;
+
+    for(let x of k)
     {
-      actiNum++;
-      activities=activities+"<li>"+x.name+"</li>";
+      if(x.value === true)
+      {
+        actiNum++;
+        activities=activities+"<li>"+x.name+"</li>";
+        let daytext="";
+        let js=actStorage.getItem("actiDayChosen");
+        js=JSON.parse(js).customDays;
+        for(let parts of js)
+        {
+          if(parts.name === x.name && parts.value === true)
+          {
+            daytext=daytext+parts.day+", ";
+          }
+        }
+
+        if(daytext === "")
+        {
+          daytext="Not Specified";
+        }
+        else
+        {
+          daytext=daytext.trim();
+          daytext=daytext.substr(0,daytext.length-1);
+        }
+        activitiesTable=activitiesTable+"<tr><td>"+x.name+"</td><td>"+daytext+"</td></tr>";
+      }
     }
   }
 
-
+  let activitiesIntroTable="";
   if(actiNum>0)
   {
     if(actiNum==1)
@@ -52,14 +99,15 @@ if (_currentViewId==="goals-thankyou"){
     {
       activitiesIntro="Activities";
     }
-    activitiesIntro+=" chosen to track:";
+    activitiesIntro+=" chosen to track";
+    activitiesIntroTable="<table class=\"actitable\"><tr><th>"+activitiesIntro+"</th><th>Day(s) chosen to complete activity on</th></tr>";
+    activitiesIntroTable=activitiesIntroTable+activitiesTable+"</table>";
   }
-
   if(reminder.length>0)
   reminderIntro="Desired frequency for checking in:";
   if(writereminder.length>0)
   writereminderIntro="Desired frequency for writing about your emotions:";
-  let h = activitiesIntro+"<ul>"+activities+"</ul>"+reminderIntro+"<ul>"+reminder+"</ul>"+writereminderIntro+"<ul>"+writereminder+"</ul>";
+  let h = activitiesIntroTable+reminderIntro+"<ul>"+reminder+"</ul>"+writereminderIntro+"<ul>"+writereminder+"</ul>";
   $("#goal-summary").html(h);
 }
 
@@ -69,22 +117,17 @@ if (_currentViewId === "goals-try-firsttime"){
     .append("<div class=arrow-point-up-anchor><div></div></div>");
 }
 
-// console.log(_state.inputs);
-// console.log(_state.inputs.length);
 
 $("#acti-add-button").click(ActiAddpop);
 $("#Acti-Cancel").click(ActiCancel);
-// $("#Acti-Done").click(ActiDone);
 
 function ActiCancel()
 {
-  // alert("Cancel clicked");
   document.querySelector('.acti-add').style.display='none';
 }
 
 function ActiAddpop()
 {
-  // alert("add clicked");
   document.querySelector('.acti-add').style.display='flex';
 }
 
@@ -127,9 +170,7 @@ function (e){
           x+=j+" ";
         }
       }
-      x=x.trim();
-      // console.log(x)
-      
+      x=x.trim();      
       if(inputText.toLowerCase()===x.toLowerCase())
       {
         msg.push("Activity name is already in use");
@@ -180,5 +221,4 @@ function deleteActivity(e)
   actStorage.setItem("actiNameStorage",js);
 
   div.remove();
-  // alert("swsw");
 }

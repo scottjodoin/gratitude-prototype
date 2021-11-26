@@ -6,6 +6,11 @@ var entryModal = new bootstrap.Modal(
 const ctx = document.getElementById('chart');
 const annoCanvas = document.getElementById('annotation');
 const annoCtx = annoCanvas.getContext('2d');
+let _entryIndex = 0; // the index of the entry of the day
+let _clickedElementindex = 0;
+
+$("#btn-prev-entry").click(btnPrevEntryClicked);
+$("#btn-next-entry").click(btnNextEntryClicked);
 
 function pointColor(context){
     var index = context.dataIndex;
@@ -41,7 +46,6 @@ var groupBy = function(xs, key) {
 
 function getDataPointsByDate(weekIndex){
   let dict =  groupBy(data.weeks[weekIndex].dataPoints,"x"); // get grouped data points by x
-  console.log(dict)
   return Object.values(dict);
 }
 
@@ -91,7 +95,6 @@ const chart = new Chart(ctx, {
 function updateIcons (chart){
   //annoCtx.drawImage(emotionIcons[0], 0, 0);
 
-  // console.log(chart.config);
   // chart.options.elements.point.pointStyle = emotionIcons["e01"];
   // chart.config._config.data.datasets[0].pointStyle = emotionIcons["e01"];
   // chart.options.elements.point.pointStyle = emotionIcons["e01"];
@@ -123,49 +126,81 @@ function canvasClicked(event) {
   // make sure click was on an actual point
   if (activePoints.length > 0) {
     var clickedDatasetIndex = activePoints[0].datasetIndex;
-    var clickedElementindex = activePoints[0].index;
-    var label = chart.data.labels[clickedElementindex];
-    var value = chart.data.datasets[clickedDatasetIndex].data[clickedElementindex];
+    _clickedElementindex = activePoints[0].index;
+    var label = chart.data.labels[_clickedElementindex];
+    var value = chart.data.datasets[clickedDatasetIndex].data[_clickedElementindex];
 
     // update module
-    let dateInfo = data.weeks[week].dataPoints[clickedElementindex];
+    updateModal();
 
-    let d = new Date(dateInfo.date);
-    let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
-    let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
-    let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
-
-    $("#entry-modal-title").text(`${mo} ${da}, ${ye}`);
-    $("#entry-date").text(dateInfo.date);
-    
-
-    // add the activities
-    $("#entry-activity-container").html(
-        dateInfo.activities
-          .map(e=>`<span class='btn me-3 my-1 rounded pe-none btn-success'>${e}</span>`)
-          .join("") || "<span>None</span>"
-      );
-
-    // add the moods
-    $("#entry-mood-container").empty();
-    for (i in dateInfo.mood){
-      let mood = dateInfo.mood[i];
-      console.log(mood);
-      let moodHtml = `<div class="btn-square me-2" style="zoom:0.75;background-color:${mood.color};">
-        <img class="entry-mood" src="img/${mood.icon}.svg" alt="">
-        <span class=entry-mood-text>${mood.name}</span>
-      </div>`;
-
-      $("#entry-mood-container").append(moodHtml);
-    }
-    $("#entry-notes").val(dateInfo.entry);
 
     pointClicked(label,value);
   }
 };
 
+function btnPrevEntryClicked(e){
+  let count = getDataPointsByDate(week)[_clickedElementindex].length;
+  if (_entryIndex > 0){
+    _entryIndex--;
+    $("#entry-index-label").text((_entryIndex+1)+"/"+count);
+
+    updateModal();
+  }
+}
+
+function btnNextEntryClicked(e) {
+  let count = getDataPointsByDate(week)[_clickedElementindex].length;
+  if (_entryIndex < count-1){
+    _entryIndex++;
+    $("#entry-index-label").text((_entryIndex+1)+"/"+count);
+    updateModal();
+  }
+}
+
+function updateModal(){
+  
+  let preparedData = getDataPointsByDate(week)[_clickedElementindex];
+  let dateInfo = preparedData[_entryIndex];
+
+  let entryCount = preparedData.length;
+  $("#entry-nav-container").toggleClass("invisible",entryCount < 2);
+  $("#entry-index-label").text((_entryIndex+1)+"/"+entryCount);
+  $("#btn-prev-entry").toggleClass("disabled", _entryIndex == 0);
+  $("#btn-next-entry").toggleClass("disabled", _entryIndex == entryCount-1);
+
+  let d = new Date(dateInfo.date);
+  let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+  let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
+  let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+
+  $("#entry-modal-title").text(`${mo} ${da}, ${ye}`);
+  $("#entry-date").text(dateInfo.date);
+  
+
+  // add the activities
+  $("#entry-activity-container").html(
+      dateInfo.activities
+        .map(e=>`<span class='btn me-3 my-1 rounded pe-none btn-success'>${e}</span>`)
+        .join("") || "<span>None</span>"
+    );
+
+  // add the moods
+  $("#entry-mood-container").empty();
+  for (i in dateInfo.mood){
+    let mood = dateInfo.mood[i];
+
+    let moodHtml = `<div class="btn-square me-2" style="zoom:0.75;background-color:${mood.color};">
+      <img class="entry-mood" src="img/${mood.icon}.svg" alt="">
+      <span class=entry-mood-text>${mood.name}</span>
+    </div>`;
+
+    $("#entry-mood-container").append(moodHtml);
+  }
+
+  $("#entry-notes").val(dateInfo.entry);
+}
+
 function pointClicked(label,value) {
-  // alert("Clicked: " + label + " - " + value);
   entryModal.show();
 }
 
@@ -178,8 +213,8 @@ function nextWeek(e) {
   if (week < data.weeks.length - 1) {
     week++;
     updateChart();
-    $("#btn-next-week").toggleClass("invisible", week == data.weeks.length - 1);
-    $("#btn-prev-week").toggleClass("invisible", week == 0);
+    $("#btn-next-week").toggleClass("disabled", week == data.weeks.length - 1);
+    $("#btn-prev-week").toggleClass("disabled", week == 0);
   }
 }
 
@@ -187,8 +222,8 @@ function prevWeek(e) {
   if (week > 0) {
     week--;
     updateChart();
-    $("#btn-next-week").toggleClass("invisible", week == data.weeks.length - 1);
-    $("#btn-prev-week").toggleClass("invisible", week == 0);
+    $("#btn-next-week").toggleClass("disabled", week == data.weeks.length - 1);
+    $("#btn-prev-week").toggleClass("disabled", week == 0);
   }
 }
 

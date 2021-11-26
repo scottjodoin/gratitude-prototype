@@ -31,17 +31,31 @@ function pad(num, size) {
   return s.substr(s.length-size);
 }
 
+var groupBy = function(xs, key) {
+  // https://stackoverflow.com/a/34890276/13289307
+  return xs.reduce(function(rv, x) {
+    (rv[x[key]] = rv[x[key]] || []).push(x);
+    return rv;
+  }, {});
+};
+
+function getDataPointsByDate(weekIndex){
+  let dict =  groupBy(data.weeks[weekIndex].dataPoints,"x"); // get grouped data points by x
+  console.log(dict)
+  return Object.values(dict);
+}
+
 const POINT_RADIUS = 20;
 const POINT_HOVER_RADIUS = 25;
 let week = 0;
 const chart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: data.weeks[week].dataPoints.map(e=>e.x),
+    labels: getDataPointsByDate(week).map(e=>e[0].x), // show the first of each group
     datasets: [{
       label: "Mood",
       fill: true,
-      data: data.weeks[week].dataPoints,
+      data: getDataPointsByDate(week).map(e=>e[0]),
       tension: 0.1,
       
       borderWidth: 3,
@@ -115,7 +129,6 @@ function canvasClicked(event) {
 
     // update module
     let dateInfo = data.weeks[week].dataPoints[clickedElementindex];
-    console.log(dateInfo);
 
     let d = new Date(dateInfo.date);
     let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
@@ -124,8 +137,17 @@ function canvasClicked(event) {
 
     $("#entry-modal-title").text(`${mo} ${da}, ${ye}`);
     $("#entry-date").text(dateInfo.date);
-    $("#entry-mood-container").empty();
+    
 
+    // add the activities
+    $("#entry-activity-container").html(
+        dateInfo.activities
+          .map(e=>`<span class='btn me-3 my-1 rounded pe-none btn-success'>${e}</span>`)
+          .join("") || "<span>None</span>"
+      );
+
+    // add the moods
+    $("#entry-mood-container").empty();
     for (i in dateInfo.mood){
       let mood = dateInfo.mood[i];
       console.log(mood);
@@ -152,26 +174,30 @@ function pointClicked(label,value) {
 $("#btn-next-week").on("click", nextWeek);
 $("#btn-prev-week").on("click", prevWeek);
 
-function nextWeek() {
+function nextWeek(e) {
   if (week < data.weeks.length - 1) {
     week++;
     updateChart();
+    $("#btn-next-week").toggleClass("invisible", week == data.weeks.length - 1);
+    $("#btn-prev-week").toggleClass("invisible", week == 0);
   }
 }
 
-function prevWeek() {
+function prevWeek(e) {
   if (week > 0) {
     week--;
     updateChart();
+    $("#btn-next-week").toggleClass("invisible", week == data.weeks.length - 1);
+    $("#btn-prev-week").toggleClass("invisible", week == 0);
   }
 }
 
 function updateChart() {
   // update the chart
   let weekData = data.weeks[week];
-  chart.data.labels = weekData.dataPoints.map(e=>e.x);
-  chart.data.datasets[0].data = 
-    weekData.dataPoints.map(e=>{return {x:e.x, y:e.y}});
+  let firstDataPoints = getDataPointsByDate(week).map(e=>e[0])
+  chart.data.labels = firstDataPoints.map(e=>e.x)
+  chart.data.datasets[0].data = firstDataPoints;
   $("#week-title").text(weekData.weekTitle);
 
   chart.update();

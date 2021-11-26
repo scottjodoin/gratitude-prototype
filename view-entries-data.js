@@ -32,6 +32,20 @@ const data =
 					"mood":"bored",
 					"date": "2021-08-04"
 				},
+        {
+					"y": 1,
+					"x": "Wednesday",
+					"entry": "- * This is the secret entry *. Congratulations! You found it!.\n",
+					"mood":[],
+					"date": "2021-08-25"
+				},
+        {
+					"y": 3,
+					"x": "Wednesday",
+					"entry": "- Far from the truth, some posit the nymphal stocking to be less than elapsed.\n-  What we don't know for sure is whether or not authors often misinterpret the cast as a typic closet, when in actuality it feels more like a precast arrow.\n-  A smileless albatross without angoras is truly a brick of drifty cokes.\n-  An unblamed way without carnations is truly a column of writhen games.\n-  Extending this logic, before sphynxes, wrinkles were only shoulders.\n",
+					"mood":[],
+					"date": "2021-08-25"
+				},
 				{
 					"y": 1,
 					"x": "Thursday",
@@ -212,6 +226,22 @@ const data =
 		}
 	]
 }
+assignRandomActivities();
+function assignRandomActivities(){
+    
+  let activities = ["Exercise <i class=\"fas fa-running\"></i>",
+  "Hygiene <i class=\"fas fa-hands-wash\"></i>",
+  "Cleanliness <i class=\"fas fa-broom\"></i>",
+  "Social <i class=\"fas fa-users\"></i>",
+  "Healthy food <i class=\"fas fa-apple-alt\"></i>",
+  "Outdoors <i class=\"fas fa-seedling\"></i>"];
+  for(week of data.weeks){
+    for (day of week.dataPoints){
+      day.activities  = activities.filter(a=>Math.random()<0.5);
+    }
+  }
+}
+
 // assign a randome positive or negative mood.
 assignRandomMoods();
 function assignRandomMoods(){

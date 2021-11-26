@@ -131,6 +131,7 @@ function canvasClicked(event) {
     var value = chart.data.datasets[clickedDatasetIndex].data[_clickedElementindex];
 
     // update module
+    _entryIndex = 0;
     updateModal();
 
 

@@ -17,6 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css" integrity="sha384-nNK9n28pDUDDgIiIqZ/MiyO3F4/9vsMtReZK39klb/MtkZI3/LtjSjlmyVPS3KdN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="progress-tracker.css">
   </head>
 <body>
   <nav class="navbar navbar-expand-md bg-dark">
@@ -39,35 +40,32 @@
       </div>
     </div>
   </nav>
-  
+  <div class=container><div id=view-error-message class="alert alert-danger d-none my-2" role="alert"></div></div>
   
   <div id=container class="container pt-4 d-flex justify-content-center">
     <!-- goal setting -->
-    
+
+    <!-- Popup for adding an activity -->
+    <div class="acti-add">
+      <div class="acti-content">
+        <h3 class="Acti-add-title" style="color: black;">What is the activity name?</h3>
+        <div id=ErrorMsg style="color: red;"></div>
+        <form id=AddActiForm action="">
+          <input id=AddActiInput type="text" class="addinput" placeholder="Activity Name">
+          <button id=Acti-Done type="submit" class="btn btn-primary addbutton">Add Activity</button>
+          <button id=Acti-Cancel type="button" class="btn btn-secondary addbutton">Cancel</button>            
+        </form>
+      </div>
+    </div>
+
     <div class="d-none view" id="goals-activities">
-      <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>  
+      <div class="progress-tracker" progress="1/5"></div>
       <hide-checkin></hide-checkin>
 
       <h1>First off, which <strong>activities</strong> would you like to track?</h1>
       <p>Myndful.ly can remind you to include any or all of these items.</p>
-      <!-- Popup for adding an activity -->
-      <div class="acti-add">
-        <div class="acti-content">
-          <h3 class="Acti-add-title" style="color: black;">What is the activity name?</h3>
-          <div id=ErrorMsg style="color: red;"></div>
-          <form id=AddActiForm action="">
-            <input id=AddActiInput type="text" class="addinput" placeholder="Activity Name">
-            <button id=Acti-Done type="submit" class="btn btn-primary addbutton">Add Activity</button>
-            <button id=Acti-Cancel type="button" class="btn btn-secondary addbutton">Cancel</button>            
-          </form>
-        </div>
-      </div>
-      <div class="d-flex flex-wrap justify-content-center mb-4">
-        
-        <!-- TODO: space out the buttons a little bit -->
-        <!-- TODO: add font-awesome icons to the labels with some space to the right of the labels -->
+
+      <div class="d-flex flex-wrap mb-4">
         <input type="checkbox" class="btn-check" id=act-exercise autocomplete="off">
         <label class="btn btn-outline-primary me-2" for=act-exercise>Exercise <i class="fas fa-running"></i></label>
         
@@ -89,31 +87,35 @@
         <label class="btn btn-outline-primary me-2" for=act-outdoors>Outdoors <i class="fas fa-seedling"></i></label>
         
       </div>
-      <p>Your custom activities.</p>
+      <p>Add a custom activity:</p>
       <div class="d-flex flex-wrap justify-content-center mb-4">
         <div id=addAfterThis></div>
-
-        <div id="act-swswsw-div" >
-          <input type="checkbox" class="btn-check" id="act-swswsw" autocomplete="off">
-          <label for="act-swswsw" class="CustomActiLeft btn btn-outline-primary me-2">swswsw<i class="fas fa-seedling"></i></label>
-          <!-- <button style="float: left; margin: 0 !important;" class="btn btn-outline-secondary me-2">swsw</button> -->
-          <button onclick="deleteActivity('act-swswsw-div')" class="CustomActiRight btn btn-outline-secondary me-2">X</button>
-          
-        </div>
 
         <input type="button" class="btn-check navbar-toggler act-add-another" autocomplete="off">
         <label id=acti-add-button class="btn btn-outline-primary me-2" for=act-add-another> <i class="fas fa-plus"></i></label>
 
       </div>
-      <div>
-        <a onclick="initStorage()" class="btn btn-primary" href="?view=goals-checkin-freq">Ok</a></div>
+      <div class="d-flex w-100 justify-content-end">
+        <a class="btn btn-primary" href="?view=goals-activities-day">Next</a></div>
     </div>
     
+    <div class="d-none view" id=goals-activities-day>
+      <div class="progress-tracker" progress="2/5"></div>
+      <hide-checkin></hide-checkin>
+      
+      <h1>Which days of the week do you want to complete each activity on?</h1>
+      <div class="d-flex flex-wrap justify-content-center mb-4">
+        <div id=acti-list-top></div>
+      </div>
+      
+      <div class="d-flex w-100 justify-content-between">
+        <a class="btn btn-outline-primary me-2" href="?view=goals-activities"> Back</a>
+        <a class="btn btn-primary" href="?view=goals-checkin-freq">Next </a></div>
+    </div>
+
     
     <div class="d-none view" id="goals-checkin-freq">
-      <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>  
+      <div class="progress-tracker" progress="3/5"></div>
       <hide-checkin></hide-checkin>
     
       <h1>How often would you like to check in?</h1>
@@ -123,70 +125,65 @@
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-1" autocomplete="off">
         <label class="btn btn-outline-primary me-2" for="checkin-freq-1">Twice a day</label>
 
-        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-2" autocomplete="off" >
+        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-2" checked autocomplete="off" >
         <label class="btn btn-outline-primary me-2" for="checkin-freq-2">Once a day</label>
+
+        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-4" autocomplete="off">
+        <label class="btn btn-outline-primary me-2" for="checkin-freq-4">Once a week</label>
 
         <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-3" autocomplete="off">
         <label class="btn btn-outline-primary me-2" for="checkin-freq-3">Three times a week</label>
 
-        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-4" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="checkin-freq-4">Once a week</label>
       </div>
 
-      <div>
-        <a class="btn btn-outline-primary me-2" href="?view=goals-activities">Back</a>
-        <a class="btn btn-primary" href="?view=goals-write-freq">Ok</a></div>
+      <div class="d-flex w-100 justify-content-between">
+        <a class="btn btn-outline-primary me-2" href="?view=goals-activities-day">Back</a>
+        <a class="btn btn-primary require-input" href="?view=goals-write-freq">Next</a></div>
     </div>
 
     <div class="d-none view" id="goals-write-freq">
-      <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>  
+      <div class="progress-tracker" progress="4/5"></div>
       <hide-checkin></hide-checkin>
     
       <h1>How often would you like to write about your emotions?</h1>
-      <!-- <p>Myndful.ly can send reminders to check in if you miss a few.</p> -->
+      <p>Myndful.ly can send reminders to check in if you miss a few.</p>
       
       <div class="d-flex flex-wrap justify-content-center mb-4" role="group">
         <input type="radio" class="btn-check" name="write-freq" id="write-freq-1" autocomplete="off">
         <label class="btn btn-outline-primary me-2" for="write-freq-1">Twice a day</label>
 
-        <input type="radio" class="btn-check" name="write-freq" id="write-freq-2" autocomplete="off">
+        <input type="radio" class="btn-check" name="write-freq" id="write-freq-2" checked autocomplete="off">
         <label class="btn btn-outline-primary me-2" for="write-freq-2">Once a day</label>
-
-        <input type="radio" class="btn-check" name="write-freq" id="write-freq-3" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="write-freq-3">Three times a week</label>
 
         <input type="radio" class="btn-check" name="write-freq" id="write-freq-4" autocomplete="off">
         <label class="btn btn-outline-primary me-2" for="write-freq-4">Once a week</label>
+
+        <input type="radio" class="btn-check" name="write-freq" id="write-freq-3" autocomplete="off">
+        <label class="btn btn-outline-primary me-2" for="write-freq-3">Three times a week</label>
       </div>
 
-      <div>
+      <div class="d-flex justify-content-between w-100">
         <a class="btn btn-outline-primary me-2" href="?view=goals-checkin-freq">Back</a>
-        <a class="btn btn-primary" href="?view=goals-thankyou">Ok</a></div>
+        <a class="btn btn-primary require-input" href="?view=goals-thankyou">Next</a></div>
     </div>
 
     <div class="d-none view" id="goals-thankyou">
-      <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>  
+      <div class="progress-tracker" progress="5/5"></div>
       <hide-checkin></hide-checkin>
-      <!-- TODO: add success icon here -->
-      <i class="fas fa-check-circle" style="font-size: 1000%; color: lightgreen;"></i>
+
+      <i class="fas fa-check-circle mb-4" style="align-self:center; font-size: 1000%; color: lightgreen;"></i>
+
       <h1>Ok, great! You can always change your settings later.</h1>
-      <!-- TODO: show the settings that were selected from before inside #goal-summary.
-        Note that getting the values of the radio buttons will need to be different -->
+
       <div id="goal-summary"></div>
-      <div>
+      <div class="d-flex w-100 justify-content-between">
         <a class="btn btn-outline-primary me-2" href="?view=goals-write-freq">Back</a>
-        <a class="btn btn-primary" href="?view=goals-try-firsttime">Ok</a></div>
+        <a class="btn btn-primary" href="?view=goals-try-firsttime">Next</a></div>
     </div>
 
     <div class="d-none view position-relative" id="goals-try-firsttime">
-      <!-- TODO: add a css class that references the img/checkin-arrow.svg using absolute position in rem units -->
       <div class="checkin-arrow"></div>
-      <h1>Let's try checking in for the first time.</h1>
-      <!-- TODO: make sure that the checkin link is correct -->
+      <h1><br/><br/>Let's try checking in for the first time.</h1>
     </div>
 
     <!-- error screens -->
@@ -201,6 +198,7 @@
   <script src="navigation.js"></script>
   <script src="customActi.js"></script>
   <script src="goal-setting.js"></script>
+  <script src="progress-tracker.js"></script>
   
 </body>
 </html>

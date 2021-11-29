@@ -8,7 +8,10 @@ if (_currentViewId==="goals-thankyou"){
   let writereminderIntro="";
   let writereminder="";
   let actiNum = 0;    //counts the number of elements that are true within the input
-
+  
+  let actStorage = window.localStorage;
+  let json = actStorage.getItem("actiNameStorage");
+  let activitiesTable="";
   for(let x of _state.inputs)
   {
     let v = x["viewId"];
@@ -17,6 +20,28 @@ if (_currentViewId==="goals-thankyou"){
     {
       actiNum++;
       activities=activities+"<li>"+t+"</li>";
+
+      let daytext="";
+      let js=actStorage.getItem("actiDayChosen");
+      js=JSON.parse(js).customDays;
+      for(let parts of js)
+      {
+        if(parts.name === t && parts.value === true)
+        {
+          daytext=daytext+parts.day+", ";
+        }
+      }
+      if(daytext === "")
+      {
+        daytext="Not Specified";
+      }
+      else
+      {
+        daytext=daytext.trim();
+        daytext=daytext.substr(0,daytext.length-1);
+      }
+      
+      activitiesTable=activitiesTable+"<tr><td>"+t+"</td><td>"+daytext+"</td></tr>";
     }
     else if(v== "goals-checkin-freq" && t.length > 0) //check in reminder
     {
@@ -27,6 +52,43 @@ if (_currentViewId==="goals-thankyou"){
       writereminder=writereminder+"<li>"+t+"</li>";
     }
   }
+
+  if(json!=null)
+  {
+    let k = JSON.parse(json).customInputs;
+
+    for(let x of k)
+    {
+      if(x.value === true)
+      {
+        actiNum++;
+        activities=activities+"<li>"+x.name+"</li>";
+        let daytext="";
+        let js=actStorage.getItem("actiDayChosen");
+        js=JSON.parse(js).customDays;
+        for(let parts of js)
+        {
+          if(parts.name === x.name && parts.value === true)
+          {
+            daytext=daytext+parts.day+", ";
+          }
+        }
+
+        if(daytext === "")
+        {
+          daytext="Not Specified";
+        }
+        else
+        {
+          daytext=daytext.trim();
+          daytext=daytext.substr(0,daytext.length-1);
+        }
+        activitiesTable=activitiesTable+"<tr><td>"+x.name+"</td><td>"+daytext+"</td></tr>";
+      }
+    }
+  }
+
+  let activitiesIntroTable="";
   if(actiNum>0)
   {
     if(actiNum==1)
@@ -37,14 +99,15 @@ if (_currentViewId==="goals-thankyou"){
     {
       activitiesIntro="Activities";
     }
-    activitiesIntro+=" chosen to track:";
+    activitiesIntro+=" chosen to track";
+    activitiesIntroTable="<table class=\"actitable\"><tr><th>"+activitiesIntro+"</th><th>Day(s) chosen to complete activity on</th></tr>";
+    activitiesIntroTable=activitiesIntroTable+activitiesTable+"</table>";
   }
-
   if(reminder.length>0)
   reminderIntro="Desired frequency for checking in:";
   if(writereminder.length>0)
   writereminderIntro="Desired frequency for writing about your emotions:";
-  let h = activitiesIntro+"<ul>"+activities+"</ul>"+reminderIntro+"<ul>"+reminder+"</ul>"+writereminderIntro+"<ul>"+writereminder+"</ul>";
+  let h = activitiesIntroTable+reminderIntro+"<ul>"+reminder+"</ul>"+writereminderIntro+"<ul>"+writereminder+"</ul>";
   $("#goal-summary").html(h);
 }
 
@@ -54,29 +117,17 @@ if (_currentViewId === "goals-try-firsttime"){
     .append("<div class=arrow-point-up-anchor><div></div></div>");
 }
 
-console.log(_state.inputs);
-console.log(_state.inputs.length);
-
+$(".require-input").click(RequireOneInputBeforeContinueClicked);
 $("#acti-add-button").click(ActiAddpop);
 $("#Acti-Cancel").click(ActiCancel);
-$("#Acti-Done").click(ActiDone);
 
 function ActiCancel()
 {
-  // alert("Cancel clicked");
   document.querySelector('.acti-add').style.display='none';
-}
-
-function ActiDone()
-{
-  // alert("done clicked");
-
-  // document.querySelector('.acti-add').style.display='none';
 }
 
 function ActiAddpop()
 {
-  // alert("add clicked");
   document.querySelector('.acti-add').style.display='flex';
 }
 
@@ -107,7 +158,7 @@ function (e){
   }
   if(pass)
   {
-    inputText = inputText.toLowerCase().trim();
+    inputText = inputText.trim();
     for(let n of a)
     {
       let i = n["id"].split('-');
@@ -119,21 +170,14 @@ function (e){
           x+=j+" ";
         }
       }
-      x=x.trim();
-      console.log(x)
-      
-      if(inputText===x)
+      x=x.trim();      
+      if(inputText.toLowerCase()===x.toLowerCase())
       {
         msg.push("Activity name is already in use");
         pass=false;
       }
     }
   }
-  
-  console.log(inputText);
-  console.log("~~~~~~~~~~~~~~");
-  console.log(a);
-  console.log("~~~~~~~~~~~~~~");
 
   errorOutput.innerText = msg.join();
 
@@ -147,30 +191,60 @@ function (e){
       json = actStorage.getItem("actiNameStorage");
     }
 
-    let dataparse = {name: inputText, value: false};
+    let j = inputText.replaceAll(" ","-");
+    let id = "act-"+j;
+    let dataparse = {name: inputText,id: id,  value: false};
     let k = JSON.parse(json).customInputs;
-    console.log(typeof(k));
 
     k.push(dataparse);
     let js = JSON.stringify({customInputs:k});
     actStorage.setItem("actiNameStorage",js);
-    // console.log(inputText);
-    let j = inputText.replaceAll(" ","-");
-    // console.log(j);
+
     document.querySelector('.acti-add').style.display='none';
-    let l = "<div id=act-"+j+"-div><input type=\"checkbox\" class=\"btn-check\" id=act-"+j+" autocomplete=\"off\" checked>"+
-    "<label class=\"CustomActiLeft btn btn-outline-primary me-2\" for=act-"+j+">"+inputText+"<i class=\"fas fa-seedling\"></i></label>"+
-    "<button onclick=\"deleteActivity('act-"+j+"-div')\" class=\"CustomActiRight btn btn-outline-secondary me-2\">X</button> </div>";
+    let l = "<div id="+id+"-div><input type=\"checkbox\" class=\"btn-check\" id="+id+" autocomplete=\"off\">"+
+    "<label class=\"CustomActiLeft btn btn-outline-primary me-2\" for="+id+">"+inputText+"<i class=\"ms-2 fas fa-seedling\"></i></label>"+
+    "<button onclick=\"deleteActivity('"+id+"-div')\" class=\"actiRemoveButton CustomActiRight btn btn-outline-secondary me-2\"><i class=\"fas fa-times\"></i></button> </div>";
     $("#addAfterThis").after(l);
+    $(`#${id}`).change(customActivityClicked);
   }
   e.preventDefault();
 });
 
+function RequireOneInputBeforeContinueClicked (e){
+  console.log("ASDF");
 
+  // make sure at least one activity is checked and prevent the user from going to the next page
+  $inputs = $(e.target).closest('.view').find("input");
+  let pass=false;
+  $inputs.each((i,e)=>{
+    if(e.checked || (e.getAttribute("type")=="text" && e.value!=""))
+    {
+      console.log(e.checked);
+      coneol.log(e.value);
+      pass=true;
+      return;
+    }
+  });
+
+  if (pass || true){
+    ShowViewErrorMessage("Please select one before continuing");
+    e.preventDefault();
+    e.stopPropagation();
+  }
+}
+function ShowViewErrorMessage(message){
+  $("#view-error-message")
+    .text(message)
+    .removeClass("d-none");
+}
 function deleteActivity(e)
 {
-  let h = e+"-div";
-  console.log(e);
-  $(e).remove();
-  // alert("swsw");
+  let div = $(`#${e}`);
+  let id = div.find("input")[0].id;
+  let json = actStorage.getItem("actiNameStorage");
+  let customInputs = JSON.parse(json).customInputs.filter(x => x.id!=id);
+  let js = JSON.stringify({customInputs:customInputs});
+  actStorage.setItem("actiNameStorage",js);
+
+  div.remove();
 }

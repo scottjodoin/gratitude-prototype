@@ -4,15 +4,16 @@ let _pageId = this.location.pathname.split("/").pop();
 let _state = {
   inputs: []
 };
+initStorage();
 
-(function initStorage(){
+function initStorage(){
   loadState();
 
   loadViewInputs();
 
   //input init events
   initViewInputs();
-})();
+}
 
 function loadViewInputs(){
   
@@ -35,12 +36,13 @@ function updateRadioGroup(radioName, value){
 
 function initViewInputs(){
   $(".view textarea").change(changeTextAreaInput);
-  $(".view input[type=text]").change(changeTextInput);
   $(".view input[type=radio]").change(changeRadioInput);
   $(".view input[type=checkbox]").change(changeCheckboxInput);
+  $(".view input[type=text]").change(changeTextInput)
 }
 
 function changeTextAreaInput(e){
+  console.log(e);
   let data = {
     elemId: e.target.id,
     viewId: $(e.target).closest(".view")[0].id,

@@ -11,8 +11,8 @@ html,body{
   max-width: 40rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
   animation: fade-in 1s;
 }
 
@@ -109,3 +109,32 @@ h1 {
   width: 100%;
   z-index: -1;
 }
+.actiRemoveButton:hover{
+  background-color: red;
+}
+
+.actirows
+{
+  padding-right: 20px;
+  text-align: left center;
+  
+}
+
+.acticolm
+{
+  padding-bottom: 20px;
+  font-size: large;
+}
+
+.actitable
+{
+  border-collapse: separate;
+  border-spacing: 20px 5px;
+  display: block;
+}
+
+.view > .progress-tracker {
+  margin-top:-0.5rem;
+  width: 100%;
+  z-index: -1;
+} 

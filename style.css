@@ -11,8 +11,8 @@ html,body{
   max-width: 40rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
   animation: fade-in 1s;
 }
 
@@ -27,6 +27,11 @@ h1 {
 @keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+.chart{
+   background-color: #faf1cfff; 
+   border-color: #3f6844ff;
 }
 
 .arrow-point-up-anchor{
@@ -46,4 +51,125 @@ h1 {
 
   background-image: url("img/uparrow.svg");
   background-size: cover;
+}
+
+.acti-add{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+
+.acti-content{
+  width: 470px;
+  height: 250px;
+  background-color: #faf1cfff;
+  border-radius: 4px;
+  text-align: center;
+  padding: 10px;
+  /* position: relative; */
+}
+
+.addinput{
+  width: 50%;
+  display: block;
+  margin: 10px auto;
+}
+
+.addbutton{
+  margin:10px 10px;
+  bottom: 10;
+}
+
+.Acti-add-title
+{
+  padding-bottom:1rem;
+}
+
+.CustomActiLeft{
+  float: left; 
+  margin-right: 0 !important; 
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.CustomActiRight{
+  float: left; 
+  margin-left: 0 !important; 
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#container{
+  position:relative;
+}
+.view > .progress {
+  position: absolute;
+  top: 1rem;
+  width: 100%;
+  z-index: -1;
+}
+.actiRemoveButton:hover{
+  background-color: red;
+}
+
+.actirows
+{
+  padding-right: 20px;
+  text-align: left center;
+  
+}
+
+.acticolm
+{
+  padding-bottom: 20px;
+  font-size: large;
+}
+
+.actitable
+{
+  border-collapse: separate;
+  border-spacing: 20px 5px;
+  display: block;
+}
+
+.view > .progress-tracker {
+  margin-top:-0.5rem;
+  width: 100%;
+  z-index: -1;
+} 
+.btn-square{
+  width: 6rem;
+  height: 6rem;
+  padding:0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color:black;
+}
+
+.btn-square:not(div){
+  cursor: pointer;
+}
+
+.btn-square img{
+  filter: invert(0);
+  transition: 0.15s;
+}
+input:checked + .btn-square {
+  background-color: #00a8ff !important;
+  color:white;
+}
+.btn-square:not(div):hover > img, input:checked + .btn-square > img {
+  filter: invert(1);
 }

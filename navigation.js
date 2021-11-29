@@ -29,6 +29,10 @@ function softRedirect(target){
   if ($view.length == 0)
     $view = $("#unimplemented");
 
+  if ($view.length == 0) {
+    console.warn("No '.view' elements on the page to display.")
+    return; // this page does not have any views
+  }
   _currentViewId = $view[0].id;
 
   // adjust the checkin button visibility

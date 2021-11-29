@@ -12,13 +12,13 @@
   }
 
   // create html for each color
-  html += "<div class='emotion-checklist-container d-flex flex-wrap'>";
+  html += "<div class='emotion-checklist-container container d-flex flex-wrap'>";
   for (cat in emotionsByCat){
-    html += "<span class=me-4>";
-    html += "<h4 class='emotion-checklist-header text-center mb-1'>" + emotionsByCat[cat][0].category + "</h4>";
+    html += "<span class=me-4 row-7>";
+    //html += "<h4 class='emotion-checklist-header text-center mb-1'>" + emotionsByCat[cat][0].category + "</h4>";
     for (emotion of emotionsByCat[cat]){
       let checkId = `emotion-check-${emotion.name.split(" ").join("-")}`;
-      html += `<div class="emotion-checklist-item">
+      html += `<div class="emotion-checklist-item d-inline-flex me-4">
         <input type="checkbox" id=${checkId} name=${checkId} class="btn-check">
         <label  style="background-color:${emotion.color};"for="${checkId}" class="my-4 btn btn-primary-outline btn-square">
           <img src="./img/${emotion.icon}.svg" width=40 height=40>

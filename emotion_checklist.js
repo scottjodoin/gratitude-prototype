@@ -23,7 +23,7 @@
       
       html += `<div class="col me-1" id='emotion-checklist-item'>
         <input type="checkbox" id=${checkId} name=${checkId} class="btn-check">
-        <label  style="background-color:${emotion.color};"for="${checkId}" class="my-4 btn btn-primary-outline btn-square">
+        <label  style="background-color:${emotion.color};"for="${checkId}" class="my-3 btn btn-primary-outline btn-square">
           <img src="./img/${emotion.icon}.svg" width=40 height=40>
           <span class="text-center">${emotion.name}</span>
         </label>

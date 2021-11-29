@@ -55,13 +55,24 @@
       <p>What activities do you feel you have accomplished today?</p>
 
       <div class="d-flex flex-wrap justify-contents-center mb-4">
-        <input type="checkbox" name="activity-check1" id="activity-check1" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check1"><i class="fa fa-person me-2"></i>Exercise</label>
-        <input type="checkbox" name="activity-check2" id="activity-check2" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check2"><i class="fa fa-car me-2"></i>Socialise</label>
-        <input type="checkbox" name="activity-check3" id="activity-check3" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check3"><i class="fa fa-bus me-2"></i>Test</label>
-      </div>
+        <input type="checkbox" name="activity-exercise" id="activity-check-exercise" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check-exercise"><i class="fa fa-running me-2"></i>Exercise</label>
+
+        <input type="checkbox" name="activity-hygiene" id="activity-check-hygiene" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check-hygiene"><i class="fa fa-hands-wash me-2"></i>Hygiene</label>
+
+        <input type="checkbox" name="activity-cleanliness" id="activity-check-cleanliness" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check-cleanliness"><i class="fa fa-broom me-2"></i>Cleanliness</label>
+
+        <input type="checkbox" name="activity-social" id="activity-check-social" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check-social"><i class="fa fa-users me-2"></i>Social</label>
+
+        <input type="checkbox" name="activity-healthy-food" id="activity-check-healthy-food" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check-healthy"><i class="fa fa-apple-alt me-2"></i>Healthy Food</label>
+
+        <input type="checkbox" name="activity-outdoors" id="activity-check-outdoors" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check-outdoors"><i class="fa fa-seedling me-2"></i>Outdoors</label>
+        </div>
 
       <div>
         <a class="btn btn-primary" href="?view=emotions">Next</a>
@@ -72,14 +83,7 @@
       <h1>Emotions</h1>
 
       <p>What emotions can you recall feeling today? Select any and all that apply:</p>
-      <div class="d-flex flex-wrap justify-contents-center mb-4">
-        <input type="checkbox" id="test-check1" class="btn-check"><label class="btn btn-outline-primary me-2"
-          for="test-check1"><i class="fa fa-times me-2"></i>Check One</label>
-        <input type="checkbox" id="test-check2" class="btn-check"><label class="btn btn-outline-primary me-2"
-          for="test-check2"><i class="fa fa-clock me-2"></i>Check Two</label>
-        <input type="checkbox" id="test-check3" class="btn-check"><label class="btn btn-outline-primary me-2"
-          for="test-check3"><i class="fa fa-check me-2"></i>Check Three</label>
-      </div>
+      <emotion-checklist></emotion-checklist>
 
       <div class="row">
         <div class="col">
@@ -176,6 +180,8 @@
   <script src="storage.js"></script>
   <script src="navigation.js"></script>
   <script src="writing.js"> </script>
+  <script src="emotion_data.js"></script>
+  <script src="emotion_checklist.js"></script>
 </body>
 
 </html>

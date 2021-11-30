@@ -75,11 +75,11 @@ const chart = new Chart(ctx, {
   options: {
     maintainAspectRatio: false,
     responsive: true,
-      transitions: {
-          hide: {
-              duration: 0
-          }
-      },
+    transitions: {
+        hide: {
+            duration: 0
+        }
+    },
     scales: {
       y:{
           suggestedMin: -6,
@@ -88,8 +88,15 @@ const chart = new Chart(ctx, {
           }
       }
     },
+    plugins: {
+        title: {display: false}, 
+        legend: {display: false}
+    },
+    events: ['click']
   },
-  plugins: [{afterDraw: drawOnPoints}]  
+  plugins: [
+      {afterDraw: drawOnPoints}, 
+  ]  
 });
 
 function updateIcons (chart){
@@ -214,17 +221,19 @@ function nextWeek(e) {
   if (week < data.weeks.length - 1) {
     week++;
     updateChart();
-    $("#btn-next-week").toggleClass("disabled", week == data.weeks.length - 1);
-    $("#btn-prev-week").toggleClass("disabled", week == 0);
+
+    (week == data.weeks.length - 1) ?  document.getElementById("btn-next-week").style.visibility = 'hidden' : document.getElementById("btn-next-week").style.visibility = 'visible';
+    (week == 0) ?  document.getElementById("btn-prev-week").style.visibility = 'hidden' : document.getElementById("btn-prev-week").style.visibility = 'visible';
   }
+
 }
 
 function prevWeek(e) {
   if (week > 0) {
     week--;
     updateChart();
-    $("#btn-next-week").toggleClass("disabled", week == data.weeks.length - 1);
-    $("#btn-prev-week").toggleClass("disabled", week == 0);
+    (week == data.weeks.length - 1) ?  document.getElementById("btn-next-week").style.visibility = 'hidden' : document.getElementById("btn-next-week").style.visibility = 'visible';
+    (week == 0) ?  document.getElementById("btn-prev-week").style.visibility = 'hidden' : document.getElementById("btn-prev-week").style.visibility = 'visible';
   }
 }
 

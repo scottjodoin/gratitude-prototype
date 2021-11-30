@@ -52,15 +52,16 @@
   <div id=container class="container pt-4 d-flex justify-content-center">
     <div class="d-none view" id="landing">
       <h1>Activities</h1>
-      <p>What activities have you completed today?</p>
+      <p>Which activities have you completed today?</p>
 
       <div class="d-flex flex-wrap justify-contents-center mb-4">
-        <input type="checkbox" name="activity-check1" id="activity-check1" class="btn-check"><label
+        <div id=Checkin-Acti-Placement></div>
+        <!-- <input type="checkbox" name="activity-check1" id="activity-check1" class="btn-check"><label
           class="btn btn-outline-primary me-2" for="activity-check1"><i class="fa fa-person me-2"></i>Exercise</label>
         <input type="checkbox" name="activity-check2" id="activity-check2" class="btn-check"><label
           class="btn btn-outline-primary me-2" for="activity-check2"><i class="fa fa-car me-2"></i>Socialise</label>
         <input type="checkbox" name="activity-check3" id="activity-check3" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check3"><i class="fa fa-bus me-2"></i>Test</label>
+          class="btn btn-outline-primary me-2" for="activity-check3"><i class="fa fa-bus me-2"></i>Test</label> -->
       </div>
 
       <div>
@@ -90,6 +91,7 @@
         </div>
       </div>
     </div>
+
     <div class="d-none view" id="writing">
       <h2 style="text-align: center;">What are 3 things that you're grateful for today?</h2>
       <div style="width: 100%;">
@@ -105,10 +107,27 @@
           <a class="btn btn-outline-primary me-2" href="?view=emotions">Back</a>
         </div>
         <div class="col">
+          <a class="btn btn-primary" href="?view=EndScreen">Next</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-none view" id="EndScreen">
+      <i class="fas fa-check-circle mb-4" style="align-self:center; font-size: 1000%; color: lightgreen;"></i>
+
+      <h1>You practiced gratitude today!</h1>
+      <div id=endScreen-Activities></div>
+      
+      <div class="row">
+        <div class="col">
+          <a class="btn btn-outline-primary me-2" href="?view=writing">Back</a>
+        </div>
+        <div class="col">
           <a class="btn btn-primary" href="?view=end">Next</a>
         </div>
       </div>
     </div>
+
 
     <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
@@ -176,6 +195,7 @@
   <script src="storage.js"></script>
   <script src="navigation.js"></script>
   <script src="writing.js"> </script>
+  <script src="CheckinActi.js"> </script>
 </body>
 
 </html>

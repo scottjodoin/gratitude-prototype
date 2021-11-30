@@ -74,92 +74,62 @@
           class="btn btn-outline-primary me-2" for="activity-check-outdoors"><i class="fa fa-seedling me-2"></i>Outdoors</label>
         </div>
 
-      <div>
-        <a class="btn btn-primary" href="?view=emotions">Next</a>
+      <div class="w-100">
+        <a class="btn btn-primary float-end" href="?view=emotions">Next</a>
       </div>
     </div>
 
-    <div class="d-none view" style="max-width:none;" id="emotions">
+    <div class="d-none view" id="emotions">
       <h1>Emotions</h1>
 
       <p>What emotions can you recall feeling today? Select any and all that apply:</p>
       <emotion-checklist></emotion-checklist>
 
-      <div class="row">
-        <div class="col">
+      <div class="w-100 d-flex justify-content-between">
           <a class="btn btn-outline-primary me-2" href="?view=landing">Back</a>
-        </div>
-        <div class="col">
           <a class="btn btn-primary" href="?view=writing">Next</a>
-        </div>
       </div>
     </div>
     <div class="d-none view" id="writing">
       <h2 style="text-align: center;">What are 3 things that you're grateful for today?</h2>
-      <div style="width: 100%;">
-        <button type="button" class="btn btn-info float-end" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">Suggestions</button>
+      <div class="w-100">
+        <button class="btn btn-info float-end" type="button" data-bs-toggle="collapse" data-bs-target="#suggestion-box" aria-expanded="false" aria-controls="suggestionBox">Suggestions</button>
       </div>
-      <div style="width: 100%;" class="py-2">
+      <div class="collapse w-100" id="suggestion-box">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Suggestions</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-toggle="collapse" data-bs-target="#suggestion-box" aria-label="Close"></button>
+            </div>
+            <div class="modal-body container">
+              <div class="row align-items-start">
+                <div class="col">Pet(s)</div>
+                <div class="col">Family</div>
+                <div class="col">Good friends</div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col">Nature</div>
+                <div class="col">A cup of coffee</div>
+                <div class="col">Food</div>
+              </div>
+              <div class="row align-items-end">
+                <div class="col">A cup of tea</div>
+                <div class="col">Good news</div>
+                <div class="col">Holidays</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-100 py-2">
         <textarea class="form-control" id="entryTextarea" rows="10"></textarea>
       </div>
 
-      <div class="row">
-        <div class="col">
-          <a class="btn btn-outline-primary me-2" href="?view=emotions">Back</a>
-        </div>
-        <div class="col">
-          <a class="btn btn-primary" href="?view=end">Next</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Suggestions</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body container">
-            <div class="row align-items-start">
-              <div class="col">
-                Pet(s)
-              </div>
-              <div class="col">
-                Family
-              </div>
-              <div class="col">
-                Good friends
-              </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col">
-                Nature
-              </div>
-              <div class="col">
-                A cup of coffee
-              </div>
-              <div class="col">
-                Food
-              </div>
-            </div>
-            <div class="row align-items-end">
-              <div class="col">
-                A cup of tea
-              </div>
-              <div class="col">
-                Good news
-              </div>
-              <div class="col">
-                Holidays
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
+      <div class="w-100">
+          <a class="btn btn-outline-primary me-2 float-start" href="?view=emotions">Back</a>
+          <a class="btn btn-primary float-end" href="?view=end">Next</a>
       </div>
     </div>
   </div>

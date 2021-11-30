@@ -18,15 +18,19 @@ function initStorage(){
 function loadViewInputs() {
   for (i of _state.inputs) {
     if (i.pageId != _pageId) continue;
-
+    
     let elem = document.getElementById(i.elemId);
+    console.log(i, elem);
+    if (elem == null) continue;
     if (i.type === "radio") updateRadioGroup(i.elemId, i.text); // elemId of radio is the name
     if (i.type === "checkbox") elem.checked = i.value;
-    if (i.type === "textarea") elem.value = i.value;
+    if (i.type === "textarea") assignTextArea(elem, i.value);
     if (i.type === "text") elem.value = i.value;
   }
 }
-
+function assignTextArea(elem, text){
+  setTimeout(()=>{elem.value = text;},100);
+}
 function updateRadioGroup(radioName, value) {
   $(`input[type=radio][name=${radioName}]`).each((i, e) => {
     e.checked = $(`label[for=${e.id}]`).text() === value;

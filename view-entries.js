@@ -85,6 +85,7 @@ const chart = new Chart(ctx, {
           suggestedMin: -6,
           suggestedMax: 6,
           ticks:{
+              display: false
           }
       }
     },

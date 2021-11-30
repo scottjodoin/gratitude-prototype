@@ -56,32 +56,36 @@
 
       <div class="d-flex flex-wrap justify-contents-center mb-4">
         <input type="checkbox" name="activity-exercise" id="activity-check-exercise" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check-exercise"><i class="fa fa-running me-2"></i>Exercise</label>
+          class="btn btn-outline-primary me-2" for="activity-check-exercise"><i
+            class="fa fa-running me-2"></i>Exercise</label>
 
         <input type="checkbox" name="activity-hygiene" id="activity-check-hygiene" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check-hygiene"><i class="fa fa-hands-wash me-2"></i>Hygiene</label>
+          class="btn btn-outline-primary me-2" for="activity-check-hygiene"><i
+            class="fa fa-hands-wash me-2"></i>Hygiene</label>
 
         <input type="checkbox" name="activity-cleanliness" id="activity-check-cleanliness" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check-cleanliness"><i class="fa fa-broom me-2"></i>Cleanliness</label>
+          class="btn btn-outline-primary me-2" for="activity-check-cleanliness"><i
+            class="fa fa-broom me-2"></i>Cleanliness</label>
 
         <input type="checkbox" name="activity-social" id="activity-check-social" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check-social"><i class="fa fa-users me-2"></i>Social</label>
+          class="btn btn-outline-primary me-2" for="activity-check-social"><i
+            class="fa fa-users me-2"></i>Social</label>
 
         <input type="checkbox" name="activity-healthy-food" id="activity-check-healthy-food" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check-healthy"><i class="fa fa-apple-alt me-2"></i>Healthy Food</label>
+          class="btn btn-outline-primary me-2" for="activity-check-healthy"><i class="fa fa-apple-alt me-2"></i>Healthy
+          Food</label>
 
         <input type="checkbox" name="activity-outdoors" id="activity-check-outdoors" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check-outdoors"><i class="fa fa-seedling me-2"></i>Outdoors</label>
-        </div>
-        <div id=Checkin-Acti-Placement></div>
-        <!-- <input type="checkbox" name="activity-check1" id="activity-check1" class="btn-check"><label
+          class="btn btn-outline-primary me-2" for="activity-check-outdoors"><i
+            class="fa fa-seedling me-2"></i>Outdoors</label>
+      </div>
+      <div id=Checkin-Acti-Placement></div>
+      <!-- <input type="checkbox" name="activity-check1" id="activity-check1" class="btn-check"><label
           class="btn btn-outline-primary me-2" for="activity-check1"><i class="fa fa-person me-2"></i>Exercise</label>
         <input type="checkbox" name="activity-check2" id="activity-check2" class="btn-check"><label
           class="btn btn-outline-primary me-2" for="activity-check2"><i class="fa fa-car me-2"></i>Socialise</label>
         <input type="checkbox" name="activity-check3" id="activity-check3" class="btn-check"><label
           class="btn btn-outline-primary me-2" for="activity-check3"><i class="fa fa-bus me-2"></i>Test</label> -->
-      </div>
-
       <div class="w-100">
         <a class="btn btn-primary float-end" href="?view=emotions">Next</a>
       </div>
@@ -94,17 +98,19 @@
       <emotion-checklist></emotion-checklist>
 
       <div class="w-100 d-flex justify-content-between">
-          <a class="btn btn-outline-primary me-2" href="?view=landing">Back</a>
-          <a class="btn btn-primary" href="?view=writing">Next</a>
+        <a class="btn btn-outline-primary me-2" href="?view=landing">Back</a>
+        <a class="btn btn-primary" href="?view=writing">Next</a>
       </div>
     </div>
 
     <div class="d-none view" id="writing">
       <h1>What are 3 things that you're grateful for today?</h1>
-      <div class="w-100"><button class="btn btn-info float-end" type="button" data-bs-toggle="modal" data-bs-target="#suggestion-box" aria-expanded="false" aria-controls="suggestionBox">Suggestions</button></div>
+      <div class="w-100"><button class="btn btn-info float-end" type="button" data-bs-toggle="modal"
+          data-bs-target="#suggestion-box" aria-expanded="false" aria-controls="suggestionBox">Suggestions</button>
+      </div>
 
       <div class="w-100 my-2">
-          <textarea class="form-control" id="entryTextarea" rows="10"></textarea>
+        <textarea class="form-control" id="entryTextarea" rows="10"></textarea>
       </div>
 
       <div class="w-100">
@@ -118,7 +124,7 @@
 
       <h1>You practiced gratitude today!</h1>
       <div id=endScreen-Activities></div>
-      
+
       <div class="row">
         <div class="col">
           <a class="btn btn-outline-primary me-2" href="?view=writing">Back</a>
@@ -131,26 +137,26 @@
   </div>
 
 
-    <div class="modal" id="suggestion-box" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Suggestions</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="row align-items-center">
-            <div class="col">Nature</div>
-            <div class="col">A cup of coffee</div>
-            <div class="col">Food</div>
-          </div>
-          <div class="row align-items-end">
-            <div class="col">A cup of tea</div>
-            <div class="col">Good news</div>
-            <div class="col">Holidays</div>
-          </div>
+  <div class="modal" id="suggestion-box" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Suggestions</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="row align-items-center">
+          <div class="col">Nature</div>
+          <div class="col">A cup of coffee</div>
+          <div class="col">Food</div>
+        </div>
+        <div class="row align-items-end">
+          <div class="col">A cup of tea</div>
+          <div class="col">Good news</div>
+          <div class="col">Holidays</div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- error -->

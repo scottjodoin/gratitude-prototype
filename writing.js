@@ -1,6 +1,6 @@
 $(function () {
   let $mytext = $("#entryTextarea");
-  $mytext.val("- \n- \n- ");
+  // $mytext.val("- \n- \n- ");
 
   $mytext.on("keydown", mytextKeyDown);
   $mytext.on("keyup", mytextKeyUp);

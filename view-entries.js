@@ -92,12 +92,16 @@ const chart = new Chart(ctx, {
         title: {display: false}, 
         legend: {display: false}
     },
-    events: ['click']
+    onClick: canvasClicked,
+    plugins: {
+        tooltip: {enabled: false}
+    }
   },
   plugins: [
       {afterDraw: drawOnPoints}, 
   ]  
 });
+
 
 function updateIcons (chart){
   //annoCtx.drawImage(emotionIcons[0], 0, 0);

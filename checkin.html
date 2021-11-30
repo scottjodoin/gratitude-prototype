@@ -91,42 +91,12 @@
       </div>
     </div>
     <div class="d-none view" id="writing">
-      <h2 style="text-align: center;">What are 3 things that you're grateful for today?</h2>
-      <div class="w-100">
-        <button class="btn btn-info float-end" type="button" data-bs-toggle="collapse" data-bs-target="#suggestion-box" aria-expanded="false" aria-controls="suggestionBox">Suggestions</button>
-      </div>
-      <div class="collapse w-100" id="suggestion-box">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Suggestions</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-toggle="collapse" data-bs-target="#suggestion-box" aria-label="Close"></button>
-            </div>
-            <div class="modal-body container">
-              <div class="row align-items-start">
-                <div class="col">Pet(s)</div>
-                <div class="col">Family</div>
-                <div class="col">Good friends</div>
-              </div>
-              <div class="row align-items-center">
-                <div class="col">Nature</div>
-                <div class="col">A cup of coffee</div>
-                <div class="col">Food</div>
-              </div>
-              <div class="row align-items-end">
-                <div class="col">A cup of tea</div>
-                <div class="col">Good news</div>
-                <div class="col">Holidays</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h1>What are 3 things that you're grateful for today?</h1>
+      <div class="w-100"><button class="btn btn-info float-end" type="button" data-bs-toggle="modal" data-bs-target="#suggestion-box" aria-expanded="false" aria-controls="suggestionBox">Suggestions</button></div>
 
-      <div class="w-100 py-2">
-        <textarea class="form-control" id="entryTextarea" rows="10"></textarea>
+      <div class="w-100 my-2">
+          <textarea class="form-control" id="entryTextarea" rows="10"></textarea>
       </div>
-
       <div class="w-100">
           <a class="btn btn-outline-primary me-2 float-start" href="?view=emotions">Back</a>
           <a class="btn btn-primary float-end" href="?view=end">Next</a>
@@ -137,6 +107,33 @@
   <!-- <div>
         <a class="btn btn-outline-primary me-2" href="?view=activites">Back</a>
         <a class="btn btn-primary" href="?view=end">Next</a></div> -->
+  </div>
+  <div class="modal" id="suggestion-box">
+    <div class="modal-dialog  modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Suggestions</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" data-bs-target="#suggestion-box" aria-label="Close"></button>
+        </div>
+        <div class="modal-body container">
+          <div class="row align-items-start">
+            <div class="col">Pet(s)</div>
+            <div class="col">Family</div>
+            <div class="col">Good friends</div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col">Nature</div>
+            <div class="col">A cup of coffee</div>
+            <div class="col">Food</div>
+          </div>
+          <div class="row align-items-end">
+            <div class="col">A cup of tea</div>
+            <div class="col">Good news</div>
+            <div class="col">Holidays</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- error -->

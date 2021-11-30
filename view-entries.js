@@ -88,13 +88,10 @@ const chart = new Chart(ctx, {
           }
       }
     },
-    plugins: {
-        title: {display: false}, 
-        legend: {display: false}
-    },
     onClick: canvasClicked,
     plugins: {
-        tooltip: {enabled: false}
+        tooltip: {enabled: false},
+        legend: {display: false},
     }
   },
   plugins: [

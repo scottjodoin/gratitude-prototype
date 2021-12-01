@@ -12,6 +12,7 @@ let _clickedElementindex = 0;
 $("#btn-prev-entry").click(btnPrevEntryClicked);
 $("#btn-next-entry").click(btnNextEntryClicked);
 
+
 function pointColor(context){
     var index = context.dataIndex;
    
@@ -100,6 +101,7 @@ const chart = new Chart(ctx, {
   ]  
 });
 
+drawWeekButtons();
 
 function updateIcons (chart){
   //annoCtx.drawImage(emotionIcons[0], 0, 0);
@@ -219,13 +221,16 @@ function pointClicked(label,value) {
 $("#btn-next-week").on("click", nextWeek);
 $("#btn-prev-week").on("click", prevWeek);
 
+function drawWeekButtons(){
+    (week == data.weeks.length - 1) ?  document.getElementById("btn-next-week").style.visibility = 'hidden' : document.getElementById("btn-next-week").style.visibility = 'visible';
+    (week == 0) ?  document.getElementById("btn-prev-week").style.visibility = 'hidden' : document.getElementById("btn-prev-week").style.visibility = 'visible';
+}
+
 function nextWeek(e) {
   if (week < data.weeks.length - 1) {
     week++;
     updateChart();
-
-    (week == data.weeks.length - 1) ?  document.getElementById("btn-next-week").style.visibility = 'hidden' : document.getElementById("btn-next-week").style.visibility = 'visible';
-    (week == 0) ?  document.getElementById("btn-prev-week").style.visibility = 'hidden' : document.getElementById("btn-prev-week").style.visibility = 'visible';
+    drawWeekButtons();
   }
 
 }
@@ -234,8 +239,7 @@ function prevWeek(e) {
   if (week > 0) {
     week--;
     updateChart();
-    (week == data.weeks.length - 1) ?  document.getElementById("btn-next-week").style.visibility = 'hidden' : document.getElementById("btn-next-week").style.visibility = 'visible';
-    (week == 0) ?  document.getElementById("btn-prev-week").style.visibility = 'hidden' : document.getElementById("btn-prev-week").style.visibility = 'visible';
+    drawWeekButtons();
   }
 }
 

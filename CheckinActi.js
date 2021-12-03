@@ -9,10 +9,7 @@ function checkinActiList()
     
     let json = actStorage.getItem("actiNameStorage");
     let k;
-    let days = ["MON","TUE","WED","THU","FRI","SAT","SUN"];
-    let id;
     activities="";
-    let listId = [];
     let jsonstore = actStorage.getItem("CheckInActiStorage");
 
     if(jsonstore==null)
@@ -29,9 +26,7 @@ function checkinActiList()
     for(let x of _state.inputs)
     {
         let v = x["viewId"];
-        let t = x["text"];
-        let name= t.replaceAll(" ","-");
-        
+        let t = x["text"];        
 
         if(v == "goals-activities" && x["value"]==true) //activity
         {

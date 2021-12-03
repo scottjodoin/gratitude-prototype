@@ -188,9 +188,8 @@ function checkinActiList()
             hasActi = true;
             let id = x.id;
             let isChecked = (x.value == true) ? "checked" : "";
-            let l = "<div id="+id+"-div>"+
-            "<input type=checkbox class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
-            "<label class=\"btn btn-outline-primary me-2\" for="+id+">"+x.name+"</label></div>";
+            let l = "<input type=checkbox class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
+            "<label class=\"btn btn-outline-primary me-2\" for="+id+">"+x.name+"</label>";
             $("#Checkin-Acti-Placement").before(l);
             $(`#${id}`).change(CheckInActiClicked);
         }

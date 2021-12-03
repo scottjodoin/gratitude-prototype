@@ -179,3 +179,11 @@ input:checked + .btn-square {
 .btn-square:not(div):hover > img, input:checked + .btn-square > img {
   filter: invert(1);
 }
+
+.form-control {
+  background-color: #faf1cfff;
+}
+
+.form-control:focus {
+  background-color: #faf1cfff;
+}

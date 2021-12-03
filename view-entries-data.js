@@ -259,12 +259,13 @@ function assignRandomMoods(){
       let positive = dataPoint.y > 0;
       let moodCount = Math.abs(dataPoint.y);
       let moods = [];
-      for (let k=0; k<moodCount; k++) {
+      for (let k=0; k < moodCount; k++) {
         let emotionList =  _emotion_data.filter(
           e => e.group == ((positive) ? "happy" : "upset"));
 
         let mood = emotionList[Math.floor(Math.random() * emotionList.length)];
-        moods.push(mood);
+        if (moods.indexOf(mood) == -1) moods.push(mood);
+        else k--;
       }
       dataPoint.mood = moods;
     }

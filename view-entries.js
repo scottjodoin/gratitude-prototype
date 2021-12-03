@@ -178,8 +178,9 @@ function updateModal(){
   $("#btn-prev-entry").toggleClass("disabled", _entryIndex == 0);
   $("#btn-next-entry").toggleClass("disabled", _entryIndex == entryCount-1);
 
-  let d = new Date(dateInfo.date);
-  console.log(d);
+  let formattedDate = dateInfo.date + "T00:00:00.000-06:00"
+
+  let d = new Date(formattedDate);
   let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
   let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
   let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);

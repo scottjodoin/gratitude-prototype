@@ -14,11 +14,22 @@ $("#btn-next-entry").click(btnNextEntryClicked);
 
 initPage();
 function initPage() {
-  $("#activity-select").html(
+  $("#activity-select")
+  .html(
     Object.keys(_activities).map(e => {
       return `<option value="${e}">${_activities[e]}</option>`;
     }).join("")
   )
+
+  $("#activity-select").change(activitySelectChanged);
+}
+
+function activitySelectChanged(e){
+  let activity = $("#activity-select").val();
+  let activityData = data.weeks[week].dataPoints.filter(e=>e.activity == activity);
+  let activityDataPoints = groupBy(activityData,"x");
+  console.log(data.weeks[week].dataPoints);
+
 }
 
 function pointColor(context){

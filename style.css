@@ -89,3 +89,7 @@ input:checked + .btn-square {
   text-align: center;
   border-radius: 50%;
 }
+
+.activity-success {
+  background-color: green;
+}

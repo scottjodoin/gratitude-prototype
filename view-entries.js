@@ -15,8 +15,8 @@ $("#btn-next-entry").click(btnNextEntryClicked);
 
 function pointColor(context){
     var index = context.dataIndex;
-   
-    return data.weeks[week].dataPoints[index].mood[0].color;
+
+    return context.raw.mood[0].color;
     // var value = context.dataset.data[index].y;
     // return value == 0 ? '#808080' : // draw 0 in grey 
     //     value > 0 ? '#5daa68ff' : // positive in green 
@@ -102,16 +102,6 @@ const chart = new Chart(ctx, {
 });
 
 drawWeekButtons();
-
-function updateIcons (chart){
-  //annoCtx.drawImage(emotionIcons[0], 0, 0);
-
-  // chart.options.elements.point.pointStyle = emotionIcons["e01"];
-  // chart.config._config.data.datasets[0].pointStyle = emotionIcons["e01"];
-  // chart.options.elements.point.pointStyle = emotionIcons["e01"];
-  // chart.config._config.data.datasets[0].data[0].pointStyle = emotionIcons["e01"];
-  // chart.config.data.datasets[0]._meta[0].data[7]._model.pointStyle = emotionIcons["e01"];
-}
 function drawOnPoints(chart, args, options){
   annoCanvas.width = chart.width;
   annoCanvas.height = chart.height;
@@ -121,7 +111,7 @@ function drawOnPoints(chart, args, options){
   for (i = 0; i < chartData.length; i++){
     let p = chartData[i];
     let stretchFactor = 2;
-    let iconName = data.weeks[week].dataPoints[i].mood[0].icon;
+    let iconName = p.$context.raw.mood[0].icon
 
     let img = emotionIcons[iconName];
     if (!img) continue;

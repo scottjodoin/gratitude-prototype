@@ -211,7 +211,6 @@ function (e){
 });
 
 function RequireOneInputBeforeContinueClicked (e){
-  console.log("ASDF");
 
   // make sure at least one activity is checked and prevent the user from going to the next page
   $inputs = $(e.target).closest('.view').find("input");

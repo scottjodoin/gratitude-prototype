@@ -61,12 +61,11 @@ function actiList()
     {
         let v = x["viewId"];
         let t = x["text"];
-        let name= t.replaceAll(" ","-");
         
 
         if(v == "goals-activities" && x["value"]==true) //activity
         {
-            
+            let name= t.replaceAll(" ","-");
             let dayButtons="";
             for(let i of days)
             {

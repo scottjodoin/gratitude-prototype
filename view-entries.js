@@ -12,6 +12,14 @@ let _clickedElementindex = 0;
 $("#btn-prev-entry").click(btnPrevEntryClicked);
 $("#btn-next-entry").click(btnNextEntryClicked);
 
+initPage();
+function initPage() {
+  $("#activity-select").html(
+    Object.keys(_activities).map(e => {
+      return `<option value="${e}">${_activities[e]}</option>`;
+    }).join("")
+  )
+}
 
 function pointColor(context){
     var index = context.dataIndex;
@@ -165,12 +173,13 @@ function updateModal(){
   let dateInfo = preparedData[_entryIndex];
 
   let entryCount = preparedData.length;
-  $("#entry-nav-container").toggleClass("invisible",entryCount < 2);
+  $("#entry-nav-container").toggleClass("disabled",entryCount < 2);
   $("#entry-index-label").text((_entryIndex+1)+"/"+entryCount);
   $("#btn-prev-entry").toggleClass("disabled", _entryIndex == 0);
   $("#btn-next-entry").toggleClass("disabled", _entryIndex == entryCount-1);
 
   let d = new Date(dateInfo.date);
+  console.log(d);
   let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
   let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
   let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
@@ -182,7 +191,7 @@ function updateModal(){
   // add the activities
   $("#entry-activity-container").html(
       dateInfo.activities
-        .map(e=>`<span class='btn me-3 my-1 rounded pe-none btn-success'>${e}</span>`)
+        .map(e=>`<span class='btn me-3 my-1 rounded pe-none btn-success'>${_activities[e]}</span>`)
         .join("") || "<span>None</span>"
     );
 
@@ -213,7 +222,7 @@ $("#btn-prev-week").on("click", prevWeek);
 
 function drawWeekButtons(){
     (week == data.weeks.length - 1) ?  document.getElementById("btn-next-week").style.visibility = 'hidden' : document.getElementById("btn-next-week").style.visibility = 'visible';
-    (week == 0) ?  document.getElementById("btn-prev-week").style.visibility = 'hidden' : document.getElementById("btn-prev-week").style.visibility = 'visible';
+    (week == 0) ? document.getElementById("btn-prev-week").style.visibility = 'hidden' : document.getElementById("btn-prev-week").style.visibility = 'visible';
 }
 
 function nextWeek(e) {

@@ -20,8 +20,6 @@ function checkinActiList()
     }
 
     let list = JSON.parse(jsonstore).EachActivity;
-    let activitiesIntro="<table class=\"actitable\">";
-
 
     for(let x of _state.inputs)
     {
@@ -196,15 +194,6 @@ function checkinActiList()
             $("#Checkin-Acti-Placement").before(l);
             $(`#${id}`).change(CheckInActiClicked);
         }
-    }
-    if(activities === "")
-    {
-        activities="<p><strong>No activities selected. Click next to continue.</strong></p>";
-        
-    }
-    else
-    {
-        activities=activitiesIntro+activities+"</table>";
     }
 
     if(hasActi == false)

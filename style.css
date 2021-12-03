@@ -177,3 +177,14 @@ input:checked + .btn-square {
 .btn-square:not(div):hover > img, input:checked + .btn-square > img {
   filter: invert(1);
 }
+
+.navbar-menu-button:hover{
+  background-color: rgba(0, 0, 0, 0.658);
+  outline: none;
+  outline-color: none;
+  border-color: none !important;
+}
+
+.menu-separation{
+  padding: 5px;
+}

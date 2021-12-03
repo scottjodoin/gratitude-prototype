@@ -262,11 +262,9 @@ function endScreen()
     }
     else
     {
-        l="<h5>Here is your reminder to complete Activity: <strong>"+actiNotDone.substring(1,actiNotDone.length).trim()+"</strong> </h5>";
+        l="<h6>Here is your reminder to complete Activity: <strong>"+actiNotDone.substring(1,actiNotDone.length).trim()+"</strong> </h6>";
     }
     $("#endScreen-Activities").before(l);
-    let h = "<h5>Think of something that takes less than 2 minutes to complete.</h5>";
-    let i = "<h5>Are you going to do it now?<h5>";
+    let h = "<p>Think of something that takes less than 2 minutes to complete. <br> Are you going to do it now?</p>";
     $("#endScreen-Activities").before(h);
-    $("#endScreen-Activities").before(i);
 }

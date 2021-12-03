@@ -8,11 +8,12 @@ $("header").html(
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li id= nav-checkin class="nav-item menu-separation">
-          <a class="nav-link btn btn-primary text-white " id=nav-view-entries href="checkin.html">Check in</a>
+        <li class="nav-item menu-separation">
+        <div id= nav-checkin></div>
+          <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="checkin.html">Check In</a>
         </li>
         <li class="nav-item menu-separation">
-            <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="view-entries.html">My progress</a>
+            <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="view-entries.html">My Progress</a>
         </li>
         <li class="nav-item menu-separation">
             <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="./goal-setting.html?view=goals-activities">Set Goals</a>
@@ -20,7 +21,7 @@ $("header").html(
       </ul>
       <ul class="navbar-nav float-end">
         <li class="nav-item">
-          <a class="nav-link" href="?view=settings"><i class="fa fa-cog me-1"> Settings</i></a>
+          <a class="nav-link" href="checkin.html?view=settings"><i class="fa fa-cog me-1"> Settings</i></a>
         </li>
       </ul>
     </div>

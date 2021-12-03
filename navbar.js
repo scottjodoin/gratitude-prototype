@@ -11,6 +11,12 @@ $("header").html(
         <li class="nav-item">
           <a class="nav-link btn btn-primary text-white" href="checkin.html">Check in</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="view-entries.html">My progress</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="./goal-setting.html?view=goals-activities">Set Goals</a>
+        </li>
       </ul>
       <ul class="navbar-nav float-end">
         <li class="nav-item">

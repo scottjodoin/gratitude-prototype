@@ -113,7 +113,6 @@ if (_currentViewId==="goals-thankyou"){
 
 if (_currentViewId === "goals-try-firsttime"){
   $("#nav-checkin")
-    .parent()
     .append("<div class=arrow-point-up-anchor><div></div></div>");
 }
 

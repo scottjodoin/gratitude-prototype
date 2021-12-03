@@ -8,8 +8,8 @@ $("header").html(
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item menu-separation">
-          <a class="nav-link btn btn-primary text-white" id=nav-checkin href="checkin.html">Check in</a>
+        <li id= nav-checkin class="nav-item menu-separation">
+          <a class="nav-link btn btn-primary text-white " id=nav-view-entries href="checkin.html">Check in</a>
         </li>
         <li class="nav-item menu-separation">
             <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="view-entries.html">My progress</a>

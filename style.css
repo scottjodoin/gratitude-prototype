@@ -7,7 +7,9 @@ html,body{
 }
 
 body {
+  color: #faf1cfff;
   padding-bottom: 60px;
+  background-color: #282828;
 }
 
 .view {
@@ -234,4 +236,12 @@ input:checked + .btn-square {
 
 .menu-separation{
   padding: 5px;
+}
+
+.form-control {
+  background-color: #faf1cfff;
+}
+
+.form-control:focus {
+  background-color: #faf1cfff;
 }

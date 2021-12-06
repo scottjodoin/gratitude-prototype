@@ -1,4 +1,4 @@
-const _positive_colour = "seagreen";
+const _positive_colour = '#5daa68ff';
 const _negative_colour = "tomato";
 
 

@@ -195,8 +195,9 @@ input:checked + .btn-square {
 }
 
 #activity-calendar .activity-success div {
-  background-color: green !important;
+  background-color: #3f6844ff !important;
 }
+
 #activity-calendar td {
   position:relative;
   width:13%!important;
@@ -213,8 +214,8 @@ input:checked + .btn-square {
   width: 100%;
   height: 3rem;
   z-index: -1;
-  border-top:solid green 1rem;
-  border-bottom:solid green 1rem;
+  border-top:solid #3f6844ff 1rem;
+  border-bottom:solid #3f6844ff 1rem;
 }
 #activity-calendar td.activity-success + td.activity-success::after {
   display:block;
@@ -225,7 +226,7 @@ input:checked + .btn-square {
   width: 50%;
   height: 2rem;
   z-index: -1;
-  background-color: green;
+  background-color: #3f6844ff;
 }
 .card {
   background-color: #282828;
@@ -237,13 +238,24 @@ input:checked + .btn-square {
   outline-color: none;
   border-color: none !important;
 }
-
+.modal-content {
+  background-color: #282828;
+}
 .menu-separation{
   padding: 5px;
 }
 
-.form-control {
-  background-color: #faf1cfff;
+.form-control, .form-select {
+  background-color: #faf1cfff
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #efefe9;
+  opacity: 1;
+}
+
+.btn-close {
+  filter:invert();
 }
 
 .form-control:focus {

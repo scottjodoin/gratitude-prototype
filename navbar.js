@@ -13,15 +13,15 @@ $("header").html(
           <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="checkin.html">Check In</a>
         </li>
         <li class="nav-item menu-separation">
-            <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="view-entries.html">My Progress</a>
+            <a class="nav-link btn text-white" id=nav-view-entries href="view-entries.html">My Progress</a>
         </li>
         <li class="nav-item menu-separation">
-            <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="./goal-setting.html?view=goals-activities">Set Goals</a>
+            <a class="nav-link btn text-white" id=nav-view-entries href="./goal-setting.html?view=goals-activities">Set Goals</a>
         </li>
       </ul>
       <ul class="navbar-nav float-end">
         <li class="nav-item">
-          <a class="nav-link" href="checkin.html?view=settings"><i class="fa fa-cog me-1"> Settings</i></a>
+          <a class="nav-link" href="checkin.html?view=settings"><i class="fa fa-cog me-1"></i>Settings</a>
         </li>
       </ul>
     </div>

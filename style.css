@@ -178,6 +178,10 @@ input:checked + .btn-square {
   filter: invert(1);
 }
 
+#activity-calendar {
+  width:100%;
+}
+
 #activity-calendar td>div {
   height:3rem;
   width:3rem;
@@ -187,8 +191,38 @@ input:checked + .btn-square {
   border-radius: 50%;
 }
 
-#activity-calendar .activity-success {
+#activity-calendar .activity-success div {
   background-color: green !important;
+}
+#activity-calendar td {
+  position:relative;
+  width:13%!important;
+  z-index: 1;
+}
+
+#activity-calendar td.activity-success + td.activity-success::before {
+  display:block;
+  content: "";
+  position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+  left: -50%;
+  width: 100%;
+  height: 3rem;
+  z-index: -1;
+  border-top:solid green 1rem;
+  border-bottom:solid green 1rem;
+}
+#activity-calendar td.activity-success + td.activity-success::after {
+  display:block;
+  content: "";
+  position:absolute;
+  margin-top:-2.5rem;
+  left: -25%;
+  width: 50%;
+  height: 2rem;
+  z-index: -1;
+  background-color: green;
 }
 
 .navbar-menu-button:hover{

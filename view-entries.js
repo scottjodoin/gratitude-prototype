@@ -42,8 +42,8 @@ function activitySelectChanged(e){
     }
   }
 
-  $("#activity-calendar tbody td>div").each(function(index, element){
-    let date = $(element).attr("date");
+  $("#activity-calendar tbody td").each(function(index, element){
+    let date = $(element).children("div").attr("date");
     let onDate = date in activityByDate;
     console.log(activityByDate);
     $(element).toggleClass("activity-success",onDate);

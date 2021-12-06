@@ -202,7 +202,7 @@ function updateModal(){
   let dateInfo = preparedData[_entryIndex];
 
   let entryCount = preparedData.length;
-  $("#entry-nav-container").toggleClass("disabled",entryCount < 2);
+  $("#entry-nav-container").toggleClass("invisible",entryCount < 2);
   $("#entry-index-label").text((_entryIndex+1)+"/"+entryCount);
   $("#btn-prev-entry").toggleClass("disabled", _entryIndex == 0);
   $("#btn-next-entry").toggleClass("disabled", _entryIndex == entryCount-1);

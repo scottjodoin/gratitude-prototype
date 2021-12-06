@@ -22,16 +22,34 @@ function initPage() {
   )
 
   $("#activity-select").change(activitySelectChanged);
+  setTimeout(activitySelectChanged,100); // data needs to be generated first.
 }
 
 function activitySelectChanged(e){
   let activity = $("#activity-select").val();
-  let activityData = data.weeks[week].dataPoints.filter(e=>e.activity == activity);
-  let activityDataPoints = groupBy(activityData,"x");
-  console.log(data.weeks[week].dataPoints);
 
+  // get activity by date
+  let activityByDate = {};
+  for (w of data.weeks){
+    for (dataPoint of w.dataPoints){
+      if (dataPoint.activities.includes(activity)){
+        if (!(dataPoint.date in activityByDate)){
+          activityByDate[dataPoint.date] = [];
+        }
+        //console.log(activityByDate,dataPoint.date, activityByDate[dataPoint.date]);
+        activityByDate[dataPoint.date] = dataPoint;
+      }
+    }
+  }
+
+  $("#activity-calendar tbody td>div").each(function(index, element){
+    let date = $(element).attr("date");
+    let onDate = date in activityByDate;
+    console.log(activityByDate);
+    $(element).toggleClass("activity-success",onDate);
+    
+  });
 }
-
 function pointColor(context){
     var index = context.dataIndex;
 

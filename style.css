@@ -84,12 +84,15 @@ input:checked + .btn-square {
   filter: invert(1);
 }
 
-#activity-calendar td {
-  padding: 2rem 1rem;
+#activity-calendar td>div {
+  height:3rem;
+  width:3rem;
   text-align: center;
+  line-height: 3rem;
+  margin: 0 auto;
   border-radius: 50%;
 }
 
-.activity-success {
-  background-color: green;
+#activity-calendar .activity-success {
+  background-color: green !important;
 }

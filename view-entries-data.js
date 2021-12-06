@@ -226,18 +226,18 @@ const data =
 		}
 	]
 }
+let _activities = {"Exercise":"Exercise <i class=\"fas fa-running\"></i>",
+"Hygiene":"Hygiene <i class=\"fas fa-hands-wash\"></i>",
+"Cleanliness":"Cleanliness <i class=\"fas fa-broom\"></i>",
+"Social":"Social <i class=\"fas fa-users\"></i>",
+"Healthy food":"Healthy food <i class=\"fas fa-apple-alt\"></i>",
+"Outdoors":"Outdoors <i class=\"fas fa-seedling\"></i>"};
+
 assignRandomActivities();
 function assignRandomActivities(){
-    
-  let activities = ["Exercise <i class=\"fas fa-running\"></i>",
-  "Hygiene <i class=\"fas fa-hands-wash\"></i>",
-  "Cleanliness <i class=\"fas fa-broom\"></i>",
-  "Social <i class=\"fas fa-users\"></i>",
-  "Healthy food <i class=\"fas fa-apple-alt\"></i>",
-  "Outdoors <i class=\"fas fa-seedling\"></i>"];
   for(week of data.weeks){
     for (day of week.dataPoints){
-      day.activities  = activities.filter(a=>Math.random()<0.5);
+      day.activities  = Object.keys(_activities).filter(a=>Math.random()<0.5);
     }
   }
 }
@@ -259,12 +259,13 @@ function assignRandomMoods(){
       let positive = dataPoint.y > 0;
       let moodCount = Math.abs(dataPoint.y);
       let moods = [];
-      for (let k=0; k<moodCount; k++) {
+      for (let k=0; k < moodCount; k++) {
         let emotionList =  _emotion_data.filter(
           e => e.group == ((positive) ? "happy" : "upset"));
 
         let mood = emotionList[Math.floor(Math.random() * emotionList.length)];
-        moods.push(mood);
+        if (moods.indexOf(mood) == -1) moods.push(mood);
+        else k--;
       }
       dataPoint.mood = moods;
     }

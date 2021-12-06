@@ -177,3 +177,16 @@ input:checked + .btn-square {
 .btn-square:not(div):hover > img, input:checked + .btn-square > img {
   filter: invert(1);
 }
+
+#activity-calendar td>div {
+  height:3rem;
+  width:3rem;
+  text-align: center;
+  line-height: 3rem;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+#activity-calendar .activity-success {
+  background-color: green !important;
+}

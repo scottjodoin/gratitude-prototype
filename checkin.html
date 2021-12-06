@@ -29,16 +29,12 @@
 <body>
   <header></header>
   <div id=container class="container pt-4 d-flex justify-content-center">
-    <div class="d-none view" id="landing">
+    <div class="d-none view w-100" id="landing">
       <h1>Activities</h1>
-
-      <div id=Checkin-Acti-Placement></div>
-      <!-- <input type="checkbox" name="activity-check1" id="activity-check1" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check1"><i class="fa fa-person me-2"></i>Exercise</label>
-        <input type="checkbox" name="activity-check2" id="activity-check2" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check2"><i class="fa fa-car me-2"></i>Socialise</label>
-        <input type="checkbox" name="activity-check3" id="activity-check3" class="btn-check"><label
-          class="btn btn-outline-primary me-2" for="activity-check3"><i class="fa fa-bus me-2"></i>Test</label> -->
+      <p>Which activities have you completed today?</p>
+      <div class ="d-flex flex-wrap mb-4">
+        <div id=Checkin-Acti-Placement></div>
+      </div>
       <div class="w-100">
         <a class="btn btn-primary float-end" href="?view=emotions">Next</a>
       </div>
@@ -78,12 +74,12 @@
       <h1>You practiced gratitude today!</h1>
       <div id=endScreen-Activities></div>
 
-      <div class="row">
+      <div class="row w-100">
         <div class="col">
-          <a class="btn btn-outline-primary me-2" href="?view=writing">Back</a>
+          <a class="btn btn-primary me-2" href="view-entries.html">Yes</a>
         </div>
         <div class="col">
-          <a class="btn btn-primary" href="view-entries.html">Next</a>
+          <a class="btn btn-primary me-2 float-end" href="view-entries.html">Maybe Later</a>
         </div>
       </div>
     </div>
@@ -97,16 +93,36 @@
           <h5 class="modal-title" id="exampleModalLabel">Suggestions</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="row align-items-center">
-          <div class="col">Nature</div>
-          <div class="col">A cup of coffee</div>
-          <div class="col">Food</div>
+        <div class="modal-body container">
+          <div class="row my-2">
+            <div class="col">Nature</div>
+            <div class="col">A cup of coffee</div>
+            <div class="col">Food</div>
+          </div>
+          <div class="row my-2">
+            <div class="col">A cup of tea</div>
+            <div class="col">Good news</div>
+            <div class="col">Holidays</div>
+          </div>
+          <div class="row my-2">
+            <div class="col">Pet(s)</div>
+            <div class="col">Family</div>
+            <div class="col">Good friends</div>
+          </div>
+          <div class="row my-2">
+            <div class="col">Sunshine</div>
+            <div class="col">Books</div>
+            <div class="col">Warm clothing</div>
+          </div>
+          <div class="row my-2">
+            <div class="col">Good health</div>
+            <div class="col">Weekends</div>
+            <div class="col">Fresh air</div>
+          </div>
         </div>
-        <div class="row align-items-end">
-          <div class="col">A cup of tea</div>
-          <div class="col">Good news</div>
-          <div class="col">Holidays</div>
-        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
       </div>
     </div>
   </div>

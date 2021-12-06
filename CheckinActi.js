@@ -9,10 +9,7 @@ function checkinActiList()
     
     let json = actStorage.getItem("actiNameStorage");
     let k;
-    let days = ["MON","TUE","WED","THU","FRI","SAT","SUN"];
-    let id;
     activities="";
-    let listId = [];
     let jsonstore = actStorage.getItem("CheckInActiStorage");
 
     if(jsonstore==null)
@@ -23,15 +20,11 @@ function checkinActiList()
     }
 
     let list = JSON.parse(jsonstore).EachActivity;
-    let activitiesIntro="<table class=\"actitable\">";
-
 
     for(let x of _state.inputs)
     {
         let v = x["viewId"];
-        let t = x["text"];
-        let name= t.replaceAll(" ","-");
-        
+        let t = x["text"];        
 
         if(v == "goals-activities" && x["value"]==true) //activity
         {
@@ -195,21 +188,11 @@ function checkinActiList()
             hasActi = true;
             let id = x.id;
             let isChecked = (x.value == true) ? "checked" : "";
-            let l = "<div id="+id+"-div>"+
-            "<input type=checkbox class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
-            "<label class=\"btn btn-outline-primary me-2\" for="+id+">"+x.name+"</label></div>";
+            let l = "<input type=checkbox class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
+            "<label class=\"btn btn-outline-primary me-2\" for="+id+">"+x.name+"</label>";
             $("#Checkin-Acti-Placement").before(l);
             $(`#${id}`).change(CheckInActiClicked);
         }
-    }
-    if(activities === "")
-    {
-        activities="<p><strong>No activities selected. Click next to continue.</strong></p>";
-        
-    }
-    else
-    {
-        activities=activitiesIntro+activities+"</table>";
     }
 
     if(hasActi == false)
@@ -279,11 +262,9 @@ function endScreen()
     }
     else
     {
-        l="<h5>Here is your reminder to complete Activity: <strong>"+actiNotDone.substring(1,actiNotDone.length).trim()+"</strong> </h5>";
+        l="<h6>Here is your reminder to complete Activity: <strong>"+actiNotDone.substring(1,actiNotDone.length).trim()+"</strong> </h6>";
     }
     $("#endScreen-Activities").before(l);
-    let h = "<h5>Think of something that takes less than 2 minutes to complete.</h5>";
-    let i = "<h5>Are you going to do it now?<h5>";
+    let h = "<p>Think of something that takes less than 2 minutes to complete. <br> Are you going to do it now?</p>";
     $("#endScreen-Activities").before(h);
-    $("#endScreen-Activities").before(i);
 }

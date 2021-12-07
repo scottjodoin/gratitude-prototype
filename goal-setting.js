@@ -109,6 +109,20 @@ if (_currentViewId==="goals-thankyou"){
   writereminderIntro="Desired frequency for writing about your emotions:";
   let h = activitiesIntroTable+reminderIntro+"<ul>"+reminder+"</ul>"+writereminderIntro+"<ul>"+writereminder+"</ul>";
   $("#goal-summary").html(h);
+
+  if(actStorage.getItem("firstTime")===null)
+  {
+    actStorage.setItem("firstTime",true);
+  }
+  if(actStorage.getItem("firstTime")==="true")
+  {
+    alert("is issswsws");
+    $("#goals-end-next").attr("href", "?view=goals-try-firsttime");
+  }
+  else
+  {
+    $("#goals-end-next").attr("href", "index.html");
+  }
 }
 
 if (_currentViewId === "goals-try-firsttime"){

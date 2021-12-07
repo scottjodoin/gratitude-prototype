@@ -7,6 +7,10 @@ function checkinActiList()
 {
     let actStorage = window.localStorage;
     
+    // let noLonger = actStorage.getItem("visited");
+
+    actStorage.setItem("firstTime",false)
+
     let json = actStorage.getItem("actiNameStorage");
     let k;
     activities="";

@@ -10,7 +10,7 @@ if (_currentViewId === "goals-activities")
             let isChecked = (n.value == true) ? "checked" : "";
             // console.log(isChecked, n);
             let l = "<div id="+id+"-div><input type=checkbox class=\"btn-check modal-input\" id="+id+" autocomplete=\"off\" " + isChecked + ">"+
-            "<label class=\"CustomActiLeft btn btn-outline-primary me-2\" for="+id+">"+n.name+"<i class=\"ms-2 fas fa-seedling\"></i></label>"+
+            "<label class=\"CustomActiLeft btn btn-outline-primary me-2 buttonsMargin\" for="+id+">"+n.name+"<i class=\"ms-2 fas fa-seedling\"></i></label>"+
             "<button onclick=\"deleteActivity('"+id+"-div')\" class=\"actiRemoveButton CustomActiRight btn btn-outline-secondary me-2\"><i class=\"fas fa-times\"></i></button> </div>";
             $("#addAfterThis").after(l);
             $(`#${id}`).change(customActivityClicked);
@@ -44,7 +44,7 @@ function actiList()
     let actStorage = window.localStorage;
     let json = actStorage.getItem("actiNameStorage");
     let k;
-    let days = ["MON","TUE","WED","THU","FRI","SAT","SUN"];
+    let days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
     let id;
     activities="";
     let listId = [];
@@ -83,7 +83,7 @@ function actiList()
                 
                 if(inList == false)
                 {
-                    let dataparse = {name: t,day: i,id: id,  value: false};
+                    let dataparse = {name: t,day: i,id: id,  value: true};
                     list.push(dataparse);
                     let js = JSON.stringify({customDays:list});
                     actStorage.setItem("actiDayChosen",js);
@@ -99,7 +99,7 @@ function actiList()
                 }
 
                 let thisday = "<input type=\"checkbox\" class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
-                "<label class=\"btn btn-outline-light me-2\" for="+id+">"+i+"</label>";
+                "<label class=\"btn btn-outline-light me-2 buttonsMargin\" for="+id+">"+i+"</label>";
                 dayButtons=dayButtons+thisday;
                 listId.push(id);
             }
@@ -135,7 +135,7 @@ function actiList()
                     
                     if(inList == false)
                     {
-                        let dataparse = {name: x.name,day: i, id: id,  value: false};
+                        let dataparse = {name: x.name,day: i, id: id,  value: true};
                         list.push(dataparse);
                         let js = JSON.stringify({customDays:list});
                         actStorage.setItem("actiDayChosen",js);
@@ -151,7 +151,7 @@ function actiList()
                     }
 
                     let thisday = "<input type=\"checkbox\" class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
-                    "<label class=\"btn btn-outline-light me-2\" for="+id+">"+i+"</label>";
+                    "<label class=\"btn btn-outline-light me-2 buttonsMargin\" for="+id+">"+i+"</label>";
                     
                     dayButtons=dayButtons+thisday;
                     listId.push(id);

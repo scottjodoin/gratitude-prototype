@@ -203,7 +203,7 @@ function (e){
     document.querySelector('.acti-add').style.display='none';
     let l = "<div id="+id+"-div><input type=\"checkbox\" class=\"btn-check\" id="+id+" autocomplete=\"off\">"+
     "<label class=\"CustomActiLeft btn btn-outline-primary me-2\" for="+id+">"+inputText+"<i class=\"ms-2 fas fa-seedling\"></i></label>"+
-    "<button onclick=\"deleteActivity('"+id+"-div')\" class=\"actiRemoveButton CustomActiRight btn btn-outline-secondary me-2\"><i class=\"fas fa-times\"></i></button> </div>";
+    "<button onclick=\"deleteActivity('"+id+"-div')\" class=\"buttonsMargin actiRemoveButton CustomActiRight btn btn-outline-secondary me-2\"><i class=\"fas fa-times\"></i></button> </div>";
     $("#addAfterThis").after(l);
     $(`#${id}`).change(customActivityClicked);
   }

@@ -17,7 +17,9 @@ function initPage() {
   $("#activity-select")
   .html(
     Object.keys(_activities).map(e => {
-      return `<option value="${e}">${_activities[e]}</option>`;
+      let activity = _activities[e];
+      console.log(activity);
+      return `<option value="${e}">${activity}</option>`;
     }).join("")
   )
 
@@ -45,7 +47,6 @@ function activitySelectChanged(e){
   $("#activity-calendar tbody td").each(function(index, element){
     let date = $(element).children("div").attr("date");
     let onDate = date in activityByDate;
-    console.log(activityByDate);
     $(element).toggleClass("activity-success",onDate);
     
   });

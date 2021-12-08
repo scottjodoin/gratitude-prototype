@@ -28,7 +28,8 @@ function checkinActiList()
     for(let x of _state.inputs)
     {
         let v = x["viewId"];
-        let t = x["text"];        
+        let t = x["html"];
+        let html = x["html"];        
 
         if(v == "goals-activities" && x["value"]==true) //activity
         {
@@ -49,7 +50,7 @@ function checkinActiList()
 
             if(inList == false)
             {
-                let dataparse = {name: t, id: id,  value: false, exist: true};
+                let dataparse = {name: t, html: html, id: id,  value: false, exist: true};
                 list.push(dataparse);
                 let js = JSON.stringify({EachActivity:list});
                 actStorage.setItem("CheckInActiStorage",js);
@@ -99,7 +100,7 @@ function checkinActiList()
 
                 if(inList == false)
                 {
-                    let dataparse = {name: x.name, id: id,  value: false, exist: true};
+                    let dataparse = {name: x.name, html: html, id: id,  value: false, exist: true};
                     list.push(dataparse);
                     let js = JSON.stringify({EachActivity:list});
                     actStorage.setItem("CheckInActiStorage",js);
@@ -193,7 +194,7 @@ function checkinActiList()
             let id = x.id;
             let isChecked = (x.value == true) ? "checked" : "";
             let l = "<input type=checkbox class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
-            "<label class=\"btn btn-outline-primary me-2 buttonsMargin\" for="+id+">"+x.name+"</label>";
+            "<label class=\"btn btn-outline-primary me-2 buttonsMargin\" for="+id+">"+x.html+"</label>";
             $("#Checkin-Acti-Placement").before(l);
             $(`#${id}`).change(CheckInActiClicked);
         }
@@ -266,9 +267,9 @@ function activityReminder()
     }
     else
     {
-        l="<h2>Here is your reminder to complete these activities:<br><strong><ul>" + actiNotDone + "</ul></strong></h2>";
+        l="<h3>Here is your reminder to complete one or more of these activities:</h3><h2><ul>" + actiNotDone + "</ul></h2>";
         $("#endScreen-Activities").before(l);
-        let h = "<p>Think of something that takes less than 2 minutes to complete.</p><h2>Are you going to do it now?</h2>";
+        let h = "<p>Think of something that takes less than <strong>2 minutes</strong> to complete.</p><h2>Are you going to do it now?</h2>";
         $("#endScreen-Activities").before(h);
     }
 

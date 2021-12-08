@@ -83,6 +83,7 @@ function changeRadioInput(e) {
     radioId: e.target.id,
     viewId: $(e.target).closest(".view")[0].id,
     text: $(`label[for=${e.target.id}]`).text(),
+    html: $(`label[for=${e.target.id}]`).html(),
     type: "radio",
   };
 
@@ -96,6 +97,7 @@ function changeCheckboxInput(e) {
     elemId: e.target.id,
     viewId: $(e.target).closest(".view")[0].id,
     text: $(`label[for=${e.target.id}]`).text(),
+    html: $(`label[for=${e.target.id}]`).html(),
     value: e.target.checked,
     type: "checkbox",
   };

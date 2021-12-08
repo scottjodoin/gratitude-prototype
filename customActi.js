@@ -61,7 +61,7 @@ function actiList()
     {
         let v = x["viewId"];
         let t = x["text"];
-        
+        let html = x["html"];
 
         if(v == "goals-activities" && x["value"]==true) //activity
         {
@@ -83,7 +83,7 @@ function actiList()
                 
                 if(inList == false)
                 {
-                    let dataparse = {name: t,day: i,id: id,  value: true};
+                    let dataparse = {name: t, html: html, day: i,id: id,  value: true};
                     list.push(dataparse);
                     let js = JSON.stringify({customDays:list});
                     actStorage.setItem("actiDayChosen",js);
@@ -104,7 +104,7 @@ function actiList()
                 listId.push(id);
             }
             // let werk = "<tr><td class=\"actirows\">"+t+"</td><td>"+dayButtons+"</td></tr>";
-            activities=activities+"<tr><td class=\"actirows\">"+t+"</td><td>"+dayButtons+"</td></tr>";
+            activities=activities+"<tr><td class=\"actirows\">"+html+"</td><td>"+dayButtons+"</td></tr>";
         }
     }
 
@@ -135,7 +135,7 @@ function actiList()
                     
                     if(inList == false)
                     {
-                        let dataparse = {name: x.name,day: i, id: id,  value: true};
+                        let dataparse = {name: x.name,html: html, day: i, id: id,  value: true};
                         list.push(dataparse);
                         let js = JSON.stringify({customDays:list});
                         actStorage.setItem("actiDayChosen",js);
@@ -158,7 +158,7 @@ function actiList()
                 }
 
                 // let werk = "<tr><td class=\"actirows\">"+x.name+"</td><td>"+dayButtons+"</td></tr>";
-                activities=activities+"<tr><td class=\"actirows\">"+x.name+"</td><td>"+dayButtons+"</td></tr>";
+                activities=activities+"<tr><td class=\"actirows\">"+x.html+"</td><td>"+dayButtons+"</td></tr>";
             }
         }
     }

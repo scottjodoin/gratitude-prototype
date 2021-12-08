@@ -16,6 +16,7 @@ if (_currentViewId==="goals-thankyou"){
   {
     let v = x["viewId"];
     let t = x["text"];
+    let html = x["html"];	
     if(v == "goals-activities" && x["value"]==true) //activity
     {
       actiNum++;
@@ -41,7 +42,7 @@ if (_currentViewId==="goals-thankyou"){
         daytext=daytext.substr(0,daytext.length-1);
       }
       
-      activitiesTable=activitiesTable+"<tr><td>"+t+"</td><td>"+daytext+"</td></tr>";
+      activitiesTable=activitiesTable+"<tr><td>"+html+"</td><td>"+daytext+"</td></tr>";
     }
     else if(v== "goals-checkin-freq" && t.length > 0) //check in reminder
     {
@@ -100,7 +101,7 @@ if (_currentViewId==="goals-thankyou"){
       activitiesIntro="Activities";
     }
     activitiesIntro+=" chosen to track";
-    activitiesIntroTable="<table class=\"actitable\"><tr><th>"+activitiesIntro+"</th><th>Day(s) chosen to complete activity on</th></tr>";
+    activitiesIntroTable="<table class=\"actitable mb-4\"><tr><th>"+activitiesIntro+"</th><th>Day(s) chosen to complete activity on</th></tr>";
     activitiesIntroTable=activitiesIntroTable+activitiesTable+"</table>";
   }
   if(reminder.length>0)

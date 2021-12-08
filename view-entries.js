@@ -42,8 +42,8 @@ function activitySelectChanged(e){
     }
   }
 
-  $("#activity-calendar tbody td>div").each(function(index, element){
-    let date = $(element).attr("date");
+  $("#activity-calendar tbody td").each(function(index, element){
+    let date = $(element).children("div").attr("date");
     let onDate = date in activityByDate;
     console.log(activityByDate);
     $(element).toggleClass("activity-success",onDate);
@@ -202,7 +202,7 @@ function updateModal(){
   let dateInfo = preparedData[_entryIndex];
 
   let entryCount = preparedData.length;
-  $("#entry-nav-container").toggleClass("disabled",entryCount < 2);
+  $("#entry-nav-container").toggleClass("invisible",entryCount < 2);
   $("#entry-index-label").text((_entryIndex+1)+"/"+entryCount);
   $("#btn-prev-entry").toggleClass("disabled", _entryIndex == 0);
   $("#btn-next-entry").toggleClass("disabled", _entryIndex == entryCount-1);

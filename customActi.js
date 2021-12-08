@@ -99,7 +99,7 @@ function actiList()
                 }
 
                 let thisday = "<input type=\"checkbox\" class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
-                "<label class=\"btn btn-outline-light me-2 buttonsMargin\" for="+id+">"+i+"</label>";
+                "<label class=\"btn btn-outline-secondary me-2 buttonsMargin\" for="+id+">"+i+"</label>";
                 dayButtons=dayButtons+thisday;
                 listId.push(id);
             }

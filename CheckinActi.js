@@ -201,6 +201,8 @@ function checkinActiList()
 
     if(hasActi == false)
     {
+        $("#landing").addClass("d-none");
+        $("#landing-default")[0].click();
         let l = "<p><strong>No activities have been selected to track.</p>";
         $("#Checkin-Acti-Placement").before(l);
     }
@@ -221,13 +223,12 @@ function CheckInActiClicked(e){
     actStorage.setItem("CheckInActiStorage", JSON.stringify(json));
 }
 
-if(_currentViewId === "EndScreen")
+if(_currentViewId === "activity-reminder")
 {
-    // alert("EEEEEEEEEEEEEEEEEEEE");
-    endScreen();
+    activityReminder();
 }
 
-function endScreen()
+function activityReminder()
 {
     let actStorage = window.localStorage;
     let jsonstore = actStorage.getItem("CheckInActiStorage");
@@ -239,12 +240,12 @@ function endScreen()
     {
         
         let actilist = JSON.parse(jsonstore).EachActivity;
-        console.log(actilist);
+        
         for(let x of actilist)
         {
             if(x.value==false && x.exist == true)
             {
-                actiNotDone=actiNotDone+", "+x.name.trim();
+                actiNotDone += "<li>"+x.name.trim() + "</li>";
             }
             if(x.value==true && x.exist == true)
             {
@@ -255,20 +256,21 @@ function endScreen()
 
     if(actiNotDone === "")
     {
-        if(pass == true)
-        {
-            l="<h5><strong>All activities are completed.</strong> </h5>";
-        }
-        else
-        {
-            l="<h5><strong>No activities are being tracked.</strong> </h5>";
-        }
+
+      l = (pass == true)
+        ? "<h5><strong>All activities are completed.</strong> </h5>"
+        : "<h5><strong>No activities are being tracked.</strong> </h5>";
+        $("#endScreen-Activities").before(l);
+        $("#activity-reminder").addClass("d-none");
+        $("#activity-reminder-default")[0].click(); // click on the button
     }
     else
     {
-        l="<h6>Here is your reminder to complete Activity: <strong>"+actiNotDone.substring(1,actiNotDone.length).trim()+"</strong> </h6>";
+        l="<h2>Here is your reminder to complete these activities:<br><strong><ul>" + actiNotDone + "</ul></strong></h2>";
+        $("#endScreen-Activities").before(l);
+        let h = "<p>Think of something that takes less than 2 minutes to complete.</p><h2>Are you going to do it now?</h2>";
+        $("#endScreen-Activities").before(h);
     }
-    $("#endScreen-Activities").before(l);
-    let h = "<p>Think of something that takes less than 2 minutes to complete. <br> Are you going to do it now?</p>";
-    $("#endScreen-Activities").before(h);
+
+    
 }

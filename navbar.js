@@ -27,3 +27,5 @@ $("header").html(
     </div>
   </div>
 </nav>`);
+
+document.title = "Myndful.ly";

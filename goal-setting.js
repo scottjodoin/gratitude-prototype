@@ -116,7 +116,6 @@ if (_currentViewId==="goals-thankyou"){
   }
   if(actStorage.getItem("firstTime")==="true")
   {
-    alert("is issswsws");
     $("#goals-end-next").attr("href", "?view=goals-try-firsttime");
   }
   else

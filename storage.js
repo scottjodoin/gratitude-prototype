@@ -38,10 +38,23 @@ function updateRadioGroup(radioName, value) {
 }
 
 function initViewInputs() {
-  $(".view textarea").change(changeTextAreaInput);
-  $(".view input[type=radio]").change(changeRadioInput);
-  $(".view input[type=checkbox]").change(changeCheckboxInput);
-  $(".view input[type=text]").change(changeTextInput)
+  $(".view textarea")
+    .change(changeTextAreaInput)
+    .each((i, e) => {changeTextAreaInput({target:e});});
+
+  $(".view input[type=radio]")
+    .change(changeRadioInput)
+  $(".view input[type=radio]:checked")
+    .each((i, e) => {changeRadioInput({target:e});});
+
+  $(".view input[type=checkbox]")
+    .change(changeCheckboxInput)
+    .each((i, e) => {changeCheckboxInput({target:e});});
+
+  $(".view input[type=text]")
+    .change(changeTextInput)
+    .each((i, e) => {changeTextInput({target:e});});
+
 }
 
 function changeTextAreaInput(e) {
@@ -67,7 +80,7 @@ function changeTextInput(e) {
 }
 
 function changeRadioInput(e) {
-  if (!e.target.checked) return;
+  if (!e.target || !e.target.checked) return;
 
   let data = {
     elemId: e.target.getAttribute("name"),
@@ -81,6 +94,8 @@ function changeRadioInput(e) {
 }
 
 function changeCheckboxInput(e) {
+  if (!e.target || !e.target.checked) return;
+  
   let data = {
     elemId: e.target.id,
     viewId: $(e.target).closest(".view")[0].id,

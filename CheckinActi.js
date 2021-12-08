@@ -246,7 +246,7 @@ function activityReminder()
         {
             if(x.value==false && x.exist == true)
             {
-                actiNotDone += "<li>"+x.name.trim() + "</li>";
+                actiNotDone += "<li>"+x.html.trim() + "</li>";
             }
             if(x.value==true && x.exist == true)
             {

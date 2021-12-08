@@ -14,15 +14,14 @@ $("#btn-next-entry").click(btnNextEntryClicked);
 
 initPage();
 function initPage() {
-  $("#activity-select")
-  .html(
-    Object.keys(_activities).map(e => {
-      let activity = _activities[e];
-      console.log(activity);
-      return `<option value="${e}">${activity}</option>`;
-    }).join("")
-  )
 
+  let selectHtml = Object.keys(_activities).map(e => {
+      let activity = _activities[e];
+      return `<option value="${e}"><span>${activity}</span></option>`;
+    }).join("");
+  
+  $("#activity-select").html(selectHtml);
+  
   $("#activity-select").change(activitySelectChanged);
   setTimeout(activitySelectChanged,100); // data needs to be generated first.
 }

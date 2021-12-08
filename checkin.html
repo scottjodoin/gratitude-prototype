@@ -32,7 +32,7 @@
         <div id=Checkin-Acti-Placement></div>
       </div>
       <div class="w-100">
-        <a class="btn btn-primary float-end" href="?view=emotions">Next</a>
+        <a id=landing-default class="btn btn-primary float-end" href="?view=emotions">Next</a>
       </div>
     </div>
 
@@ -60,23 +60,29 @@
 
       <div class="w-100">
         <a class="btn btn-outline-primary me-2 float-start" href="?view=emotions">Back</a>
-        <a class="btn btn-primary float-end" href="?view=EndScreen">Next</a>
+        <a class="btn btn-primary float-end" href="?view=activity-reminder">Next</a>
+      </div>
+    </div>
+
+    <div class="d-none view" id="activity-reminder">
+      <div id=endScreen-Activities></div>
+
+      <div class="w-100 mt-5">
+        <a class="btn btn-primary float-start" href="?view=writing">Prev</a>
+        <a id=activity-reminder-default class="btn btn-primary float-end" href="?view=EndScreen">Yes</a>
+        <a class="btn btn-primary float-end me-3" href="?view=EndScreen">Maybe later</a>
       </div>
     </div>
 
     <div class="d-none view" id="EndScreen">
-      <i class="fas fa-check-circle mb-4" style="align-self:center; font-size: 1000%; color: lightgreen;"></i>
+      <i
+        class="fas fa-check-circle mb-4"
+        style="align-self:center; font-size: 1000%; color: lightgreen;"></i>
 
       <h1>You practiced gratitude today!</h1>
-      <div id=endScreen-Activities></div>
-
-      <div class="row w-100">
-        <div class="col">
-          <a class="btn btn-primary me-2" href="view-entries.html">Yes</a>
-        </div>
-        <div class="col">
-          <a class="btn btn-primary me-2 float-end" href="view-entries.html">Maybe Later</a>
-        </div>
+      <p>You can now go see your progress.</p>
+      <div class="w-100">
+        <a class="btn btn-primary" href="view-entries.html">See My Progress</a>
       </div>
     </div>
   </div>

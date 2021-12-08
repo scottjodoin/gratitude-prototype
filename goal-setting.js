@@ -218,8 +218,10 @@ function (e){
     let l = "<div id="+id+"-div><input type=\"checkbox\" class=\"btn-check\" id="+id+" autocomplete=\"off\">"+
     "<label class=\"CustomActiLeft btn btn-outline-primary me-2\" for="+id+">"+inputText+"<i class=\"ms-2 fas fa-seedling\"></i></label>"+
     "<button onclick=\"deleteActivity('"+id+"-div')\" class=\"buttonsMargin actiRemoveButton CustomActiRight btn btn-outline-secondary me-2\"><i class=\"fas fa-times\"></i></button> </div>";
-    $("#addAfterThis").after(l);
+    $("#addAfterThis")
+      .after(l);
     $(`#${id}`).change(customActivityClicked);
+    $(`#${id}`)[0].click();
   }
   e.preventDefault();
 });

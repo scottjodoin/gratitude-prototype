@@ -20,7 +20,7 @@ function loadViewInputs() {
     if (i.pageId != _pageId) continue;
     
     let elem = document.getElementById(i.elemId);
-    console.log(i, elem);
+    
     if (elem == null) continue;
     if (i.type === "radio") updateRadioGroup(i.elemId, i.text); // elemId of radio is the name
     if (i.type === "checkbox") elem.checked = i.value;

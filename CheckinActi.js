@@ -100,7 +100,7 @@ function checkinActiList()
 
                 if(inList == false)
                 {
-                    let dataparse = {name: x.name, html: html, id: id,  value: false, exist: true};
+                    let dataparse = {name: x.name, html: x.html, id: id,  value: false, exist: true};
                     list.push(dataparse);
                     let js = JSON.stringify({EachActivity:list});
                     actStorage.setItem("CheckInActiStorage",js);

@@ -1,7 +1,7 @@
 $("header").html(
   `<nav class="navbar navbar-expand-md bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="index.html">LOGO</a>
+    <a class="navbar-brand" href="view-entries.html"> <img src="./img/myndful_cream.png" width="200" height="35" class="d-inline-block align-text-top"></a>
     <button class="navbar-menu-button navbar-dark navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

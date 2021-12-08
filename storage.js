@@ -9,7 +9,7 @@ initStorage();
 function initStorage(){
   loadState();
   loadViewInputs();
-  
+
   //input init events
   initViewInputs();
 }
@@ -28,7 +28,7 @@ function loadViewInputs() {
   }
 }
 function assignTextArea(elem, text){
-  setTimeout(()=>{elem.value = text;},100);
+  setTimeout(()=>{elem.value = text;},50);
 }
 function updateRadioGroup(radioName, value) {
   $(`input[type=radio][name=${radioName}]`).each((i, e) => {
@@ -37,9 +37,7 @@ function updateRadioGroup(radioName, value) {
 }
 
 function initViewInputs() {
-  $(".view textarea")
-    .change(changeTextAreaInput)
-    .each((i, e) => {changeTextAreaInput({target:e});});
+  $(".view textarea").change(changeTextAreaInput);
 
   $(".view input[type=radio]")
     .change(changeRadioInput);
@@ -51,9 +49,7 @@ function initViewInputs() {
   $(".view input[type=checkbox]")
     .each((i, e) => {changeCheckboxInput({target:e});});
 
-  $(".view input[type=text]")
-    .change(changeTextInput)
-    .each((i, e) => {changeTextInput({target:e});});
+  $(".view input[type=text]").change(changeTextInput);
 
 }
 

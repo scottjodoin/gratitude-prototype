@@ -28,8 +28,8 @@ function checkinActiList()
     for(let x of _state.inputs)
     {
         let v = x["viewId"];
-        let t = x["html"];
-        let html = x["html"];        
+        let t = x["text"];
+        let html = x["html"] || t;        
 
         if(v == "goals-activities" && x["value"]==true) //activity
         {
@@ -194,7 +194,7 @@ function checkinActiList()
             let id = x.id;
             let isChecked = (x.value == true) ? "checked" : "";
             let l = "<input type=checkbox class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
-            "<label class=\"btn btn-outline-primary me-2 buttonsMargin\" for="+id+">"+x.html+"</label>";
+            "<label class=\"btn btn-outline-primary me-2 buttonsMargin\" for="+id+">"+x.html || x.text +"</label>";
             $("#Checkin-Acti-Placement").before(l);
             $(`#${id}`).change(CheckInActiClicked);
         }

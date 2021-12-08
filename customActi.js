@@ -135,7 +135,7 @@ function actiList()
                     
                     if(inList == false)
                     {
-                        let dataparse = {name: x.name,html: html, day: i, id: id,  value: true};
+                        let dataparse = {name: x.name, html: x.name + `<i class="ms-2 fas fa-seedling"></i>`, day: i, id: id,  value: true};
                         list.push(dataparse);
                         let js = JSON.stringify({customDays:list});
                         actStorage.setItem("actiDayChosen",js);
@@ -151,13 +151,14 @@ function actiList()
                     }
 
                     let thisday = "<input type=\"checkbox\" class=\"btn-check\" id="+id+" autocomplete=\"off\" "+isChecked+">"+
-                    "<label class=\"btn btn-outline-light me-2 buttonsMargin\" for="+id+">"+i+"</label>";
+                    "<label class=\"btn btn-outline-secondary me-2 buttonsMargin\" for="+id+">"+i+"</label>";
                     
                     dayButtons=dayButtons+thisday;
                     listId.push(id);
                 }
 
                 // let werk = "<tr><td class=\"actirows\">"+x.name+"</td><td>"+dayButtons+"</td></tr>";
+                console.log(x);
                 activities=activities+"<tr><td class=\"actirows\">"+x.html+"</td><td>"+dayButtons+"</td></tr>";
             }
         }

@@ -84,7 +84,7 @@ if (_currentViewId==="goals-thankyou"){
           daytext=daytext.trim();
           daytext=daytext.substr(0,daytext.length-1);
         }
-        activitiesTable=activitiesTable+"<tr><td>"+x.name+"</td><td>"+daytext+"</td></tr>";
+        activitiesTable=activitiesTable+"<tr><td>"+x.html+"</td><td>"+daytext+"</td></tr>";
       }
     }
   }
@@ -207,7 +207,7 @@ function (e){
 
     let j = inputText.replaceAll(" ","-");
     let id = "act-"+j;
-    let dataparse = {name: inputText,id: id,  value: false};
+    let dataparse = {name: inputText, html: inputText + `<i class="ms-2 fas fa-seedling"></i>`, id: id,  value: false};
     let k = JSON.parse(json).customInputs;
 
     k.push(dataparse);

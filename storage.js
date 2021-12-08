@@ -8,9 +8,8 @@ initStorage();
 
 function initStorage(){
   loadState();
-
   loadViewInputs();
-
+  
   //input init events
   initViewInputs();
 }
@@ -43,12 +42,13 @@ function initViewInputs() {
     .each((i, e) => {changeTextAreaInput({target:e});});
 
   $(".view input[type=radio]")
-    .change(changeRadioInput)
-  $(".view input[type=radio]:checked")
+    .change(changeRadioInput);
+  $(".view input[type=radio][checked]")
     .each((i, e) => {changeRadioInput({target:e});});
 
   $(".view input[type=checkbox]")
-    .change(changeCheckboxInput)
+    .change(changeCheckboxInput);
+  $(".view input[type=checkbox]")
     .each((i, e) => {changeCheckboxInput({target:e});});
 
   $(".view input[type=text]")
@@ -94,7 +94,7 @@ function changeRadioInput(e) {
 }
 
 function changeCheckboxInput(e) {
-  if (!e.target || !e.target.checked) return;
+  if (!e.target) return;
   
   let data = {
     elemId: e.target.id,

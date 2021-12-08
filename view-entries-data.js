@@ -87,9 +87,30 @@ const data =
 					"date": "2021-08-09"
 				},
 				{
+					"y": -3,
+					"x": "Monday",
+					"entry": "- Uneasy lies the head that wears a crown.\n-  I can again thy former light restore...\n-  Plots have I laid, inductions dangerous.\n-  Be not afraid of greatness.\n-  That it should come to this!\n",
+					"mood":[],
+					"date": "2021-08-09"
+				},
+				{
 					"y": 3,
 					"x": "Tuesday",
 					"entry": "- An observed bonsai is a lettuce of the mind.\n-  A sweatshirt is a flagging peony.\n-  Framed in a different way, a field is the class of a shoemaker.\n-  The debtor of a building becomes a contrate toilet.\n-  A drawer of the zoo is assumed to be a fervid delivery.\n",
+					"mood":[],
+					"date": "2021-08-10"
+				},
+				{
+					"y": 2,
+					"x": "Tuesday",
+					"entry": "- I come to bury Caesar, not to praise him.\n-  Let there be some more test made of my metal...\n-  Men at some times are masters of their fates.\n-  Another moon: but, O, methinks, how slow...\n-  A horse! a horse! my kingdom for a horse!\n",
+					"mood":[],
+					"date": "2021-08-10"
+				},
+				{
+					"y": -1,
+					"x": "Tuesday",
+					"entry": "- There is nothing good or bad, but thinking makes it so.\n-  And fall thy edgeless sword; despair, and die!\n-  Tempt not a desparate man.\n",
 					"mood":[],
 					"date": "2021-08-10"
 				},
@@ -169,6 +190,13 @@ const data =
 					"date": "2021-08-20"
 				},
 				{
+					"y": 5,
+					"x": "Friday",
+					"entry": "- Groping for trouts in a peculiar river.\n-  Disguise fair nature with hard-favor'd rage\n-  Brevity is the soul of wit.\n-  Plots have I laid, inductions dangerous.\n",
+					"mood":[],
+					"date": "2021-08-20"
+				},
+				{
 					"y": 2,
 					"x": "Saturday",
 					"entry": "- Far from the truth, some posit the nymphal stocking to be less than elapsed.\n-  What we don't know for sure is whether or not authors often misinterpret the cast as a typic closet, when in actuality it feels more like a precast arrow.\n-  A smileless albatross without angoras is truly a brick of drifty cokes.\n-  An unblamed way without carnations is truly a column of writhen games.\n-  Extending this logic, before sphynxes, wrinkles were only shoulders.\n",
@@ -219,6 +247,27 @@ const data =
 					"y": 2,
 					"x": "Friday",
 					"entry": "- A panda can hardly be considered a rival prosecution without also being a den.\n-  However, one cannot separate bases from smeary undershirts.\n-  The first ovine willow is, in its own way, a squash.\n-  Some posit the naggy revolver to be less than upstage.\n-  Candles are lathy dashboards.\n",
+					"mood":[],
+					"date": "2021-08-27"
+				},
+				{
+					"y": 1,
+					"x": "Friday",
+					"entry": "- Legitimate Edgar, I must have your land...\n-  My salad days, when I was green in judgment...\n-  Time shall unfold what plighted cunning hides.\n",
+					"mood":[],
+					"date": "2021-08-27"
+				},
+				{
+					"y": -3,
+					"x": "Friday",
+					"entry": "- Our doubts are traitors...\n-  We are such stuff as dreams are made on...\n-  Mortality and mercy in Vienna...\n",
+					"mood":[],
+					"date": "2021-08-27"
+				},
+				{
+					"y": 4,
+					"x": "Friday",
+					"entry": "- He hearkens after prophecies and dreams.\n-  Meantime we shall express our darker purpose...\n-  If you wrong us, shall we not revenge?\n",
 					"mood":[],
 					"date": "2021-08-27"
 				},

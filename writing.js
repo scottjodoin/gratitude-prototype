@@ -1,10 +1,10 @@
+
 $(function () {
   let $mytext = $("#entryTextarea");
   // $mytext.val("- \n- \n- ");
 
   $mytext.on("keydown", mytextKeyDown);
   $mytext.on("keyup", mytextKeyUp);
-
   let _shiftDown = false;
 
   function mytextKeyUp(e) {

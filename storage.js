@@ -8,7 +8,6 @@ initStorage();
 
 function initStorage(){
   loadState();
-
   loadViewInputs();
 
   //input init events
@@ -20,7 +19,7 @@ function loadViewInputs() {
     if (i.pageId != _pageId) continue;
     
     let elem = document.getElementById(i.elemId);
-    console.log(i, elem);
+    
     if (elem == null) continue;
     if (i.type === "radio") updateRadioGroup(i.elemId, i.text); // elemId of radio is the name
     if (i.type === "checkbox") elem.checked = i.value;
@@ -29,7 +28,7 @@ function loadViewInputs() {
   }
 }
 function assignTextArea(elem, text){
-  setTimeout(()=>{elem.value = text;},100);
+  setTimeout(()=>{elem.value = text;},50);
 }
 function updateRadioGroup(radioName, value) {
   $(`input[type=radio][name=${radioName}]`).each((i, e) => {
@@ -39,9 +38,19 @@ function updateRadioGroup(radioName, value) {
 
 function initViewInputs() {
   $(".view textarea").change(changeTextAreaInput);
-  $(".view input[type=radio]").change(changeRadioInput);
-  $(".view input[type=checkbox]").change(changeCheckboxInput);
-  $(".view input[type=text]").change(changeTextInput)
+
+  $(".view input[type=radio]")
+    .change(changeRadioInput);
+  $(".view input[type=radio][checked]")
+    .each((i, e) => {changeRadioInput({target:e});});
+
+  $(".view input[type=checkbox]")
+    .change(changeCheckboxInput);
+  $(".view input[type=checkbox]")
+    .each((i, e) => {changeCheckboxInput({target:e});});
+
+  $(".view input[type=text]").change(changeTextInput);
+
 }
 
 function changeTextAreaInput(e) {
@@ -67,13 +76,14 @@ function changeTextInput(e) {
 }
 
 function changeRadioInput(e) {
-  if (!e.target.checked) return;
+  if (!e.target || !e.target.checked) return;
 
   let data = {
     elemId: e.target.getAttribute("name"),
     radioId: e.target.id,
     viewId: $(e.target).closest(".view")[0].id,
     text: $(`label[for=${e.target.id}]`).text(),
+    html: $(`label[for=${e.target.id}]`).html(),
     type: "radio",
   };
 
@@ -81,10 +91,13 @@ function changeRadioInput(e) {
 }
 
 function changeCheckboxInput(e) {
+  if (!e.target) return;
+  
   let data = {
     elemId: e.target.id,
     viewId: $(e.target).closest(".view")[0].id,
     text: $(`label[for=${e.target.id}]`).text(),
+    html: $(`label[for=${e.target.id}]`).html(),
     value: e.target.checked,
     type: "checkbox",
   };

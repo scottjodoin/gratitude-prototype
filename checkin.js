@@ -3,7 +3,7 @@ let activityCount = 0;
 if (jsonstore != null){
   activityCount = JSON.parse(jsonstore)
     .EachActivity
-    .filter(a=>a.exit)
+    .filter(a=>a.exist)
     .length;
 }
 

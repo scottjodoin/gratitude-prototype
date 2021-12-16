@@ -20,12 +20,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="custom.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="progress-tracker.css">
 </head>
 
 <body>
   <header></header>
   <div id=container class="container pt-4 d-flex justify-content-center">
     <div class="d-none view w-100" id="landing">
+      <div class="progress-tracker" progress="1/5"></div>
       <h1>Activities</h1>
       <p>Which activities have you completed today?</p>
       <div class ="d-flex flex-wrap mb-4">
@@ -37,6 +39,7 @@
     </div>
 
     <div class="d-none view" style="max-width: none;" id="emotions">
+      <div class="progress-tracker" progress="2/5"></div>
       <h1>Emotions</h1>
 
       <p>What emotions can you recall feeling today? Select any and all that apply:</p>
@@ -49,6 +52,7 @@
     </div>
 
     <div class="d-none view" id="writing">
+      <div class="progress-tracker" progress="3/5"></div>
       <h1>What are 3 things that you're grateful for today?</h1>
       <div class="w-100"><button class="btn btn-info float-end" type="button" data-bs-toggle="modal"
           data-bs-target="#suggestion-box" aria-expanded="false" aria-controls="suggestionBox">Suggestions</button>
@@ -65,6 +69,7 @@
     </div>
 
     <div class="d-none view" id="activity-reminder">
+      <div class="progress-tracker" progress="4/5"></div>
       <div id=endScreen-Activities></div>
 
       <div class="w-100 mt-5">
@@ -76,6 +81,7 @@
     </div>
 
     <div class="d-none view" id="EndScreen">
+      <div class="progress-tracker" progress="5/5"></div>
       <i
         class="fas fa-check-circle mb-4"
         style="align-self:center; font-size: 1000%; color: lightgreen;"></i>
@@ -148,6 +154,10 @@
   <script src="warnings.js"></script>
   <script src="writing.js"> </script>
   <script src="CheckinActi.js"> </script>
+  <script src="checkin.js"></script>
+  <script src="progress-tracker.js"> </script>
+
+
 </body>
 
 </html>

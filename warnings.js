@@ -1,4 +1,5 @@
 // this file will warn users.
+// sweetalert2 would also have been an option but it would not match the style.
 let _warningModal;
 warningInit();
 
@@ -11,10 +12,30 @@ if (_currentViewId==="goals-activities"){
       e.preventDefault();
       warningMessage({
         title: "Are you sure?",
-        message: "You have not checked in any activities yet. That's fine. It just means no activities will be tracked in the check-in process.",
+        message: "You have not selected any activities. Are you sure that you don’t want to track any in the check-in process?",
         success: ()=>{window.location=$(e.target).attr("href");},
         okText: "Yes, continue"
-    })});
+      });
+  });
+}
+
+if (_currentViewId==="writing"){
+  $("#writing-next").click(function(e){
+    // check to see if user has entered three lines
+    if ($("#entryTextarea")
+      .val()
+      .split("\n")
+      .filter(l=>l.substring(2).match(/\w+/g) != null) // only lines with two characters
+      .length >= 3) return;
+
+    e.preventDefault();
+    warningMessage({
+      title: "Are you sure?",
+      message: "You have written fewer than three things. Are you sure you want to continue?",
+      success: ()=>{window.location=$(e.target).attr("href");},
+      okText: "Yes, continue"
+    });
+});
 }
 
 function warningInit(){

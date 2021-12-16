@@ -68,7 +68,7 @@ if (_currentViewId==="goals-activities-day"){
       e.preventDefault();
       warningMessage({
         title: "Are you sure?",
-        message: "There is at least one activity that has no days selected. Are you sure that you don't want to track it?",
+        message: "There is at least one activity that has no days selected. Are you sure that you want to do this?",
         success: ()=>{window.location=$(e.target).attr("href");},
         okText: "Yes, continue"
       });

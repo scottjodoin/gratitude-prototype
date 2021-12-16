@@ -3,6 +3,7 @@
 let _warningModal;
 warningInit();
 
+
 if (_currentViewId==="goals-activities"){
   $("#goals-activities-next").click(function(e){
       // check if any activities are checked
@@ -15,6 +16,23 @@ if (_currentViewId==="goals-activities"){
         message: "You have not selected any activities. Are you sure that you don’t want to track any in the check-in process?",
         success: ()=>{window.location=$(e.target).attr("href");},
         okText: "Yes, continue"
+      });
+  });
+}
+
+if (_currentViewId==="emotions"){
+  $("#emotions-next").click(function(e){
+      // check if any activities are checked
+      if ($("#emotions")
+        .find("input:checked").length > 0) return;
+
+      e.preventDefault();
+      warningMessage({
+        title: "Are you sure?",
+        message: "You have not selected any emotions. Are you sure that you don't want to track any today?",
+        success: ()=>{window.location=$(e.target).attr("href");},
+        okText: "Yes, continue",
+        cancelText: "No, I want to track an emotion"
       });
   });
 }
@@ -37,6 +55,8 @@ if (_currentViewId==="writing"){
     });
 });
 }
+
+
 
 function warningInit(){
   $("body").append(`<div class="modal fade static" id=warning-modal tabindex="-1">

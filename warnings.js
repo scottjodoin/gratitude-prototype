@@ -63,7 +63,7 @@ function warningInit(){
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 id="warning-title" class="modal-title">Modal title</h5>
+          <i class="fas fa-info-circle text-warning me-4 float-start" style="font-size: 3rem;"></i><h5 id="warning-title" class="modal-title">Modal title</h5>
           <button type="button" class="btn-close warning-cancel" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

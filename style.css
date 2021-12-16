@@ -175,6 +175,7 @@ h1 {
 
 .btn-square img{
   filter: invert(0);
+  height:3rem;
   transition: 0.15s;
 }
 input:checked + .btn-square {

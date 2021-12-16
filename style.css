@@ -173,6 +173,10 @@ h1 {
   cursor: pointer;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .btn-square img{
   filter: invert(0);
   height:3rem;

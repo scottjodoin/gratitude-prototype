@@ -127,6 +127,7 @@ const chart = new Chart(ctx, {
           }
       }
     },
+    onHover: chartHovered,
     onClick: canvasClicked,
     plugins: {
         tooltip: {enabled: false},
@@ -155,6 +156,13 @@ function drawOnPoints(chart, args, options){
     annoCtx.drawImage(img, p.x - POINT_RADIUS*stretchFactor/2, p.y - POINT_RADIUS*stretchFactor/2, POINT_RADIUS * stretchFactor, POINT_RADIUS * stretchFactor);
   }
 }
+
+function chartHovered(event){
+  var activePoints = chart.getElementsAtEventForMode(event, 'nearest', {intersect: true}, false);
+
+  // make sure click was on an actual point
+  $("#chart").toggleClass("cursor-pointer",activePoints.length > 0);
+};
 
 // clicking on the canvas
 $(ctx).on("click", canvasClicked);

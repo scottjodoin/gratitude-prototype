@@ -97,6 +97,11 @@ h1 {
   padding-bottom:1rem;
 }
 
+.btn:hover{
+  filter: brightness(0.8);
+  transition:0.2s;
+}
+
 .CustomActiLeft{
   float: left; 
   margin-right: 0 !important; 
@@ -232,6 +237,7 @@ input:checked + .btn-square {
   background-color: #282828;
   border: 1px solid #3f6844ff;
 }
+
 .navbar-menu-button:hover{
   background-color: rgba(0, 0, 0, 0.658);
   outline: none;

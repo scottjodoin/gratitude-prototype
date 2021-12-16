@@ -57,6 +57,23 @@ if (_currentViewId==="writing"){
 }
 
 
+if (_currentViewId==="goals-activities-day"){
+  $("#goals-activities-day-next").click(function(e){
+      // check if any activities rows are completely NOT checked
+      if ($("#goals-activities-day")
+        .find("tr").toArray()
+        .filter(e=>$(e).find("input:checked").length === 0)
+        .length === 0) return;
+
+      e.preventDefault();
+      warningMessage({
+        title: "Are you sure?",
+        message: "There is at least one activity that has no days selected. Are you sure that you don't want to track it?",
+        success: ()=>{window.location=$(e.target).attr("href");},
+        okText: "Yes, continue"
+      });
+  });
+}
 
 function warningInit(){
   $("body").append(`<div class="modal fade static" id=warning-modal tabindex="-1">

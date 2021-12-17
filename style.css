@@ -97,6 +97,11 @@ h1 {
   padding-bottom:1rem;
 }
 
+.btn:hover{
+  filter: brightness(0.8);
+  transition:0.2s;
+}
+
 .CustomActiLeft{
   float: left; 
   margin-right: 0 !important; 
@@ -150,8 +155,8 @@ h1 {
   z-index: -1;
 } 
 .btn-square{
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
   padding:0.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.2);
@@ -160,7 +165,7 @@ h1 {
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color:black;
 }
 
@@ -168,8 +173,13 @@ h1 {
   cursor: pointer;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .btn-square img{
   filter: invert(0);
+  height:3rem;
   transition: 0.15s;
 }
 input:checked + .btn-square {
@@ -232,6 +242,7 @@ input:checked + .btn-square {
   background-color: #282828;
   border: 1px solid #3f6844ff;
 }
+
 .navbar-menu-button:hover{
   background-color: rgba(0, 0, 0, 0.658);
   outline: none;

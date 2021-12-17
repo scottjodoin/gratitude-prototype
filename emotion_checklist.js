@@ -12,21 +12,21 @@
   }
 
   // create html for each color
-  html += "<div class='container' id='emotion-checklist-container'>";
-  html += "<div class='row row-cols-2'>";
+  html += "<div id='emotion-checklist-container'>";
+  html += "<div class='row'>";
 
   for (cat in emotionsByCat) {
-    html += "<div class='col'>";
+    html += "<div class='col emotion-cat-container'>";
     for (let i = 0; i < emotionsByCat[cat].length - 2; i += 3) {
       var emotion = emotionsByCat[cat][i];
       var emotion2 = emotionsByCat[cat][i + 1];
       var emotion3 = emotionsByCat[cat][i + 2];
 
-      html += "<div class='row'><div class='col'>";
+      html += "<div class='float-start'>";
 
       let checkId = `emotion-check-${emotion.name.split(" ").join("-")}`;
 
-      html += `<div class="me-4" id='emotion-checklist-item'>
+      html += `<div class="me-3" id='emotion-checklist-item'>
         <input type="checkbox" id=${checkId} name=${checkId} class="btn-check">
         <label  style="background-color:${emotion.color};"for="${checkId}" class="my-3 btn btn-primary-outline btn-square">
           <img src="./img/${emotion.icon}.svg" width=40 height=40>
@@ -36,7 +36,7 @@
 
       checkId = `emotion-check-${emotion2.name.split(" ").join("-")}`;
 
-      html += `</div><div class='col'><div class="me-4" id='emotion-checklist-item'>
+      html += `</div><div class='float-start'><div class="me-3" id='emotion-checklist-item'>
         <input type="checkbox" id=${checkId} name=${checkId} class="btn-check">
         <label  style="background-color:${emotion2.color};"for="${checkId}" class="my-3 btn btn-primary-outline btn-square">
           <img src="./img/${emotion2.icon}.svg" width=40 height=40>
@@ -46,7 +46,7 @@
 
       checkId = `emotion-check-${emotion3.name.split(" ").join("-")}`;
 
-      html += `</div><div class='col'><div class="me-4" id='emotion-checklist-item'>
+      html += `</div><div class='float-start'><div class="me-3" id='emotion-checklist-item'>
         <input type="checkbox" id=${checkId} name=${checkId} class="btn-check">
         <label  style="background-color:${emotion3.color};"for="${checkId}" class="my-3 btn btn-primary-outline btn-square">
           <img src="./img/${emotion3.icon}.svg" width=40 height=40>
@@ -54,7 +54,7 @@
         </label>
       </div>`;
 
-      html += "</div></div>";
+      html += "</div>";
     }
     html += "</div>";
   }

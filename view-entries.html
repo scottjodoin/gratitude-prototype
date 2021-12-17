@@ -24,30 +24,6 @@
   </head>
 <body>
   <header></header>
-  <!-- <nav class="navbar navbar-expand-md bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="view-entries.html"> <img src="./img/myndful_cream.png" width="150" height="24" class="d-inline-block align-text-top"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link btn btn-primary text-white me-2" id=nav-checkin href="?view=mood-checkin1">Check in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn btn-primary text-white" id=nav-view-entries href="view-entries.html">My progress</a>
-          </li>
-        </ul>
-        </ul>
-        <ul class="navbar-nav float-end">
-          <li class="nav-item">
-            <a class="nav-link" href="?view=settings"><i class="fa fa-cog me-1"> Settings</i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
   <div id="icon-container" class="-none"></div>
   <div class="container-lg pt-4"> 
     
@@ -65,6 +41,7 @@
         </div>
       </div>
     </div>
+
     <div class="card mb-4 p-4">
     <h2>My Activities</h2>
     <div class="col-md-6">
@@ -124,7 +101,7 @@
       </table>
     </div>
     </div>
-    </div>
+  </div> <!-- end container -->
 
 
     <div id="entry-modal" data-bs-backdrop="static" class="modal" tabindex="-1">
@@ -153,10 +130,13 @@
                   <label class=mt-3>Activities completed:</label>
                   <div class="d-flex flex-wrap w-100" id=entry-activity-container></div>
                   
-                  <div id=entry-nav-container class="d-flex my-3 w-50 align-items-center justify-content-between invisible">
-                    <button id=btn-prev-entry class="btn btn-outline-primary">Prev</button>
-                    <span id=entry-index-label class="user-select-none">1/1</span>
-                    <button id=btn-next-entry class="btn btn-outline-primary">Next</button>
+                  <div class="w-100 d-flex justify-content-between align-items-center">
+                    <div id=entry-nav-container class="d-flex my-3 w-50 align-items-center justify-content-between invisible">
+                      <button id=btn-prev-entry class="btn btn-outline-primary">Prev</button>
+                      <span id=entry-index-label class="user-select-none">1/1</span>
+                      <button id=btn-next-entry class="btn btn-outline-primary">Next</button>
+                    </div>
+                    <div><button class="btn btn-danger float-end" onclick="alert('Deleting is not part of the prototy and is intentionally not implemented')" >Delete Entry</button></div>
                   </div>
                 </div>
               </div>

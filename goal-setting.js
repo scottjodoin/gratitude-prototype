@@ -121,7 +121,7 @@ if (_currentViewId==="goals-thankyou"){
   }
   else
   {
-    $("#goals-end-next").attr("href", "index.html");
+    $("#goals-end-next").attr("href", "view-entries.html");
   }
 }
 

@@ -1,10 +1,4 @@
-console.log(window.location.pathname);
-
-if (window.location.search) {
-  console.log(window.location.search);
-}
-
-//btn-primary
+var pageName = location.pathname.split(".")[0].substring(1);
 
 $("header").html(
   `<nav class="navbar navbar-expand-md bg-dark">
@@ -17,24 +11,20 @@ $("header").html(
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item menu-separation">
-        <div id= nav-checkin></div>
-          <a class="nav-link btn active" id=nav-view-entries href="checkin.html">Check In</a>
+          <a class="nav-link btn" id="nav-checkin" href="checkin.html">Check In</a>
         </li>
         <li class="nav-item menu-separation">
-            <a class="nav-link btn" id=nav-view-entries href="view-entries.html">My Progress</a>
+            <a class="nav-link btn" id="nav-view-entries" href="view-entries.html">My Progress</a>
         </li>
         <li class="nav-item menu-separation">
-            <a class="nav-link btn" id=nav-view-entries href="./goal-setting.html?view=goals-activities">Set Goals</a>
+            <a class="nav-link btn" id="nav-goal-setting" href="./goal-setting.html?view=goals-activities">Set Goals</a>
         </li>
       </ul>
-      <ul class="navbar-nav float-end">
-        <li class="nav-item">
-          <a class="nav-link" href="checkin.html?view=settings"><i class="fa fa-cog me-1"></i>Settings</a>
-        </li>
-      </ul>
+      
     </div>
   </div>
 </nav>`
 );
+$("header").find(`#nav-${pageName}`).addClass("active");
 
 document.title = "Myndful.ly";

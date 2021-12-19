@@ -11,7 +11,7 @@ $("header").html(
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item menu-separation">
-          <a class="nav-link btn" id="nav-checkin" href="checkin.html">Check In</a>
+          <a class="nav-link btn btn-primary" id="nav-checkin" href="checkin.html">Check In</a>
         </li>
         <li class="nav-item menu-separation">
             <a class="nav-link btn" id="nav-view-entries" href="view-entries.html">My Progress</a>

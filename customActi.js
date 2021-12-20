@@ -83,7 +83,7 @@ function actiList()
                 
                 if(inList == false)
                 {
-                    let dataparse = {name: t, html: html, day: i,id: id,  value: true};
+                    let dataparse = {name: t, html: html, day: i,id: id,  value: false};
                     list.push(dataparse);
                     let js = JSON.stringify({customDays:list});
                     actStorage.setItem("actiDayChosen",js);
@@ -135,7 +135,7 @@ function actiList()
                     
                     if(inList == false)
                     {
-                        let dataparse = {name: x.name, html: x.name + `<i class="ms-2 fas fa-seedling"></i>`, day: i, id: id,  value: true};
+                        let dataparse = {name: x.name, html: x.name + `<i class="ms-2 fas fa-seedling"></i>`, day: i, id: id,  value: false};
                         list.push(dataparse);
                         let js = JSON.stringify({customDays:list});
                         actStorage.setItem("actiDayChosen",js);

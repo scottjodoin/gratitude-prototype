@@ -1,6 +1,58 @@
 if(_currentViewId === "landing")
 {
     checkinActiList();
+    
+}
+
+if(_currentViewId === "EndScreen")
+{
+    let actStorage = window.localStorage;
+    actStorage.setItem("ClearCheckin",true)
+
+    let json = actStorage.getItem("myndfully");
+    let jsonstore = actStorage.getItem("CheckInActiStorage");
+
+    if(json != null)
+    {
+
+        let actilist = JSON.parse(json).data.inputs;
+
+        console.log(actilist)
+        for(let x in _state.inputs)
+        {
+            if(_state.inputs[x].pageId === "checkin.html" && _state.inputs[x].viewId === "emotions")
+            {
+                actilist[x].value = false;
+                // console.log(actilist[x])
+            }
+            // console.log(_state.inputs[x].pageId)
+            // if(_state.inputs[x].pageId === "checkin.html")
+            // {
+            //     actilist[x]
+            // }
+            if(_state.inputs[x].pageId === "checkin.html" && _state.inputs[x].viewId === "writing")
+            {
+                actilist[x].value = "";
+                // console.log(actilist[x])
+            }
+        }
+
+        let js = JSON.stringify({data:{inputs:actilist}});
+        // let js2 = JSON.stringify({data:js});
+        actStorage.setItem("myndfully",js);
+    }
+
+    if(jsonstore != null)
+    {
+        let actilist = JSON.parse(jsonstore).EachActivity;
+
+        for(let x in actilist)
+        {
+            actilist[x].value = false;
+        }
+        let js = JSON.stringify({EachActivity:actilist});
+        actStorage.setItem("CheckInActiStorage",js);
+    }
 }
 
 function checkinActiList()
@@ -10,6 +62,7 @@ function checkinActiList()
     // let noLonger = actStorage.getItem("visited");
 
     actStorage.setItem("firstTime",false)
+    actStorage.setItem("ClearCheckin",false)
 
     let json = actStorage.getItem("actiNameStorage");
     let k;
@@ -255,23 +308,32 @@ function activityReminder()
         }
     }
 
-    if(actiNotDone === "")
+    if(actStorage.getItem("ClearCheckin")==="true")
     {
-
-      l = (pass == true)
-        ? "<h5><strong>All activities are completed.</strong> </h5>"
-        : "<h5><strong>No activities are being tracked.</strong> </h5>";
-        $("#endScreen-Activities").before(l);
         $("#activity-reminder").addClass("d-none");
         $("#activity-reminder-default")[0].click(); // click on the button
     }
     else
     {
-        l="<h3>Here is your reminder to complete one or more of these activities:</h3><h2><ul>" + actiNotDone + "</ul></h2>";
-        $("#endScreen-Activities").before(l);
-        let h = "<p>Think of something that takes less than <strong>2 minutes</strong> to complete.</p><h2>Are you going to do it now?</h2>";
-        $("#endScreen-Activities").before(h);
-    }
 
+        if(actiNotDone === "")
+        {
+
+        l = (pass == true)
+            ? "<h5><strong>All activities are completed.</strong> </h5>"
+            : "<h5><strong>No activities are being tracked.</strong> </h5>";
+            $("#endScreen-Activities").before(l);
+            $("#activity-reminder").addClass("d-none");
+            $("#activity-reminder-default")[0].click(); // click on the button
+        }
+        else
+        {
+            l="<h3>Here is your reminder to complete one or more of these activities:</h3><h2><ul>" + actiNotDone + "</ul></h2>";
+            $("#endScreen-Activities").before(l);
+            let h = "<p>Think of something that takes less than <strong>2 minutes</strong> to complete.</p><h2>Are you going to do it now?</h2>";
+            $("#endScreen-Activities").before(h);
+        }
+    }
+    
     
 }

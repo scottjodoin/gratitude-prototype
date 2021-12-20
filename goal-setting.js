@@ -263,3 +263,17 @@ function deleteActivity(e)
 
   div.remove();
 }
+
+if (_currentViewId === "goals-activities-day"){
+  // select all the checkboxes
+  $("#acti-day-select-all").click(function(){
+    $("#goals-activities-day input[type='checkbox']")
+      .each((i,e)=>{if  (!e.checked) e.click();});
+  });
+  
+  // unselect all the checkboxes
+  $("#acti-day-deselect-all").click(function(){
+    $("#goals-activities-day input[type='checkbox']")
+      .each((i,e)=>{if (e.checked) e.click();});
+  });
+}

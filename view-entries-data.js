@@ -206,7 +206,7 @@ const data =
 			]
 		},
 		{
-			"weekTitle": "August 22, 2021 - August 29, 2021",
+			"weekTitle": "August 22, 2021 - August 28, 2021",
 			"dataPoints": [
 				{
 					"y": 1,

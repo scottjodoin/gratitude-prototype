@@ -278,3 +278,19 @@ if (_currentViewId === "goals-activities-day"){
       .each((i,e)=>{if (e.checked) e.click();});
   });
 }
+
+if (_currentViewId === "goals-checkin-freq"){
+  if (!_state.inputs.find(e=>e.elemId=="checkin-freq")){
+    // go back and forth because directly clicking on the radio button does not work
+    // to update state
+    document.getElementById("checkin-freq-3").click();
+    document.getElementById("checkin-freq-2").click();
+  }
+}
+
+if (_currentViewId === "goals-write-freq"){
+  if (!_state.inputs.find(e=>e.elemId=="write-freq")){
+    document.getElementById("write-freq-3").click();
+    document.getElementById("write-freq-2").click();
+  }
+}

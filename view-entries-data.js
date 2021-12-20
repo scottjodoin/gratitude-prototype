@@ -206,7 +206,7 @@ const data =
 			]
 		},
 		{
-			"weekTitle": "August 22, 2021 - August 29, 2021",
+			"weekTitle": "August 22, 2021 - August 28, 2021",
 			"dataPoints": [
 				{
 					"y": 1,
@@ -271,6 +271,13 @@ const data =
 					"mood":[],
 					"date": "2021-08-27"
 				},
+				{
+					"y": 4,
+					"x": "Saturday",
+					"entry": "- He hearkens after prophecies and dreams.\n-  Meantime we shall express our darker purpose...\n-  If you wrong us, shall we not revenge?\n",
+					"mood":[],
+					"date": "2021-08-27"
+				}
 			]
 		}
 	]

@@ -142,6 +142,7 @@ function ActiCancel()
 
 function ActiAddpop()
 {
+  document.querySelector('#AddActiInput').value='';
   document.querySelector('.acti-add').style.display='flex';
 }
 
@@ -270,7 +271,7 @@ if (_currentViewId === "goals-activities-day"){
     $("#goals-activities-day input[type='checkbox']")
       .each((i,e)=>{if  (!e.checked) e.click();});
   });
-  
+
   // unselect all the checkboxes
   $("#acti-day-deselect-all").click(function(){
     $("#goals-activities-day input[type='checkbox']")

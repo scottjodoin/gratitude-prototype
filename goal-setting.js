@@ -1,3 +1,11 @@
+if (_currentViewId=="goals-activities"){
+  let firstTime = _storage.getItem("goalsSettingFirstTime");
+  console.log(firstTime);
+  if (firstTime == "false" || firstTime == null)
+    $("#first-time-intro").removeClass("d-none");
+  _storage.setItem("goalsSettingFirstTime", "true");
+}
+
 if (_currentViewId==="goals-thankyou"){
   // let radioValue
 

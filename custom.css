@@ -4091,7 +4091,10 @@ fieldset:disabled .btn {
 
 .nav-link.active {
   color: rgb(238, 229, 185);
-  font-weight: bold;
+  font-weight: none;
+  border-bottom: solid 3px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .nav-tabs {

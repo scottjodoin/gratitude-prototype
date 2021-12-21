@@ -1,191 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Myndful.ly</title>
-  <link rel="icon" href="img/favicon.ico"> 
-  
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Myndful.ly</title>
+    <link rel="icon" href="img/favicon.ico" />
+
     <!-- jQuery CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
     <!-- fontawesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
-  
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
+
     <!-- boostrap CDN -->
-    <link rel="stylesheet" href="custom.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="progress-tracker.css">
+    <link rel="stylesheet" href="custom.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="progress-tracker.css" />
   </head>
-<body>
-  <header></header>
-  
-  <div id=container class="container pt-4 d-flex justify-content-center">
-    <!-- goal setting -->
+  <body>
+    <header></header>
 
-    <!-- Popup for adding an activity -->
-    <div class="acti-add">
-      <div class="acti-content">
-        <h3 class="Acti-add-title" style="color: black;">What is the activity name?</h3>
-        <div id=ErrorMsg style="color: red;"></div>
-        <form id=AddActiForm action="">
-          <input id=AddActiInput type="text" class="addinput" placeholder="Activity Name">
-          <button id=Acti-Done type="submit" class="btn btn-primary addbutton">Add Activity</button>
-          <button id=Acti-Cancel type="button" class="btn btn-secondary addbutton">Cancel</button>            
-        </form>
-      </div>
-    </div>
+    <div id="container" class="container pt-4 d-flex justify-content-center">
+      <!-- goal setting -->
 
-    <div class="d-none view" id="goals-activities">
-      <div class="progress-tracker" progress="1/5"></div>
-      <hide-checkin></hide-checkin>
-
-      <h1 id=first-off>First off, which <strong>activities</strong> would you like to track?</h1>
-      <p>Myndful.ly can remind you to include any or all of these items.</p>
-
-      <div class="d-flex flex-wrap mb-4">
-        <input type="checkbox" class="btn-check" checked id=act-exercise autocomplete="off">
-        <label class="btn btn-outline-primary me-2 buttonsMargin" for=act-exercise>Exercise <i class="fas fa-running"></i></label>
-        
-
-        <input type="checkbox" class="btn-check" checked id=act-hygiene autocomplete="off">
-        <label class="btn btn-outline-primary me-2 buttonsMargin" for=act-hygiene>Hygiene <i class="fas fa-hands-wash"></i></label>
-        
-        <input type="checkbox" class="btn-check" checked id=act-cleanliness autocomplete="off">
-        <label class="btn btn-outline-primary me-2 buttonsMargin" for=act-cleanliness>Cleanliness <i class="fas fa-broom"></i></label>
-
-        <input type="checkbox" class="btn-check"  id=act-social autocomplete="off">
-        <label class="btn btn-outline-primary me-2 buttonsMargin" for=act-social>Social <i class="fas fa-users"></i></label>
-        
-
-        <input type="checkbox" class="btn-check"  id=act-healthy-food autocomplete="off">
-        <label class="btn btn-outline-primary me-2 buttonsMargin" for=act-healthy-food>Healthy food <i class="fas fa-apple-alt"></i></label>
-        
-        <input type="checkbox" class="btn-check"  id=act-outdoors autocomplete="off">
-        <label class="btn btn-outline-primary me-2 buttonsMargin" for=act-outdoors>Outdoors <i class="fas fa-sun"></i></label>
-        
-      </div>
-      <p>Add a custom activity:</p>
-      <div class="d-flex flex-wrap justify-content-center mb-4">
-        <div id=addAfterThis></div>
-
-        <input type="button" class="btn-check navbar-toggler act-add-another" autocomplete="off">
-        <label id=acti-add-button class="btn btn-outline-primary me-2 buttonsMargin" for=act-add-another> <i class="fas fa-plus"></i></label>
-
-      </div>
-      <div class="d-flex w-100 justify-content-end">
-        <a class="btn btn-primary" id=goals-activities-next href="?view=goals-activities-day">Next</a></div>
-    </div>
-    
-    <div class="d-none view" id=goals-activities-day>
-      <div class="progress-tracker" progress="2/5"></div>
-      <hide-checkin></hide-checkin>
-      
-      <h1>Which days of the week do you want to complete each activity on?</h1>
-
-      <div>
-        <button id=acti-day-select-all class="btn btn-sm btn-secondary me-2">Select all</button>
-        <button id=acti-day-deselect-all class="btn btn-sm btn-secondary">Deselect all</button>
-      </div>
-      <div class="d-flex flex-wrap justify-content-center mb-4">
-        <div id=acti-list-top></div>
-      </div>
-      
-      <div class="d-flex w-100 justify-content-between">
-        <a class="btn btn-outline-primary me-2" href="?view=goals-activities"> Back</a>
-        <a class="btn btn-primary" id=goals-activities-day-next href="?view=goals-checkin-freq">Next </a></div>
-    </div>
-
-    
-    <div class="d-none view" id="goals-checkin-freq">
-      <div class="progress-tracker" progress="3/5"></div>
-      <hide-checkin></hide-checkin>
-    
-      <h1>How often would you like to check in?</h1>
-      <p>Myndful.ly can send reminders to check in if you miss a few.</p>
-      
-      <div class="d-flex flex-wrap justify-content-center mb-4" role="group">
-        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-1" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="checkin-freq-1">Twice a day</label>
-
-        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-2" autocomplete="off" >
-        <label class="btn btn-outline-primary me-2" for="checkin-freq-2">Once a day</label>
-
-        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-4" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="checkin-freq-4">Once a week</label>
-
-        <input type="radio" class="btn-check" name="checkin-freq" id="checkin-freq-3" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="checkin-freq-3">Three times a week</label>
-
+      <!-- Popup for adding an activity -->
+      <div class="acti-add">
+        <div class="acti-content">
+          <h3 class="Acti-add-title" style="color: black">
+            What is the activity name?
+          </h3>
+          <div id="ErrorMsg" style="color: red"></div>
+          <form id="AddActiForm" action="">
+            <input
+              id="AddActiInput"
+              type="text"
+              class="addinput"
+              placeholder="Activity Name"
+            />
+            <button
+              id="Acti-Cancel"
+              type="button"
+              class="btn btn-secondary addbutton"
+            >
+              Cancel
+            </button>
+            <button
+              id="Acti-Done"
+              type="submit"
+              class="btn btn-primary addbutton"
+            >
+              Add Activity
+            </button>
+          </form>
+        </div>
       </div>
 
-      <div class="d-flex w-100 justify-content-between">
-        <a class="btn btn-outline-primary me-2" href="?view=goals-activities-day">Back</a>
-        <a class="btn btn-primary require-input" href="?view=goals-write-freq">Next</a></div>
-    </div>
+      <div class="d-none view" id="goals-activities">
+        <div class="progress-tracker" progress="1/5"></div>
+        <hide-checkin></hide-checkin>
 
-    <div class="d-none view" id="goals-write-freq">
-      <div class="progress-tracker" progress="4/5"></div>
-      <hide-checkin></hide-checkin>
-    
-      <h1>How often would you like to practice expressing gratitude?</h1>
-      <p>Myndful.ly can send reminders to check in if you miss a few.</p>
-      
-      <div class="d-flex flex-wrap justify-content-center mb-4" role="group">
-        <input type="radio" class="btn-check" name="write-freq" id="write-freq-1" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="write-freq-1">Twice a day</label>
+        <h1 id="first-off">
+          First off, which <strong>activities</strong> would you like to track?
+        </h1>
+        <p>Myndful.ly can remind you to include any or all of these items.</p>
 
-        <input type="radio" class="btn-check" name="write-freq" id="write-freq-2" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="write-freq-2">Once a day</label>
+        <div class="d-flex flex-wrap mb-4">
+          <input
+            type="checkbox"
+            class="btn-check"
+            checked
+            id="act-exercise"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-primary me-2 buttonsMargin"
+            for="act-exercise"
+            >Exercise <i class="fas fa-running"></i
+          ></label>
 
-        <input type="radio" class="btn-check" name="write-freq" id="write-freq-4" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="write-freq-4">Once a week</label>
+          <input
+            type="checkbox"
+            class="btn-check"
+            checked
+            id="act-hygiene"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-primary me-2 buttonsMargin"
+            for="act-hygiene"
+            >Hygiene <i class="fas fa-hands-wash"></i
+          ></label>
 
-        <input type="radio" class="btn-check" name="write-freq" id="write-freq-3" autocomplete="off">
-        <label class="btn btn-outline-primary me-2" for="write-freq-3">Three times a week</label>
+          <input
+            type="checkbox"
+            class="btn-check"
+            checked
+            id="act-cleanliness"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-primary me-2 buttonsMargin"
+            for="act-cleanliness"
+            >Cleanliness <i class="fas fa-broom"></i
+          ></label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="act-social"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-primary me-2 buttonsMargin"
+            for="act-social"
+            >Social <i class="fas fa-users"></i
+          ></label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="act-healthy-food"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-primary me-2 buttonsMargin"
+            for="act-healthy-food"
+            >Healthy food <i class="fas fa-apple-alt"></i
+          ></label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="act-outdoors"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-primary me-2 buttonsMargin"
+            for="act-outdoors"
+            >Outdoors <i class="fas fa-sun"></i
+          ></label>
+        </div>
+        <p>Add a custom activity:</p>
+        <div class="d-flex flex-wrap justify-content-center mb-4">
+          <div id="addAfterThis"></div>
+
+          <input
+            type="button"
+            class="btn-check navbar-toggler act-add-another"
+            autocomplete="off"
+          />
+          <label
+            id="acti-add-button"
+            class="btn btn-outline-primary me-2 buttonsMargin"
+            for="act-add-another"
+          >
+            <i class="fas fa-plus"></i
+          ></label>
+        </div>
+        <div class="d-flex w-100 justify-content-end">
+          <a
+            class="btn btn-primary"
+            id="goals-activities-next"
+            href="?view=goals-activities-day"
+            >Next</a
+          >
+        </div>
       </div>
 
-      <div class="d-flex justify-content-between w-100">
-        <a class="btn btn-outline-primary me-2" href="?view=goals-checkin-freq">Back</a>
-        <a class="btn btn-primary require-input" href="?view=goals-thankyou">Next</a></div>
+      <div class="d-none view" id="goals-activities-day">
+        <div class="progress-tracker" progress="2/5"></div>
+        <hide-checkin></hide-checkin>
+
+        <h1>
+          Which days of the week do you want to complete each activity on?
+        </h1>
+
+        <div>
+          <button
+            id="acti-day-select-all"
+            class="btn btn-sm btn-secondary me-2"
+          >
+            Select all
+          </button>
+          <button id="acti-day-deselect-all" class="btn btn-sm btn-secondary">
+            Deselect all
+          </button>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center mb-4">
+          <div id="acti-list-top"></div>
+        </div>
+
+        <div class="d-flex w-100 justify-content-between">
+          <a class="btn btn-outline-primary me-2" href="?view=goals-activities">
+            Back</a
+          >
+          <a
+            class="btn btn-primary"
+            id="goals-activities-day-next"
+            href="?view=goals-checkin-freq"
+            >Next
+          </a>
+        </div>
+      </div>
+
+      <div class="d-none view" id="goals-checkin-freq">
+        <div class="progress-tracker" progress="3/5"></div>
+        <hide-checkin></hide-checkin>
+
+        <h1>How often would you like to check in?</h1>
+        <p>Myndful.ly can send reminders to check in if you miss a few.</p>
+
+        <div class="d-flex flex-wrap justify-content-center mb-4" role="group">
+          <input
+            type="radio"
+            class="btn-check"
+            name="checkin-freq"
+            id="checkin-freq-1"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary me-2" for="checkin-freq-1"
+            >Twice a day</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="checkin-freq"
+            id="checkin-freq-2"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary me-2" for="checkin-freq-2"
+            >Once a day</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="checkin-freq"
+            id="checkin-freq-4"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary me-2" for="checkin-freq-4"
+            >Once a week</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="checkin-freq"
+            id="checkin-freq-3"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary me-2" for="checkin-freq-3"
+            >Three times a week</label
+          >
+        </div>
+
+        <div class="d-flex w-100 justify-content-between">
+          <a
+            class="btn btn-outline-primary me-2"
+            href="?view=goals-activities-day"
+            >Back</a
+          >
+          <a class="btn btn-primary require-input" href="?view=goals-write-freq"
+            >Next</a
+          >
+        </div>
+      </div>
+
+      <div class="d-none view" id="goals-write-freq">
+        <div class="progress-tracker" progress="4/5"></div>
+        <hide-checkin></hide-checkin>
+
+        <h1>How often would you like to practice expressing gratitude?</h1>
+        <p>Myndful.ly can send reminders to check in if you miss a few.</p>
+
+        <div class="d-flex flex-wrap justify-content-center mb-4" role="group">
+          <input
+            type="radio"
+            class="btn-check"
+            name="write-freq"
+            id="write-freq-1"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary me-2" for="write-freq-1"
+            >Twice a day</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="write-freq"
+            id="write-freq-2"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary me-2" for="write-freq-2"
+            >Once a day</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="write-freq"
+            id="write-freq-4"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary me-2" for="write-freq-4"
+            >Once a week</label
+          >
+
+          <input
+            type="radio"
+            class="btn-check"
+            name="write-freq"
+            id="write-freq-3"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary me-2" for="write-freq-3"
+            >Three times a week</label
+          >
+        </div>
+
+        <div class="d-flex justify-content-between w-100">
+          <a
+            class="btn btn-outline-primary me-2"
+            href="?view=goals-checkin-freq"
+            >Back</a
+          >
+          <a class="btn btn-primary require-input" href="?view=goals-thankyou"
+            >Next</a
+          >
+        </div>
+      </div>
+
+      <div class="d-none view" id="goals-thankyou">
+        <div class="progress-tracker" progress="5/5"></div>
+        <hide-checkin></hide-checkin>
+
+        <i
+          class="fas fa-check-circle mb-4"
+          style="align-self: center; font-size: 1000%; color: lightgreen"
+        ></i>
+
+        <h1>Ok, great! You can always change your settings later.</h1>
+
+        <div id="goal-summary"></div>
+        <div class="d-flex w-100 justify-content-between">
+          <a class="btn btn-outline-primary me-2" href="?view=goals-write-freq"
+            >Back</a
+          >
+          <a
+            id="goals-end-next"
+            class="btn btn-primary"
+            href="view-entries.html"
+            >Finish</a
+          >
+        </div>
+      </div>
+
+      <div class="d-none view position-relative" id="goals-try-firsttime">
+        <div class="checkin-arrow"></div>
+        <h1><br /><br /><br />Let's try checking in for the first time.</h1>
+      </div>
+
+      <!-- error screens -->
+      <div class="d-none view" id="unimplemented">
+        <container class="text-center">
+          <div class="alert alert-warning">
+            This page is not part of the prototype and is intentionally not
+            implemented.
+          </div>
+        </container>
+      </div>
     </div>
-
-    <div class="d-none view" id="goals-thankyou">
-      <div class="progress-tracker" progress="5/5"></div>
-      <hide-checkin></hide-checkin>
-
-      <i class="fas fa-check-circle mb-4" style="align-self:center; font-size: 1000%; color: lightgreen;"></i>
-
-      <h1>Ok, great! You can always change your settings later.</h1>
-
-      <div id="goal-summary"></div>
-      <div class="d-flex w-100 justify-content-between">
-        <a class="btn btn-outline-primary me-2" href="?view=goals-write-freq">Back</a>
-        <a id="goals-end-next" class="btn btn-primary" href="view-entries.html">Finish</a></div>
-    </div>
-
-    <div class="d-none view position-relative" id="goals-try-firsttime">
-      <div class="checkin-arrow"></div>
-      <h1><br/><br/><br/>Let's try checking in for the first time.</h1>
-    </div>
-
-    <!-- error screens -->
-    <div class="d-none view" id="unimplemented">
-      <container class="text-center">
-        <div class="alert alert-warning">This page is not part of the prototype and is intentionally not implemented.</div>
-      </container>
-    </div>
-  </div>
-  <!-- <script src="customActi.js"></script> -->
-  <script src="navbar.js"></script>
-  <script src="storage.js"></script>
-  <script src="navigation.js"></script>
-  <script src="warnings.jS"></script>
-  <script src="customActi.js"></script>
-  <script src="goal-setting.js"></script>
-  <script src="progress-tracker.js"></script>
-  
-</body>
+    <!-- <script src="customActi.js"></script> -->
+    <script src="navbar.js"></script>
+    <script src="storage.js"></script>
+    <script src="navigation.js"></script>
+    <script src="warnings.jS"></script>
+    <script src="customActi.js"></script>
+    <script src="goal-setting.js"></script>
+    <script src="progress-tracker.js"></script>
+  </body>
 </html>

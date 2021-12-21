@@ -1,23 +1,11 @@
 let page = "start";
 let $container = $("#container");
-redirect("landing");
 
-function redirectClicked(e){
-  let pageName = $(e.target).attr("target");
-  redirect(pageName);
-}
-function redirect(pageName){
-  $.get({url:`${pageName}.html`, success:setContainer});
-}
-
-function setContainer(data){
-  $container
-    .html(data)
-    .find("[target]").click(redirectClicked);
-  containerFadeIn();
-}
-
-function containerFadeIn(){
-  $container.hide();
-  $container.fadein();
+let firstTime = _storage.getItem("goalsSettingFirstTime") === null;
+if (firstTime) {
+  $("#first-time-intro").removeClass("d-none");
+  _storage.setItem("goalsSettingFirstTime", "true");
+} else {
+  $("#redirect").removeClass("d-none");
+  $("#redirect a")[0].click();
 }

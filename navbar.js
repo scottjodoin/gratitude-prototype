@@ -1,4 +1,5 @@
-var pageName = location.pathname.split(".")[0].substring(1);
+var pageName = location.pathname.split(".")[0].substring();
+pageName = pageName.substring(pageName.lastIndexOf("/") + 1);
 
 $("header").html(
   `<nav class="navbar navbar-expand-md bg-dark">
@@ -25,6 +26,9 @@ $("header").html(
   </div>
 </nav>`
 );
-$("header").find(`#nav-${pageName}`).addClass("active");
+
+$("header")
+  .find(`#nav-${pageName}`)
+  .addClass("active");
 
 document.title = "Myndful.ly";

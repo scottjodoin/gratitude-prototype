@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=goal-setting.html?view=goals-activities">
   <title>DOCUMEJNT</title>
 
   <!-- jQuery CDN -->
@@ -21,7 +20,15 @@
 
 <body>
   <header></header>
-  <p>
+
+  <div id="container" class="container pt-4 d-flex justify-content-center">
+    <div id="first-time-intro" class="view d-none w-100">
+      <h1>Welcome to Mindful.ly!</h1>
+      <p>Mindfully is a simple and guided way to stay on top of your mental health by tracking healthy activities, mood, and gratitude.</p>
+      <a id="first-time-intro-done" class="btn btn-primary" href="goal-setting.html?view=goals-activities">Got it! Start with some goals</a>
+    </div>
+  </div>
+  <p id="redirect" class="d-none">
     <a href="goal-setting.html?view=goals-activities">Redirect</a>
   </p>
 
@@ -29,6 +36,6 @@
 <script src="navbar.js"></script>
 <script src="storage.js"></script>
 <script src="navigation.js"></script>
-<!-- <script src="index.js?q=4"></script>-->
+<script src="index.js"></script>
 </body>
 </html>

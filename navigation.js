@@ -5,7 +5,7 @@ let _currentViewId = null;
 })();
 
 function isFirstTime() {
-  if (_storage.getItem("visited") === null) {
+  if (_storage.getItem("visited") == null) {
     _storage.setItem("firstTime", true);
   }
   return _storage.getItem("visited") === null;

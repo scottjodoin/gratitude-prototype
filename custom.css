@@ -3317,8 +3317,7 @@ fieldset:disabled .btn {
   border-color: #a79360;
 }
 .btn-outline-primary:hover {
-  color: #000;
-  background-color: #a79360;
+  color: rgb(240, 233, 199);
   border-color: #a79360;
 }
 .btn-check:focus + .btn-outline-primary,

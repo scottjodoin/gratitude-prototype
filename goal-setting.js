@@ -137,14 +137,16 @@ function ActiCancel() {
   document.querySelector(".acti-add").style.display = "none";
 }
 
+const ActiInput = document.getElementById("AddActiInput");
+const Aform = document.getElementById("AddActiForm");
+const errorOutput = document.getElementById("ErrorMsg");
+
 function ActiAddpop() {
+  errorOutput.innerText = ''
   document.querySelector("#AddActiInput").value = "";
   document.querySelector(".acti-add").style.display = "flex";
 }
 
-const ActiInput = document.getElementById("AddActiInput");
-const Aform = document.getElementById("AddActiForm");
-const errorOutput = document.getElementById("ErrorMsg");
 let actStorage = window.localStorage;
 Aform.addEventListener("submit", function (e) {
   let msg = [];
@@ -165,12 +167,10 @@ Aform.addEventListener("submit", function (e) {
   if (pass) {
     inputText = inputText.trim();
     for (let n of a) {
-      let i = n["id"].split("-");
+      let i = n["id"].split("-").slice(1);
       let x = "";
       for (let j of i) {
-        if (j != "act") {
           x += j + " ";
-        }
       }
       x = x.trim();
       if (inputText.toLowerCase() === x.toLowerCase()) {

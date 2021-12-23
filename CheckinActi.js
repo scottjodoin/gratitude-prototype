@@ -297,12 +297,12 @@ function activityReminder() {
       $("#activity-reminder-default")[0].click(); // click on the button
     } else {
       l =
-        "<h3>Here is your reminder to complete one or more of these activities:</h3><h2><ul>" +
+        "<h2>Here is your reminder to complete one or more of these activities:</h2><h4><ul>" +
         actiNotDone +
-        "</ul></h2>";
+        "</ul></h4>";
       $("#endScreen-Activities").before(l);
       let h =
-        "<p>Think of something that takes less than <strong>2 minutes</strong> to complete.</p><h2>Are you going to do it now?</h2>";
+        "<p>Think of something that takes less than <strong>2 minutes</strong> to complete.</p><h3>Are you going to do it now?</h3>";
       $("#endScreen-Activities").before(h);
     }
   }

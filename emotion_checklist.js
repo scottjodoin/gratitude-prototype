@@ -62,3 +62,18 @@
   html += "</div>";
   $("emotion-checklist").html(html);
 })();
+
+let actStorage = window.localStorage;
+let jsonstore1 = actStorage.getItem("CheckInActiStorage");
+actilist = JSON.parse(jsonstore1).EachActivity;
+
+let hasActi = false;
+for (let x of actilist) {
+  if (x.exist == true) {
+    hasActi = true;
+  }
+}
+
+if (!hasActi) {
+  $("#emotions-back").addClass("invisible");
+}

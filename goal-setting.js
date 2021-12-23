@@ -131,20 +131,15 @@ if (_currentViewId === "goals-try-firsttime") {
 
 $(".require-input").click(RequireOneInputBeforeContinueClicked);
 $("#acti-add-button").click(ActiAddpop);
-$("#Acti-Cancel").click(ActiCancel);
-
-function ActiCancel() {
-  document.querySelector(".acti-add").style.display = "none";
-}
 
 const ActiInput = document.getElementById("AddActiInput");
 const Aform = document.getElementById("AddActiForm");
 const errorOutput = document.getElementById("ErrorMsg");
 
 function ActiAddpop() {
-  errorOutput.innerText = ''
+  errorOutput.innerText = "";
   document.querySelector("#AddActiInput").value = "";
-  document.querySelector(".acti-add").style.display = "flex";
+  $("#AddActiInput").removeClass("is-invalid");
 }
 
 let actStorage = window.localStorage;
@@ -155,6 +150,7 @@ Aform.addEventListener("submit", function (e) {
   if (inputText.trim().length == 0 || inputText == null) {
     msg.push("Activity name is required");
     pass = false;
+    $("#AddActiInput").addClass("is-invalid");
   }
   let a = document.querySelectorAll('[id^="act-"]');
 
@@ -162,6 +158,7 @@ Aform.addEventListener("submit", function (e) {
     if (inputText.length > 25) {
       msg.push("Activity name is too long (must be less than 25 characters)");
       pass = false;
+      $("#AddActiInput").addClass("is-invalid");
     }
   }
   if (pass) {
@@ -170,12 +167,13 @@ Aform.addEventListener("submit", function (e) {
       let i = n["id"].split("-").slice(1);
       let x = "";
       for (let j of i) {
-          x += j + " ";
+        x += j + " ";
       }
       x = x.trim();
       if (inputText.toLowerCase() === x.toLowerCase()) {
         msg.push("Activity name is already in use");
         pass = false;
+        $("#AddActiInput").addClass("is-invalid");
       }
     }
   }
@@ -204,7 +202,7 @@ Aform.addEventListener("submit", function (e) {
     let js = JSON.stringify({ customInputs: k });
     actStorage.setItem("actiNameStorage", js);
 
-    document.querySelector(".acti-add").style.display = "none";
+    // document.querySelector(".acti-add").style.display = "none";
     let l =
       "<div id=" +
       id +
@@ -222,6 +220,7 @@ Aform.addEventListener("submit", function (e) {
     $("#addAfterThis").after(l);
     $(`#${id}`).change(customActivityClicked);
     $(`#${id}`)[0].click();
+    $("#customActModal").modal("hide");
   }
   e.preventDefault();
 });

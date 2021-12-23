@@ -33,28 +33,48 @@
   </head>
   <body>
     <header></header>
-
     <div id="container" class="container pt-4 d-flex justify-content-center">
       <!-- goal setting -->
 
-      <!-- Popup for adding an activity -->
-      <div class="acti-add">
-        <div class="acti-content">
-          <h3 class="Acti-add-title" style="color: black">
-            What is the activity name?
-          </h3>
-          <div id="ErrorMsg" style="color: red"></div>
-          <form id="AddActiForm" action="">
-            <input
-              id="AddActiInput"
-              type="text"
-              class="addinput"
-              placeholder="Activity Name"
-            />
-            <button
+      <!-- New popup -->
+      <div class="modal" id="customActModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Custom activity</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- <h3 class="Acti-add-title" style="color: #faf1cfff">
+                What is the activity name?
+              </h3> -->
+
+              <!-- <div id="ErrorMsg" style="color: var(--bs-danger)"></div> -->
+              <!-- <div class="alert alert-danger" role="alert">
+                Bad
+              </div> -->
+              <form id="AddActiForm" action="">
+                <label for="AddActiInput" class="form-label">Activity name</label>
+                <input
+                  id="AddActiInput"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter activity..."
+                  style="width:50%"
+                />
+                <div id="ErrorMsg" class="invalid-feedback"></div>
+            </div>
+            <div class="modal-footer">
+              <button
               id="Acti-Cancel"
               type="button"
               class="btn btn-secondary addbutton"
+              data-bs-dismiss="modal"
             >
               Cancel
             </button>
@@ -65,7 +85,9 @@
             >
               Add Activity
             </button>
-          </form>
+
+            </div>
+          </div>
         </div>
       </div>
 
@@ -157,19 +179,15 @@
         <p>Add a custom activity:</p>
         <div class="d-flex flex-wrap justify-content-center mb-4">
           <div id="addAfterThis"></div>
-
-          <input
-            type="button"
-            class="btn-check navbar-toggler act-add-another"
-            autocomplete="off"
-          />
-          <label
+          <button
             id="acti-add-button"
+            type="button"
             class="btn btn-outline-primary me-2 buttonsMargin"
-            for="act-add-another"
+            data-bs-toggle="modal"
+            data-bs-target="#customActModal"
           >
-            <i class="fas fa-plus"></i
-          ></label>
+            <i class="fas fa-plus"></i>
+          </button>
         </div>
         <div class="d-flex w-100 justify-content-end">
           <a

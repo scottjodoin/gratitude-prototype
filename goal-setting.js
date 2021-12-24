@@ -91,7 +91,7 @@ if (_currentViewId === "goals-thankyou") {
     } else {
       activitiesIntro = "Activities";
     }
-    activitiesIntro += " chosen to track";
+    activitiesIntro += " chosen to track &nbsp; &nbsp; &nbsp; ";
     activitiesIntroTable =
       '<table class="actitable mb-4"><tr><th>' +
       activitiesIntro +
@@ -100,7 +100,7 @@ if (_currentViewId === "goals-thankyou") {
   }
   if (reminder.length > 0) reminderIntro = "Desired frequency for checking in:";
   if (writereminder.length > 0)
-    writereminderIntro = "Desired frequency for writing about your emotions:";
+    writereminderIntro = "Desired frequency for expressing gratitude:";
   let h =
     activitiesIntroTable +
     reminderIntro +
